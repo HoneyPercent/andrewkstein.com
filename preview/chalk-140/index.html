@@ -160,10 +160,7 @@
       height: 52px;
       margin-bottom: 0.75rem;
       opacity: 1;
-      filter: brightness(1.8) saturate(0.7);
-      background: rgba(255,255,255,0.12);
-      padding: 6px 12px;
-      border-radius: 8px;
+      filter: brightness(0) invert(1);
     }
     .masthead-brand {
       font-family: var(--font-serif);
@@ -848,25 +845,29 @@
       text-underline-offset: 2px;
     }
     .intro-bar-share:hover { color: var(--navy); }
-    .intro-bar-hook {
-      font-family: var(--font-serif);
-      font-size: 0.88rem;
-      color: var(--dark-gray);
-      font-style: italic;
-      line-height: 1.55;
-      margin-bottom: 0.6rem;
+    .intro-bar-contents {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 6px 6px 0;
+      padding: 0.7rem 1rem;
+      margin-top: 0.1rem;
     }
     .intro-bar-nav {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       color: var(--mid-gray);
       line-height: 1.5;
-      border-top: 1px solid var(--light-gray);
-      padding-top: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+    .intro-bar-label {
+      font-weight: 700;
+      color: var(--navy);
+      margin-right: 0.25rem;
     }
     .intro-bar-nav a {
       color: var(--dark-gray);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       transition: color 0.15s;
     }
     .intro-bar-nav a:hover {
@@ -876,6 +877,13 @@
     .intro-bar-nav .sep {
       color: var(--light-gray);
       margin: 0 0.3rem;
+    }
+    .intro-bar-hook {
+      font-family: var(--font-serif);
+      font-size: 0.84rem;
+      color: var(--mid-gray);
+      font-style: italic;
+      line-height: 1.5;
     }
 
     /* Next webinar strip */
@@ -1067,13 +1075,16 @@
           <div class="intro-bar-text">From <strong>Dr. Kenneth W. Stein</strong> &middot; <span class="intro-bar-readtime">~3 min read</span></div>
           <a href="#" class="intro-bar-share">Share ↗</a>
         </div>
-        <div class="intro-bar-hook">This week: what the U.S.–Israel–Iran conflict actually means, and why Turkey may be next.</div>
-        <div class="intro-bar-nav">
-          <a href="#featured">Iran analysis</a><span class="sep">&middot;</span>
-          <a href="#free">Turkey &amp; readings</a><span class="sep">&middot;</span>
-          <a href="#cie-plus">CIE+</a><span class="sep">&middot;</span>
-          <a href="#history">History</a><span class="sep">&middot;</span>
-          <a href="#events">Events</a>
+        <div class="intro-bar-contents">
+          <div class="intro-bar-nav">
+            <span class="intro-bar-label">In this issue:</span>
+            <a href="#featured">Iran analysis</a><span class="sep">&middot;</span>
+            <a href="#free">Turkey &amp; readings</a><span class="sep">&middot;</span>
+            <a href="#cie-plus">CIE+</a><span class="sep">&middot;</span>
+            <a href="#history">History</a><span class="sep">&middot;</span>
+            <a href="#events">Events</a>
+          </div>
+          <div class="intro-bar-hook">What the Iran conflict actually means, and why Turkey may be next.</div>
         </div>
       </div>
 
