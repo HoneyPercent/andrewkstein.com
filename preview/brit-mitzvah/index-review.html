@@ -45,6 +45,36 @@
       color: var(--earth);
     }
 
+    /* ── Review highlight styles ── */
+    .changed {
+      background: rgba(255, 220, 80, 0.22);
+      outline: 1px dashed rgba(200, 170, 40, 0.4);
+      outline-offset: 2px;
+    }
+    .new-section {
+      border-left: 4px solid #e8c840;
+      padding-left: 0.5rem;
+      margin-left: -0.75rem;
+    }
+    .review-banner {
+      text-align: center; padding: 0.75rem 1rem;
+      background: #e8c840; font-size: 0.82rem;
+      color: #3a2a00; font-weight: 600;
+      position: sticky; top: 0; z-index: 200;
+    }
+    .review-banner span { opacity: 0.7; font-weight: 400; }
+    .review-legend {
+      display: flex; gap: 2rem; justify-content: center;
+      padding: 0.5rem 1rem; background: #faf3d0;
+      font-size: 0.75rem; color: #5c4d20;
+    }
+    .review-legend span::before {
+      content: ''; display: inline-block; width: 14px; height: 14px;
+      border-radius: 3px; vertical-align: middle; margin-right: 0.4rem;
+    }
+    .review-legend .leg-changed::before { background: rgba(255, 220, 80, 0.35); border: 1px dashed rgba(200, 170, 40, 0.5); }
+    .review-legend .leg-new::before { background: #fff; border-left: 4px solid #e8c840; }
+
     /* ── Skip link (accessibility) ── */
     .skip-link {
       position: absolute; top: -100px; left: 1rem;
@@ -72,7 +102,7 @@
     /* ── Nav ── */
     nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.15rem 2.5rem; position: sticky; top: 0; z-index: 100;
+      padding: 1.15rem 2.5rem; position: sticky; top: 52px; z-index: 100;
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       background: rgba(74, 55, 104, 0.88);
     }
@@ -460,6 +490,12 @@
   <!-- Accessibility: skip link -->
   <a href="#main" class="skip-link">Skip to content</a>
 
+  <!-- Review banner -->
+  <div class="review-banner">
+    REVIEW VERSION — Changes highlighted for comparison
+    <br><span>Yellow highlight = changed text &nbsp;|&nbsp; Gold left border = new section</span>
+  </div>
+
   <div class="demo-banner">Demo — Draft for tish.life/brit-mitzvah</div>
 
   <nav aria-label="Main navigation">
@@ -478,7 +514,7 @@
     <div class="hero-inner">
       <div class="hero-eyebrow">A Tish Program</div>
       <h1>Brit Mitzvah<br><em>at Tish</em></h1>
-      <p class="hero-subtitle">A two-year journey for families in Atlanta, rooted in community, guided by real relationships, and designed to make Jewish coming-of-age meaningful.</p>
+      <p class="hero-subtitle changed">A two-year journey for families in Atlanta, rooted in community, guided by real relationships, and designed to make Jewish coming-of-age meaningful.</p>
     </div>
     <img src="hero-final.jpeg" alt="Watercolor illustration of a young person reading Torah before a congregation" class="hero-art" id="hero-img">
   </section>
@@ -558,7 +594,7 @@
           <div class="comp-icon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="10" width="3" height="12" rx="1"/><rect x="15" y="10" width="3" height="12" rx="1"/><path d="M7.5 10c0-2 1.5-3.5 0-6"/><path d="M16.5 10c0-2 1.5-3.5 0-6"/><ellipse cx="7.5" cy="4" rx="1.5" ry="2"/><ellipse cx="16.5" cy="4" rx="1.5" ry="2"/></svg>
           </div>
-          <div class="comp-text">
+          <div class="comp-text changed">
             <h3>Monthly Sessions &amp; Curriculum</h3>
             <p class="changed">Sessions blend text study, music, time outdoors, and home-based ritual practice. Hands-on, not theoretical.</p>
           </div>
@@ -583,7 +619,7 @@
   </section>
 
   <!-- ════════ WHAT FAMILIES SAY (NEW) ════════ -->
-  <section class="s" style="background: #fff;">
+  <section class="s new-section" style="background: #fff;">
     <div class="s-inner reveal">
       <h2>What Families Say</h2>
       <div class="testimonial-grid">
@@ -603,7 +639,7 @@
   <section class="s s-cream">
     <div class="s-wide reveal">
       <h2>How It Started</h2>
-      <p class="changed" style="max-width: 640px;">In 2024, a handful of Tish parents asked: what if bar mitzvah or bat mitzvah prep actually your family instead of just being something you survived? They couldn't find it &mdash; so they built it.</p>
+      <p class="changed" style="max-width: 640px;">In 2024, a handful of Tish parents asked: what if bar mitzvah or bat mitzvah prep actually changed your family instead of just being something you survived? They couldn't find it &mdash; so they built it.</p>
       <div class="origin-timeline">
         <div class="origin-step">
           <div class="origin-step-year">2024</div>
@@ -647,32 +683,32 @@
   </section>
 
   <!-- ════════ FAQ (NEW) ════════ -->
-  <section class="s s-cream">
+  <section class="s s-cream new-section">
     <div class="s-inner reveal">
       <div style="display:flex; align-items:baseline; justify-content:space-between;">
         <h2>Frequently Asked Questions</h2>
         <a href="#" class="faq-expand-all" style="font-size:0.85rem; color:var(--purple); text-underline-offset:3px; white-space:nowrap;">Expand all</a>
       </div>
       <div class="faq-list">
-        <div class="faq-item open">
+        <div class="faq-item changed open">
           <div class="faq-q" role="button" tabindex="0" aria-expanded="true">What about the bar or bat mitzvah ceremony?</div>
-          <p class="faq-a">The ceremony isn't part of the program &mdash; every family does it differently. We'll help you think through options, share what other families have done, and connect you with rabbis and tutors who know this community.</p>
+          <p class="faq-a changed">The ceremony isn't part of the program &mdash; every family does it differently. We'll help you think through options, share what other families have done, and connect you with rabbis and tutors who know this community.</p>
         </div>
         <div class="faq-item">
           <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Do we need to belong to a synagogue or be Tish members?</div>
-          <p class="faq-a">No. The program is open to all Jewish families in the Atlanta area, regardless of affiliation.</p>
+          <p class="faq-a changed">No. The program is open to all Jewish families in the Atlanta area, regardless of affiliation.</p>
         </div>
         <div class="faq-item">
           <div class="faq-q" role="button" tabindex="0" aria-expanded="false">What is Moving Traditions?</div>
-          <p class="faq-a"><a href="https://www.movingtraditions.org/">Moving Traditions</a> is a nationally recognized organization that develops curricula for Jewish adolescent development. Their approach is participatory and embodied &mdash; kids move, discuss, and do. Our program is built on their framework.</p>
+          <p class="faq-a changed"><a href="https://www.movingtraditions.org/">Moving Traditions</a> is a nationally recognized organization that develops curricula for Jewish adolescent development. Their approach is participatory and embodied &mdash; kids move, discuss, and do. Our program is built on their framework.</p>
         </div>
         <div class="faq-item">
           <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Where and when do sessions happen?</div>
-          <p class="faq-a">Sessions happen monthly on Sundays, about two hours each, at homes and gathering spaces around Atlanta. Retreats are overnight camping trips off-site. The full schedule goes out before the year begins.</p>
+          <p class="faq-a changed">Sessions happen monthly on Sundays, about two hours each, at homes and gathering spaces around Atlanta. Retreats are overnight camping trips off-site. The full schedule goes out before the year begins.</p>
         </div>
         <div class="faq-item">
           <div class="faq-q" role="button" tabindex="0" aria-expanded="false">What's the parent commitment?</div>
-          <p class="faq-a">Parents are welcome at sessions and retreats, and families take turns hosting. Most parents find they enjoy it as much as their kids do.</p>
+          <p class="faq-a changed">Parents are welcome at sessions and retreats, and families take turns hosting. Most parents find they enjoy it as much as their kids do.</p>
         </div>
         <div class="faq-item">
           <div class="faq-q" role="button" tabindex="0" aria-expanded="false">How much does it cost?</div>
@@ -680,7 +716,7 @@
         </div>
         <div class="faq-item" id="faq-timeline" data-hide-after="2026-08-01">
           <div class="faq-q" role="button" tabindex="0" aria-expanded="false">Fall 2027 feels far away. Why should I register interest now?</div>
-          <p class="faq-a">Cohorts are small &mdash; 4 to 6 families. We need enough families to form one. Registering early helps us plan and ensures your family has a spot.</p>
+          <p class="faq-a changed">Cohorts are small &mdash; 4 to 6 families. We need enough families to form one. Registering early helps us plan and ensures your family has a spot.</p>
         </div>
       </div>
     </div>
@@ -697,14 +733,14 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           Fill Out an Interest Form
         </a>
-        <div class="cta-or">or say hello</div>
+        <div class="cta-or changed">or say hello</div>
         <a href="mailto:info@tish.life" class="cta-btn cta-btn-secondary" style="text-decoration:none;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Email Us to Start a Conversation
         </a>
       </div>
 
-      <p class="cta-sub">No commitment &mdash; just a conversation.</p>
+      <p class="cta-sub changed">No commitment &mdash; just a conversation.</p>
     </div>
   </section>
 
