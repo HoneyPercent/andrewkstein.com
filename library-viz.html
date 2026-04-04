@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Library | Andrew K. Stein</title>
+  <meta name="description" content="A visual exploration of the Stein family's reading life — 2,000+ books borrowed from the Atlanta-Fulton Public Library since 2021.">
+  <meta property="og:title" content="Stein Family Library">
+  <meta property="og:description" content="A visual exploration of the Stein family's reading life — 2,000+ books from the Atlanta-Fulton Public Library.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://andrewkstein.com/library-viz.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* === Library Page Styles === */
+
+    /* Person colors */
+    :root {
+      --color-andrew: #4A6FA5;
+      --color-martha: #B5616A;
+      --color-eli: #5B8C5A;
+      --color-rosie: #C4944A;
+      --grid-line: rgba(139,115,85,0.15);
+      --axis-label: #8B7355;
+      --card-border: rgba(139,115,85,0.2);
+    }
+
+    .library-hero {
+      padding-top: calc(68px + var(--space-xl));
+      padding-bottom: var(--space-xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .library-hero::before {
+      content: '';
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--color-andrew) 0%, var(--color-andrew) 25%,
+        var(--color-martha) 25%, var(--color-martha) 50%,
+        var(--color-eli) 50%, var(--color-eli) 75%,
+        var(--color-rosie) 75%, var(--color-rosie) 100%
+      );
+    }
+    .library-hero h1 {
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      margin-bottom: 0.25rem;
+    }
+    .library-hero .est-label {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-warm);
+      margin-bottom: var(--space-md);
+      display: inline-block;
+    }
+    .library-hero .lead {
+      max-width: 540px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat__number {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+    .hero-stat__label {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    /* Section titles */
+    .library-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    /* Chart containers */
+    .chart-wrap {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: 0 2px 12px var(--shadow-warm);
+      position: relative;
+      overflow: hidden;
+    }
+    .chart-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-warm), var(--accent-warm-light));
+      border-radius: 0 0 3px 3px;
+      opacity: 0.5;
+    }
+    .chart-wrap canvas {
+      width: 100% !important;
+      display: block;
+    }
+
+    /* Legend */
+    .chart-legend {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      margin-top: var(--space-sm);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .chart-legend__item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .chart-legend__swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Profile cards */
+    .profile-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    @media (max-width: 768px) {
+      .profile-cards { grid-template-columns: 1fr; }
+    }
+    .profile-card {
+      background: linear-gradient(135deg, #F5E6C8 0%, #FFF8E7 50%, #F5E6C8 100%);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px var(--shadow-warm-lg);
+    }
+    .profile-card__emoji {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+    .profile-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.375rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .profile-card__count {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+    }
+    .profile-card__genre-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--axis-label);
+      margin-bottom: 0.25rem;
+    }
+    .profile-card__genre {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: var(--space-md);
+    }
+    .profile-card__authors {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .profile-card__authors li {
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .profile-card__authors li:last-child { border-bottom: none; }
+    .profile-card__donut-wrap {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-card__donut-wrap canvas {
+      display: block;
+    }
+
+    /* Borrowing proportion chart */
+    .borrowing-bar-wrap {
+      width: 100%;
+    }
+
+    /* Responsive canvas sizing */
+    @media (max-width: 768px) {
+      .chart-wrap { padding: var(--space-md); }
+      .hero-stats { gap: var(--space-md); }
+    }
+
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Andrew K. Stein</a>
+      <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../how-i-work.html">AI Consulting</a></li>
+        <li><a href="../facilitation.html">Facilitation</a></li>
+        <li><a href="../library-viz/" class="active">Library</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="library-hero bg-cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="est-label">Est. 2021</span>
+        <h1>Stein Family Library</h1>
+        <p class="lead">Every book our family has borrowed from the Atlanta-Fulton Public Library, visualized.</p>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat">
+          <span class="hero-stat__number" id="stat-books">0</span>
+          <span class="hero-stat__label">Books Borrowed</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat__number" id="stat-authors">0</span>
+          <span class="hero-stat__label">Unique Authors</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat__number" id="stat-titles">0</span>
+          <span class="hero-stat__label">Unique Titles</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat__number" id="stat-years">0</span>
+          <span class="hero-stat__label">Years &amp; Counting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reading Timeline -->
+  <section class="library-section bg-sand">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Reading Timeline</h2>
+        <p class="lead">Month by month, who's reading what — and how much.</p>
+      </div>
+      <div class="chart-wrap reveal">
+        <canvas id="timelineCanvas" height="400"></canvas>
+        <div class="chart-legend">
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-andrew)"></span> Andrew</span>
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-martha)"></span> Martha</span>
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-eli)"></span> E</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Genre Universe -->
+  <section class="library-section bg-cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Genre Universe</h2>
+        <p class="lead">Every genre in our library, sized by how much we read it.</p>
+      </div>
+      <div class="chart-wrap reveal">
+        <canvas id="genreCanvas" height="500"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Authors -->
+  <section class="library-section bg-sand">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Most-Read Authors</h2>
+        <p class="lead">The twenty authors our family keeps coming back to.</p>
+      </div>
+      <div class="chart-wrap reveal">
+        <canvas id="authorsCanvas" height="600"></canvas>
+        <div class="chart-legend">
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-andrew)"></span> Andrew</span>
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-martha)"></span> Martha</span>
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-eli)"></span> E</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Profiles -->
+  <section class="library-section bg-cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Family Profiles</h2>
+      </div>
+      <div class="profile-cards reveal" id="profileCards">
+      </div>
+    </div>
+  </section>
+
+  <!-- Reading Velocity -->
+  <section class="library-section bg-sand">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Reading Velocity</h2>
+      </div>
+      <div class="chart-wrap reveal">
+        <canvas id="velocityCanvas" height="400"></canvas>
+        <div class="chart-legend">
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-andrew)"></span> Andrew</span>
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-martha)"></span> Martha</span>
+          <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-eli)"></span> E</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Genres Over Time -->
+  <section class="library-section bg-cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Genres Over Time</h2>
+        <p class="lead">How our reading tastes have shifted, month by month.</p>
+      </div>
+      <div class="chart-wrap reveal">
+        <canvas id="genreTimeCanvas" height="420"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who's Borrowing -->
+  <section class="library-section bg-sand">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Who's Borrowing</h2>
+        <p class="lead">The family share of every month's haul.</p>
+      </div>
+      <div class="chart-wrap reveal">
+        <div class="borrowing-bar-wrap">
+          <canvas id="borrowingCanvas" height="400"></canvas>
+          <div class="chart-legend">
+            <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-andrew)"></span> Andrew</span>
+            <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-martha)"></span> Martha</span>
+            <span class="chart-legend__item"><span class="chart-legend__swatch" style="background:var(--color-eli)"></span> E</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__name">Andrew K. Stein</p>
+      <ul class="footer__links">
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://1unit.com" target="_blank" rel="noopener">1Unit</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // === DATA (embedded from afpl-library-aggregates.json) ===
+    const DATA = {"totalBooks":2051,"uniqueAuthors":935,"uniqueTitles":1669,"years":7,"monthlyByPerson":{"2026-03":{"Andrew":13,"Martha":23,"Eli":30},"2026-02":{"Andrew":19,"Martha":23,"Eli":16},"2026-01":{"Andrew":1,"Martha":3,"Eli":8},"2025-12":{"Andrew":11,"Martha":17,"Eli":31},"2025-06":{"Andrew":5,"Martha":28,"Eli":42},"2025-05":{"Andrew":13,"Martha":37,"Eli":34},"2025-04":{"Andrew":6,"Martha":15,"Eli":30},"2024-04":{"Andrew":3,"Martha":27,"Eli":4},"2024-03":{"Andrew":15,"Martha":19,"Eli":16},"2024-02":{"Andrew":2,"Martha":12,"Eli":22},"2024-01":{"Andrew":1,"Martha":6,"Eli":5},"2023-12":{"Andrew":10,"Martha":26},"2022-09":{"Andrew":1,"Martha":51},"2022-07":{"Andrew":7,"Martha":45},"2022-02":{"Andrew":2,"Martha":55},"2021-09":{"Andrew":2,"Martha":21},"2021-08":{"Andrew":17,"Martha":6},"2026-04":{"Martha":1},"2025-11":{"Martha":19,"Eli":24},"2025-10":{"Martha":12,"Eli":30},"2025-09":{"Martha":1,"Eli":4},"2025-08":{"Martha":15,"Eli":9},"2025-07":{"Martha":9,"Eli":5},"2025-03":{"Martha":38,"Eli":51},"2025-02":{"Martha":44,"Eli":32},"2025-01":{"Martha":21,"Eli":30},"2024-12":{"Martha":31,"Eli":50},"2024-11":{"Martha":22,"Eli":11},"2024-10":{"Martha":56,"Eli":23},"2024-09":{"Martha":4},"2024-08":{"Martha":42},"2024-07":{"Martha":23,"Eli":5},"2024-06":{"Martha":23},"2024-05":{"Martha":20,"Eli":1},"2023-11":{"Martha":26},"2023-10":{"Martha":32},"2023-09":{"Martha":13},"2023-08":{"Martha":9},"2023-07":{"Martha":31},"2023-06":{"Martha":21},"2023-05":{"Martha":18},"2023-04":{"Martha":7},"2023-03":{"Martha":39},"2023-02":{"Martha":16},"2023-01":{"Martha":16},"2022-12":{"Martha":30},"2022-11":{"Martha":38},"2022-10":{"Martha":14},"2022-06":{"Martha":54},"2022-05":{"Martha":22},"2022-04":{"Martha":46},"2022-03":{"Martha":45},"2022-01":{"Martha":43},"2021-12":{"Martha":14},"2021-11":{"Martha":21},"2021-10":{"Martha":24},"2021-07":{"Martha":7},"2021-06":{"Martha":13},"2021-05":{"Martha":10},"2021-04":{"Martha":4},"2021-03":{"Martha":1},"2020-10":{"Martha":1}},"genreCounts":{"Graphic Novels":279,"Chapter Books":725,"Sci-Fi & Space":77,"Science & STEM":22,"Picture Books":232,"Humor & Comics":65,"Fantasy & Magic":105,"Cooking & Crafts":65,"Sports":5,"Spy & Mystery":110,"Minecraft & Gaming":33,"History & Biography":25,"Dog Man / Pilkey":30,"Animals & Nature":79,"Warriors / Cats":30,"Early Readers":144,"Nathan Hale / History Comics":24,"Other":1},"monthlyGenres":{"2026-03":{"Graphic Novels":14,"Chapter Books":14,"Sci-Fi & Space":10,"Science & STEM":3,"Picture Books":3,"Humor & Comics":4,"Spy & Mystery":4,"Fantasy & Magic":2,"Nathan Hale / History Comics":6,"Warriors / Cats":4,"Early Readers":1,"Dog Man / Pilkey":1},"2026-02":{"Chapter Books":26,"Sci-Fi & Space":3,"Graphic Novels":11,"Fantasy & Magic":2,"Cooking & Crafts":1,"Spy & Mystery":3,"Warriors / Cats":2,"Humor & Comics":4,"Picture Books":1,"History & Biography":1,"Science & STEM":1,"Nathan Hale / History Comics":2,"Dog Man / Pilkey":1},"2026-01":{"Chapter Books":7,"Nathan Hale / History Comics":1,"Dog Man / Pilkey":3,"Graphic Novels":1},"2025-12":{"Chapter Books":11,"Fantasy & Magic":2,"Sports":1,"Cooking & Crafts":3,"Science & STEM":1,"Spy & Mystery":18,"Graphic Novels":7,"Minecraft & Gaming":8,"Animals & Nature":3,"Nathan Hale / History Comics":1,"Sci-Fi & Space":1,"Humor & Comics":3},"2025-06":{"Minecraft & Gaming":11,"Chapter Books":14,"Fantasy & Magic":5,"Cooking & Crafts":1,"Graphic Novels":26,"Picture Books":4,"Early Readers":2,"Warriors / Cats":1,"Animals & Nature":1,"Sci-Fi & Space":3,"Nathan Hale / History Comics":2,"Spy & Mystery":3,"Dog Man / Pilkey":1,"Humor & Comics":1},"2025-05":{"Chapter Books":28,"History & Biography":6,"Science & STEM":1,"Dog Man / Pilkey":1,"Animals & Nature":2,"Spy & Mystery":5,"Sci-Fi & Space":7,"Graphic Novels":23,"Picture Books":3,"Fantasy & Magic":3,"Cooking & Crafts":2,"Minecraft & Gaming":2,"Early Readers":1},"2025-04":{"Sci-Fi & Space":3,"Graphic Novels":7,"Dog Man / Pilkey":2,"History & Biography":3,"Chapter Books":18,"Spy & Mystery":3,"Fantasy & Magic":4,"Picture Books":2,"Animals & Nature":3,"Cooking & Crafts":3,"Early Readers":1,"Minecraft & Gaming":2},"2024-04":{"Fantasy & Magic":6,"Animals & Nature":2,"Chapter Books":8,"Warriors / Cats":3,"Cooking & Crafts":1,"Spy & Mystery":2,"Sci-Fi & Space":3,"Dog Man / Pilkey":1,"Graphic Novels":4,"History & Biography":1,"Picture Books":1,"Early Readers":2},"2024-03":{"Graphic Novels":6,"Sci-Fi & Space":1,"Chapter Books":18,"Cooking & Crafts":2,"Animals & Nature":2,"Warriors / Cats":6,"Fantasy & Magic":5,"Picture Books":3,"Dog Man / Pilkey":1,"Spy & Mystery":6},"2024-02":{"Chapter Books":9,"Graphic Novels":9,"Science & STEM":1,"Early Readers":3,"Sports":1,"Picture Books":2,"History & Biography":1,"Cooking & Crafts":2,"Sci-Fi & Space":4,"Dog Man / Pilkey":1,"Spy & Mystery":1,"Warriors / Cats":1,"Fantasy & Magic":1},"2024-01":{"Animals & Nature":1,"Graphic Novels":2,"Other":1,"Early Readers":2,"Chapter Books":3,"Dog Man / Pilkey":1,"Fantasy & Magic":1,"Warriors / Cats":1},"2023-12":{"Chapter Books":15,"Cooking & Crafts":2,"Animals & Nature":2,"Dog Man / Pilkey":4,"Science & STEM":2,"Spy & Mystery":6,"Picture Books":3,"Early Readers":1,"Fantasy & Magic":1},"2022-09":{"Early Readers":9,"Picture Books":11,"Chapter Books":19,"Sci-Fi & Space":1,"Science & STEM":2,"Fantasy & Magic":3,"Graphic Novels":2,"Cooking & Crafts":3,"Spy & Mystery":1,"Animals & Nature":1},"2022-07":{"Chapter Books":22,"Early Readers":14,"Picture Books":10,"Sci-Fi & Space":1,"Cooking & Crafts":1,"Fantasy & Magic":2,"Animals & Nature":1,"History & Biography":1},"2022-02":{"History & Biography":3,"Chapter Books":21,"Animals & Nature":6,"Fantasy & Magic":3,"Early Readers":12,"Science & STEM":1,"Picture Books":9,"Cooking & Crafts":1,"Spy & Mystery":1},"2021-09":{"Chapter Books":11,"Science & STEM":1,"Early Readers":2,"Graphic Novels":1,"Picture Books":7,"Fantasy & Magic":1},"2021-08":{"Chapter Books":12,"Fantasy & Magic":2,"Sci-Fi & Space":1,"Early Readers":2,"Animals & Nature":2,"Picture Books":3,"Science & STEM":1},"2026-04":{"Chapter Books":1},"2025-11":{"Chapter Books":7,"Graphic Novels":12,"Warriors / Cats":1,"Fantasy & Magic":3,"Picture Books":5,"Sci-Fi & Space":1,"Animals & Nature":1,"Cooking & Crafts":1,"Humor & Comics":11,"Spy & Mystery":1},"2025-10":{"Graphic Novels":7,"Fantasy & Magic":5,"Chapter Books":8,"Sci-Fi & Space":3,"Nathan Hale / History Comics":1,"Spy & Mystery":4,"Animals & Nature":3,"Picture Books":1,"Humor & Comics":9,"Dog Man / Pilkey":1},"2025-09":{"Fantasy & Magic":1,"Graphic Novels":2,"Chapter Books":1,"Picture Books":1},"2025-08":{"Chapter Books":8,"Fantasy & Magic":1,"Graphic Novels":2,"Animals & Nature":1,"Sci-Fi & Space":3,"Spy & Mystery":2,"Picture Books":1,"Minecraft & Gaming":6},"2025-07":{"Picture Books":5,"Chapter Books":2,"Sci-Fi & Space":1,"History & Biography":1,"Animals & Nature":1,"Graphic Novels":2,"Minecraft & Gaming":2},"2025-03":{"Picture Books":11,"Chapter Books":27,"Cooking & Crafts":4,"Science & STEM":2,"Dog Man / Pilkey":2,"Sci-Fi & Space":5,"Spy & Mystery":4,"Graphic Novels":16,"Animals & Nature":2,"Humor & Comics":13,"Fantasy & Magic":2,"Warriors / Cats":1},"2025-02":{"Cooking & Crafts":4,"Chapter Books":23,"Graphic Novels":22,"Sci-Fi & Space":3,"Warriors / Cats":1,"Spy & Mystery":8,"Early Readers":6,"Fantasy & Magic":1,"Picture Books":4,"History & Biography":2,"Animals & Nature":1,"Dog Man / Pilkey":1},"2025-01":{"Graphic Novels":6,"Animals & Nature":2,"Chapter Books":16,"Nathan Hale / History Comics":4,"Picture Books":3,"Sci-Fi & Space":2,"History & Biography":1,"Early Readers":4,"Dog Man / Pilkey":4,"Spy & Mystery":2,"Fantasy & Magic":3,"Humor & Comics":3,"Cooking & Crafts":1},"2024-12":{"Chapter Books":35,"Graphic Novels":7,"Picture Books":11,"Nathan Hale / History Comics":4,"Early Readers":6,"Animals & Nature":5,"Cooking & Crafts":6,"Spy & Mystery":3,"Dog Man / Pilkey":1,"History & Biography":1,"Fantasy & Magic":2},"2024-11":{"Nathan Hale / History Comics":2,"Early Readers":2,"Chapter Books":12,"Fantasy & Magic":2,"Picture Books":1,"Graphic Novels":6,"Spy & Mystery":2,"Cooking & Crafts":1,"Animals & Nature":1,"Humor & Comics":2,"Dog Man / Pilkey":1,"Warriors / Cats":1},"2024-10":{"Picture Books":6,"Sci-Fi & Space":4,"Animals & Nature":4,"Graphic Novels":21,"Chapter Books":21,"Cooking & Crafts":4,"Early Readers":3,"Humor & Comics":8,"Spy & Mystery":4,"Fantasy & Magic":2,"Warriors / Cats":1,"Nathan Hale / History Comics":1},"2024-09":{"Chapter Books":1,"Graphic Novels":1,"Animals & Nature":1,"History & Biography":1},"2024-08":{"Chapter Books":24,"Fantasy & Magic":4,"Picture Books":2,"Cooking & Crafts":2,"Warriors / Cats":3,"Graphic Novels":6,"Animals & Nature":1},"2024-07":{"Sports":2,"Chapter Books":9,"Picture Books":2,"Dog Man / Pilkey":1,"Early Readers":2,"Fantasy & Magic":5,"Graphic Novels":4,"Warriors / Cats":2,"Humor & Comics":1},"2024-06":{"Graphic Novels":10,"Chapter Books":6,"Early Readers":2,"Fantasy & Magic":1,"Humor & Comics":2,"Cooking & Crafts":1,"Picture Books":1},"2024-05":{"Chapter Books":10,"Graphic Novels":3,"Dog Man / Pilkey":1,"Spy & Mystery":2,"Warriors / Cats":2,"Fantasy & Magic":1,"History & Biography":1,"Cooking & Crafts":1},"2023-11":{"Chapter Books":8,"Picture Books":6,"Spy & Mystery":1,"Graphic Novels":2,"Sci-Fi & Space":3,"Animals & Nature":2,"Fantasy & Magic":3,"Early Readers":1},"2023-10":{"Picture Books":5,"Spy & Mystery":3,"Chapter Books":6,"Sci-Fi & Space":2,"Graphic Novels":6,"Animals & Nature":3,"Early Readers":3,"Cooking & Crafts":1,"Science & STEM":1,"Fantasy & Magic":1,"Humor & Comics":1},"2023-09":{"Chapter Books":6,"Picture Books":3,"Animals & Nature":2,"Graphic Novels":1,"Early Readers":1},"2023-08":{"Spy & Mystery":1,"Early Readers":1,"Chapter Books":3,"Picture Books":1,"Sci-Fi & Space":1,"Graphic Novels":1,"Animals & Nature":1},"2023-07":{"Chapter Books":16,"Sci-Fi & Space":2,"Minecraft & Gaming":1,"Fantasy & Magic":4,"Graphic Novels":2,"Picture Books":5,"Cooking & Crafts":1},"2023-06":{"Picture Books":6,"Chapter Books":9,"Spy & Mystery":3,"Fantasy & Magic":1,"Animals & Nature":1,"Early Readers":1},"2023-05":{"Chapter Books":4,"Fantasy & Magic":3,"Spy & Mystery":2,"Graphic Novels":2,"Animals & Nature":2,"Cooking & Crafts":1,"Picture Books":2,"Humor & Comics":1,"Early Readers":1},"2023-04":{"Dog Man / Pilkey":1,"Fantasy & Magic":2,"Chapter Books":1,"Early Readers":2,"Picture Books":1},"2023-03":{"Graphic Novels":1,"Picture Books":12,"Fantasy & Magic":2,"Chapter Books":15,"Early Readers":2,"Spy & Mystery":1,"Sci-Fi & Space":3,"Animals & Nature":3},"2023-02":{"Spy & Mystery":2,"Chapter Books":11,"Picture Books":2,"Graphic Novels":1},"2023-01":{"Graphic Novels":2,"Early Readers":4,"Chapter Books":8,"Picture Books":1,"Cooking & Crafts":1},"2022-12":{"Fantasy & Magic":1,"Sports":1,"Picture Books":5,"Chapter Books":12,"Graphic Novels":4,"Cooking & Crafts":1,"Science & STEM":1,"Early Readers":2,"Sci-Fi & Space":1,"Animals & Nature":1,"Humor & Comics":1},"2022-11":{"Chapter Books":18,"Picture Books":6,"Early Readers":4,"Spy & Mystery":5,"Humor & Comics":1,"Animals & Nature":2,"Fantasy & Magic":1,"Cooking & Crafts":1},"2022-10":{"Early Readers":2,"Picture Books":2,"Science & STEM":1,"Animals & Nature":1,"Chapter Books":5,"Graphic Novels":1,"Spy & Mystery":1,"Cooking & Crafts":1},"2022-06":{"Graphic Novels":3,"Chapter Books":18,"Picture Books":12,"Early Readers":14,"Fantasy & Magic":1,"Animals & Nature":4,"Sci-Fi & Space":1,"History & Biography":1},"2022-05":{"Chapter Books":11,"Picture Books":2,"Animals & Nature":1,"Early Readers":6,"Fantasy & Magic":1,"Graphic Novels":1},"2022-04":{"Chapter Books":25,"Picture Books":5,"Sci-Fi & Space":2,"Graphic Novels":4,"Animals & Nature":2,"Early Readers":2,"Spy & Mystery":3,"Minecraft & Gaming":1,"Cooking & Crafts":2},"2022-03":{"Chapter Books":21,"Graphic Novels":2,"Fantasy & Magic":1,"Early Readers":8,"Cooking & Crafts":5,"Picture Books":7,"Spy & Mystery":1},"2022-01":{"Chapter Books":18,"Spy & Mystery":1,"Early Readers":6,"Picture Books":7,"Animals & Nature":3,"Cooking & Crafts":1,"Fantasy & Magic":5,"Science & STEM":1,"Graphic Novels":1},"2021-12":{"Graphic Novels":1,"Chapter Books":7,"Picture Books":3,"Spy & Mystery":1,"Science & STEM":2},"2021-11":{"Chapter Books":14,"Graphic Novels":2,"Early Readers":2,"Cooking & Crafts":1,"Picture Books":2},"2021-10":{"Chapter Books":10,"Graphic Novels":1,"Early Readers":1,"Picture Books":9,"Fantasy & Magic":1,"Cooking & Crafts":1,"Animals & Nature":1},"2021-07":{"History & Biography":1,"Early Readers":2,"Picture Books":1,"Fantasy & Magic":1,"Chapter Books":1,"Animals & Nature":1},"2021-06":{"Picture Books":8,"Chapter Books":2,"Early Readers":2,"Fantasy & Magic":1},"2021-05":{"Chapter Books":6,"Picture Books":2,"Cooking & Crafts":1,"Sci-Fi & Space":1},"2021-04":{"Chapter Books":3,"Picture Books":1},"2021-03":{"Graphic Novels":1},"2020-10":{"Sci-Fi & Space":1}},"topAuthors":[{"name":"Dan Gutman","total":32,"persons":{"Martha":14,"Eli":18}},{"name":"Erin Hunter","total":30,"persons":{"Andrew":1,"Martha":16,"Eli":13}},{"name":"Stuart Gibbs","total":30,"persons":{"Andrew":1,"Martha":16,"Eli":13}},{"name":"Dav Pilkey","total":29,"persons":{"Andrew":4,"Martha":7,"Eli":18}},{"name":"Mo Willems","total":29,"persons":{"Andrew":3,"Martha":24,"Eli":2}},{"name":"Donald J. Sobol","total":29,"persons":{"Martha":4,"Eli":25}},{"name":"Cynthia Rylant","total":29,"persons":{"Martha":29}},{"name":"Lincoln Peirce","total":25,"persons":{"Eli":25}},{"name":"Nathan Hale","total":24,"persons":{"Martha":10,"Eli":14}},{"name":"Geronimo Stilton","total":22,"persons":{"Martha":14,"Eli":8}},{"name":"John Patrick Green","total":20,"persons":{"Andrew":1,"Martha":16,"Eli":3}},{"name":"Andrea Beaty","total":18,"persons":{"Martha":18}},{"name":"David A. Adler","total":17,"persons":{"Andrew":2,"Martha":15}},{"name":"Judd Winick","total":17,"persons":{"Andrew":1,"Martha":15,"Eli":1}},{"name":"Shannon Hale","total":17,"persons":{"Martha":13,"Eli":4}},{"name":"Aaron Blabey","total":16,"persons":{"Martha":3,"Eli":13}},{"name":"Max Brallier","total":15,"persons":{"Andrew":2,"Martha":1,"Eli":12}},{"name":"Maggie Testa","total":15,"persons":{"Martha":15}},{"name":"Jordan Quinn","total":14,"persons":{"Martha":14}},{"name":"Andy Griffiths","total":13,"persons":{"Martha":1,"Eli":12}}],"personStats":{"Andrew":{"total":128,"genres":{"Graphic Novels":10,"Chapter Books":58,"Sci-Fi & Space":9,"Science & STEM":5,"Picture Books":3,"Humor & Comics":1,"Fantasy & Magic":7,"Cooking & Crafts":7,"Sports":1,"Spy & Mystery":1,"Minecraft & Gaming":1,"History & Biography":8,"Dog Man / Pilkey":4,"Animals & Nature":6,"Warriors / Cats":1,"Early Readers":6},"formats":{"Graphic Novel":20,"Chapter Book":97,"Picture Book":4,"Easy Reader":7},"topAuthors":["Dav Pilkey","Betty G. Birney","Mo Willems"],"topGenre":"Chapter Books"},"Martha":{"total":1410,"genres":{"Chapter Books":571,"Graphic Novels":147,"Spy & Mystery":61,"Fantasy & Magic":70,"Sci-Fi & Space":47,"Nathan Hale / History Comics":10,"Warriors / Cats":16,"Early Readers":125,"Picture Books":206,"Humor & Comics":14,"History & Biography":14,"Minecraft & Gaming":3,"Cooking & Crafts":44,"Animals & Nature":56,"Science & STEM":13,"Dog Man / Pilkey":8,"Sports":4,"Other":1},"formats":{"Chapter Book":774,"Graphic Novel":240,"Easy Reader":156,"Picture Book":235,"Audiobook":5},"topAuthors":["Cynthia Rylant","Mo Willems","Andrea Beaty"],"topGenre":"Chapter Books"},"Eli":{"total":513,"genres":{"Nathan Hale / History Comics":14,"Warriors / Cats":13,"Sci-Fi & Space":21,"Science & STEM":4,"Humor & Comics":50,"Graphic Novels":122,"Chapter Books":96,"Fantasy & Magic":28,"Dog Man / Pilkey":18,"Spy & Mystery":48,"Minecraft & Gaming":29,"Cooking & Crafts":14,"Picture Books":23,"Animals & Nature":17,"Early Readers":13,"History & Biography":3},"formats":{"Graphic Novel":252,"Chapter Book":211,"Picture Book":30,"Easy Reader":20},"topAuthors":["Lincoln Peirce","Donald J. Sobol","Dav Pilkey"],"topGenre":"Graphic Novels"}}};
+
+    const PERSONS = ['Andrew', 'Martha', 'Eli'];
+    const COLORS = { Andrew: '#4A6FA5', Martha: '#B5616A', Eli: '#5B8C5A', Rosie: '#C4944A' };
+    const COLORS_LIGHT = { Andrew: 'rgba(74,111,165,0.15)', Martha: 'rgba(181,97,106,0.15)', Eli: 'rgba(91,140,90,0.15)' };
+    const DISPLAY_NAME = { Andrew: 'Andrew', Martha: 'Martha', Eli: 'E', Rosie: 'R' };
+    const GRID = 'rgba(139,115,85,0.15)';
+    const AXIS = '#8B7355';
+
+    // === UTILITIES ===
+    function getSortedMonths() {
+      return Object.keys(DATA.monthlyByPerson).sort();
+    }
+    function getRecentMonths(n) {
+      return getSortedMonths().slice(-n);
+    }
+    function dpr() { return window.devicePixelRatio || 1; }
+
+    function setupCanvas(canvas, w, h) {
+      var r = dpr();
+      canvas.width = w * r;
+      canvas.height = h * r;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      var ctx = canvas.getContext('2d');
+      ctx.scale(r, r);
+      return ctx;
+    }
+
+    function fmtMonth(m) {
+      var parts = m.split('-');
+      var months = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return months[+parts[1]] + " \u2019" + parts[0].slice(2);
+    }
+
+    // === ANIMATED COUNTER ===
+    function animateCounter(el, target, duration) {
+      var start = performance.now();
+      var fmt = target >= 1000 ? function(v) { return v.toLocaleString(); } : function(v) { return v.toString(); };
+      function tick(now) {
+        var t = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = fmt(Math.round(target * ease));
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // === 1. HERO STATS ===
+    function initHeroStats() {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            animateCounter(document.getElementById('stat-books'), DATA.totalBooks, 1200);
+            animateCounter(document.getElementById('stat-authors'), DATA.uniqueAuthors, 1200);
+            animateCounter(document.getElementById('stat-titles'), DATA.uniqueTitles, 1200);
+            animateCounter(document.getElementById('stat-years'), DATA.years, 800);
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      obs.observe(document.querySelector('.hero-stats'));
+    }
+
+    // === 2. READING TIMELINE (Stacked Bar) ===
+    function drawTimeline() {
+      var canvas = document.getElementById('timelineCanvas');
+      var months = getRecentMonths(36);
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var W = rect.width - 48;
+      var H = 440;
+      var ctx = setupCanvas(canvas, W, H);
+
+      var pad = { top: 20, right: 20, bottom: 45, left: 50 };
+      var chartW = W - pad.left - pad.right;
+      var chartH = H - pad.top - pad.bottom;
+
+      var stacks = months.map(function(m) {
+        var d = DATA.monthlyByPerson[m] || {};
+        return { month: m, Andrew: d.Andrew || 0, Martha: d.Martha || 0, Eli: d.Eli || 0 };
+      });
+      var maxVal = Math.max.apply(null, stacks.map(function(s) { return s.Andrew + s.Martha + s.Eli; }));
+      var yMax = Math.ceil(maxVal / 20) * 20;
+
+      var barW = Math.max(4, (chartW / months.length) * 0.7);
+      var gap = chartW / months.length;
+
+      // grid
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      ctx.font = '12px "DM Sans", sans-serif';
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'right';
+      for (var i = 0; i <= 5; i++) {
+        var y = pad.top + chartH - (chartH * i / 5);
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(pad.left + chartW, y);
+        ctx.stroke();
+        ctx.fillText(Math.round(yMax * i / 5), pad.left - 8, y + 4);
+      }
+
+      // bars
+      stacks.forEach(function(s, idx) {
+        var x = pad.left + idx * gap + (gap - barW) / 2;
+        var yPos = pad.top + chartH;
+        ['Andrew', 'Martha', 'Eli'].forEach(function(p) {
+          var h = (s[p] / yMax) * chartH;
+          if (h > 0) {
+            ctx.fillStyle = COLORS[p];
+            ctx.beginPath();
+            ctx.roundRect(x, yPos - h, barW, h, [Math.min(2, barW/2, h), Math.min(2, barW/2, h), 0, 0]);
+            ctx.fill();
+            yPos -= h;
+          }
+        });
+      });
+
+      // x labels
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'center';
+      ctx.font = '12px "DM Sans", sans-serif';
+      stacks.forEach(function(s, idx) {
+        if (idx % 3 === 0) {
+          var x = pad.left + idx * gap + gap / 2;
+          ctx.fillText(fmtMonth(s.month), x, pad.top + chartH + 16);
+        }
+      });
+    }
+
+    // === 3. GENRE UNIVERSE (Bubble Chart with Physics) ===
+    function drawGenreBubbles() {
+      var canvas = document.getElementById('genreCanvas');
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var W = rect.width - 48;
+      var H = Math.min(500, W * 0.65);
+      var ctx = setupCanvas(canvas, W, H);
+
+      var genres = Object.entries(DATA.genreCounts)
+        .filter(function(e) { return e[0] !== 'Other'; })
+        .sort(function(a, b) { return b[1] - a[1]; });
+
+      var maxCount = genres[0][1];
+      var minR = 28;
+      var maxR = Math.min(W, H) * 0.16;
+
+      var palette = [
+        '#4A6FA5', '#B5616A', '#5B8C5A', '#C4944A', '#7B6B8D',
+        '#D4A574', '#6B8E9B', '#A67C52', '#8B6F5C', '#5C7A6B',
+        '#C47D5C', '#7A8B6C', '#9C7A8B', '#6B8FAA', '#B89B5C',
+        '#8C6B7A', '#5B8C7A'
+      ];
+
+      var bubbles = genres.map(function(entry, i) {
+        var r = minR + Math.sqrt(entry[1] / maxCount) * (maxR - minR);
+        return {
+          name: entry[0], count: entry[1], r: r,
+          x: W / 2 + (Math.random() - 0.5) * W * 0.4,
+          y: H / 2 + (Math.random() - 0.5) * H * 0.3,
+          vx: 0, vy: 0,
+          color: palette[i % palette.length]
+        };
+      });
+
+      var cx = W / 2, cy = H / 2;
+      var frame = 0;
+
+      function simulate() {
+        bubbles.forEach(function(b) {
+          b.vx += (cx - b.x) * 0.003;
+          b.vy += (cy - b.y) * 0.003;
+        });
+        for (var i = 0; i < bubbles.length; i++) {
+          for (var j = i + 1; j < bubbles.length; j++) {
+            var a = bubbles[i], b = bubbles[j];
+            var dx = b.x - a.x, dy = b.y - a.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            var minDist = a.r + b.r + 3;
+            if (dist < minDist && dist > 0) {
+              var force = (minDist - dist) / dist * 0.3;
+              var fx = dx * force, fy = dy * force;
+              a.vx -= fx; a.vy -= fy;
+              b.vx += fx; b.vy += fy;
+            }
+          }
+        }
+        bubbles.forEach(function(b) {
+          b.vx *= 0.85;
+          b.vy *= 0.85;
+          b.x += b.vx;
+          b.y += b.vy;
+          b.x = Math.max(b.r, Math.min(W - b.r, b.x));
+          b.y = Math.max(b.r, Math.min(H - b.r, b.y));
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        bubbles.forEach(function(b) {
+          ctx.save();
+          ctx.shadowColor = 'rgba(44,30,10,0.1)';
+          ctx.shadowBlur = 8;
+          ctx.shadowOffsetY = 3;
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+          ctx.fillStyle = b.color;
+          ctx.globalAlpha = 0.85;
+          ctx.fill();
+          ctx.restore();
+
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          ctx.fillStyle = '#fff';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          if (b.r >= 35) {
+            var nameSize = Math.max(10, Math.min(b.r * 0.26, 15));
+            ctx.font = 'bold ' + nameSize + 'px "DM Sans", sans-serif';
+            var label = b.name;
+            if (b.r < 50 && label.length > 14) label = label.split(/[\/&]/)[0].trim();
+            ctx.fillText(label, b.x, b.y - 3);
+            ctx.font = Math.max(9, Math.min(b.r * 0.22, 12)) + 'px "DM Sans", sans-serif';
+            ctx.fillStyle = 'rgba(255,255,255,0.75)';
+            ctx.fillText(b.count, b.x, b.y + nameSize - 2);
+          } else {
+            ctx.font = 'bold 9px "DM Sans", sans-serif';
+            ctx.fillText(b.count, b.x, b.y);
+          }
+        });
+      }
+
+      // Add gentle drift to each bubble
+      bubbles.forEach(function(b, i) {
+        b.driftAngle = Math.random() * Math.PI * 2;
+        b.driftSpeed = 0.1 + Math.random() * 0.15;
+      });
+
+      function animate() {
+        // Gentle drift
+        bubbles.forEach(function(b) {
+          b.driftAngle += 0.002;
+          b.vx += Math.cos(b.driftAngle) * b.driftSpeed * 0.015;
+          b.vy += Math.sin(b.driftAngle) * b.driftSpeed * 0.015;
+        });
+        simulate();
+        draw();
+        frame++;
+        requestAnimationFrame(animate);
+      }
+
+      var obs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          frame = 0;
+          animate();
+          obs.unobserve(canvas);
+        }
+      }, { threshold: 0.2 });
+      obs.observe(canvas);
+    }
+
+    // === 4. TOP AUTHORS (Horizontal Stacked Bar) ===
+    function drawTopAuthors() {
+      var canvas = document.getElementById('authorsCanvas');
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var W = rect.width - 48;
+      var H = 580;
+      var ctx = setupCanvas(canvas, W, H);
+
+      var authors = DATA.topAuthors;
+      var maxVal = authors[0].total;
+
+      var pad = { top: 10, right: 30, bottom: 20, left: 140 };
+      var chartW = W - pad.left - pad.right;
+      var chartH = H - pad.top - pad.bottom;
+      var barH = Math.min(22, (chartH / authors.length) * 0.7);
+      var gap = chartH / authors.length;
+
+      var gridMax = Math.ceil(maxVal / 10) * 10;
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      ctx.font = '12px "DM Sans", sans-serif';
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'center';
+      for (var i = 0; i <= 4; i++) {
+        var x = pad.left + (chartW * i / 4);
+        ctx.beginPath();
+        ctx.moveTo(x, pad.top);
+        ctx.lineTo(x, pad.top + chartH);
+        ctx.stroke();
+        ctx.fillText(Math.round(gridMax * i / 4), x, pad.top + chartH + 14);
+      }
+
+      authors.forEach(function(a, idx) {
+        var y = pad.top + idx * gap + (gap - barH) / 2;
+        ctx.fillStyle = '#3d3329';
+        ctx.font = '12px "DM Sans", sans-serif';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(a.name, pad.left - 10, y + barH / 2);
+
+        var x = pad.left;
+        PERSONS.forEach(function(p) {
+          var val = a.persons[p] || 0;
+          var w = (val / gridMax) * chartW;
+          if (w > 0) {
+            ctx.fillStyle = COLORS[p];
+            ctx.beginPath();
+            ctx.roundRect(x, y, w, barH, 3);
+            ctx.fill();
+            x += w;
+          }
+        });
+
+        ctx.fillStyle = AXIS;
+        ctx.font = '600 11px "DM Sans", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(a.total, x + 6, y + barH / 2);
+      });
+    }
+
+    // === 5. FAMILY PROFILES (DOM-built, no innerHTML) ===
+    function buildProfiles() {
+      var container = document.getElementById('profileCards');
+      var profiles = [
+        { key: 'Andrew', emoji: '\uD83D\uDCDA', color: COLORS.Andrew },
+        { key: 'Martha', emoji: '\uD83D\uDCD6', color: COLORS.Martha },
+        { key: 'Eli', emoji: '\uD83D\uDCF1', color: COLORS.Eli }
+      ];
+      var donutColors = ['#4A6FA5', '#B5616A', '#5B8C5A', '#C4944A', '#7B6B8D'];
+
+      profiles.forEach(function(p) {
+        var stats = DATA.personStats[p.key];
+        if (!stats || stats.total === 0) return;
+
+        var card = document.createElement('div');
+        card.className = 'profile-card';
+        card.style.borderTop = '4px solid ' + p.color;
+
+        // Emoji
+        var emojiDiv = document.createElement('div');
+        emojiDiv.className = 'profile-card__emoji';
+        emojiDiv.textContent = p.emoji;
+        card.appendChild(emojiDiv);
+
+        // Name
+        var nameDiv = document.createElement('div');
+        nameDiv.className = 'profile-card__name';
+        nameDiv.style.color = p.color;
+        nameDiv.textContent = DISPLAY_NAME[p.key] || p.key;
+        card.appendChild(nameDiv);
+
+        // Count
+        var countDiv = document.createElement('div');
+        countDiv.className = 'profile-card__count';
+        countDiv.textContent = stats.total.toLocaleString() + ' books';
+        card.appendChild(countDiv);
+
+        // Favorite genre label
+        var genreLabel = document.createElement('div');
+        genreLabel.className = 'profile-card__genre-label';
+        genreLabel.textContent = 'Favorite Genre';
+        card.appendChild(genreLabel);
+
+        var genreDiv = document.createElement('div');
+        genreDiv.className = 'profile-card__genre';
+        genreDiv.textContent = stats.topGenre;
+        card.appendChild(genreDiv);
+
+        // Top authors label
+        var authLabel = document.createElement('div');
+        authLabel.className = 'profile-card__genre-label';
+        authLabel.textContent = 'Top Authors';
+        card.appendChild(authLabel);
+
+        var authorList = document.createElement('ul');
+        authorList.className = 'profile-card__authors';
+        stats.topAuthors.forEach(function(a) {
+          var li = document.createElement('li');
+          li.textContent = a;
+          authorList.appendChild(li);
+        });
+        card.appendChild(authorList);
+
+        // Format mix label
+        var fmtLabel = document.createElement('div');
+        fmtLabel.className = 'profile-card__genre-label';
+        fmtLabel.textContent = 'Format Mix';
+        card.appendChild(fmtLabel);
+
+        // Donut canvas + legend wrap
+        var donutWrap = document.createElement('div');
+        donutWrap.className = 'profile-card__donut-wrap';
+        var canvasEl = document.createElement('canvas');
+        canvasEl.id = 'donut-' + p.key;
+        canvasEl.width = 120;
+        canvasEl.height = 120;
+        donutWrap.appendChild(canvasEl);
+        card.appendChild(donutWrap);
+
+        container.appendChild(card);
+
+        // Draw donut after DOM insertion
+        requestAnimationFrame(function() {
+          var size = 120;
+          var r = dpr();
+          canvasEl.width = size * r;
+          canvasEl.height = size * r;
+          canvasEl.style.width = size + 'px';
+          canvasEl.style.height = size + 'px';
+          var dCtx = canvasEl.getContext('2d');
+          dCtx.scale(r, r);
+
+          var cxD = size / 2, cyD = size / 2;
+          var outerR = 50, innerR = 30;
+          var total = Object.values(stats.formats).reduce(function(s, v) { return s + v; }, 0);
+          if (total === 0) return;
+
+          var entries = Object.entries(stats.formats).sort(function(a, b) { return b[1] - a[1]; });
+          var startAngle = -Math.PI / 2;
+
+          entries.forEach(function(entry, i) {
+            var count = entry[1];
+            var slice = (count / total) * Math.PI * 2;
+            dCtx.beginPath();
+            dCtx.arc(cxD, cyD, outerR, startAngle, startAngle + slice);
+            dCtx.arc(cxD, cyD, innerR, startAngle + slice, startAngle, true);
+            dCtx.closePath();
+            dCtx.fillStyle = donutColors[i % donutColors.length];
+            dCtx.fill();
+
+            if (slice > 0.3) {
+              var mid = startAngle + slice / 2;
+              var lx = cxD + Math.cos(mid) * (outerR + innerR) / 2;
+              var ly = cyD + Math.sin(mid) * (outerR + innerR) / 2;
+              dCtx.fillStyle = '#fff';
+              dCtx.font = 'bold 9px "DM Sans", sans-serif';
+              dCtx.textAlign = 'center';
+              dCtx.textBaseline = 'middle';
+              dCtx.fillText(Math.round(count / total * 100) + '%', lx, ly);
+            }
+            startAngle += slice;
+          });
+
+          // Legend below donut
+          var legend = document.createElement('div');
+          legend.style.fontSize = '0.6875rem';
+          legend.style.color = '#8B7355';
+          legend.style.marginTop = '0.5rem';
+          legend.style.lineHeight = '1.6';
+          legend.style.textAlign = 'center';
+
+          entries.forEach(function(entry, i) {
+            var fmt = entry[0];
+            var count = entry[1];
+            var pct = Math.round(count / total * 100);
+            var dot = document.createElement('span');
+            dot.style.display = 'inline-block';
+            dot.style.width = '8px';
+            dot.style.height = '8px';
+            dot.style.borderRadius = '2px';
+            dot.style.background = donutColors[i % donutColors.length];
+            dot.style.marginRight = '3px';
+            dot.style.verticalAlign = 'middle';
+            legend.appendChild(dot);
+
+            var text = document.createTextNode(fmt + ' ' + pct + '%  ');
+            legend.appendChild(text);
+          });
+          donutWrap.appendChild(legend);
+        });
+      });
+    }
+
+    // === 6. READING VELOCITY (Cumulative Line) ===
+    function drawVelocity() {
+      var canvas = document.getElementById('velocityCanvas');
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var W = rect.width - 48;
+      var H = 440;
+      var ctx = setupCanvas(canvas, W, H);
+
+      var months = getSortedMonths();
+      var pad = { top: 20, right: 110, bottom: 50, left: 55 };
+      var chartW = W - pad.left - pad.right;
+      var chartH = H - pad.top - pad.bottom;
+
+      var cumulative = {};
+      PERSONS.forEach(function(p) {
+        cumulative[p] = [];
+        var sum = 0;
+        months.forEach(function(m) {
+          sum += (DATA.monthlyByPerson[m] && DATA.monthlyByPerson[m][p]) || 0;
+          cumulative[p].push(sum);
+        });
+      });
+
+      var maxVal = Math.max.apply(null, PERSONS.map(function(p) { return cumulative[p][cumulative[p].length - 1]; }));
+      var yMax = Math.ceil(maxVal / 200) * 200;
+
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      ctx.font = '12px "DM Sans", sans-serif';
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'right';
+      for (var i = 0; i <= 5; i++) {
+        var y = pad.top + chartH - (chartH * i / 5);
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(pad.left + chartW, y);
+        ctx.stroke();
+        ctx.fillText(Math.round(yMax * i / 5), pad.left - 8, y + 4);
+      }
+
+      // Draw in reverse order so Andrew (smallest) is on top
+      ['Martha', 'Eli', 'Andrew'].forEach(function(p) {
+        var pts = cumulative[p].map(function(v, idx) {
+          return {
+            x: pad.left + (idx / (months.length - 1)) * chartW,
+            y: pad.top + chartH - (v / yMax) * chartH
+          };
+        });
+
+        // area
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, pad.top + chartH);
+        pts.forEach(function(pt) { ctx.lineTo(pt.x, pt.y); });
+        ctx.lineTo(pts[pts.length - 1].x, pad.top + chartH);
+        ctx.closePath();
+        ctx.fillStyle = COLORS_LIGHT[p];
+        ctx.fill();
+
+        // line
+        ctx.beginPath();
+        pts.forEach(function(pt, idx) { if (idx === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y); });
+        ctx.strokeStyle = COLORS[p];
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // end label
+        var last = pts[pts.length - 1];
+        ctx.fillStyle = COLORS[p];
+        ctx.font = 'bold 13px "DM Sans", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText((DISPLAY_NAME[p] || p) + ' (' + cumulative[p][cumulative[p].length - 1] + ')', last.x + 6, last.y);
+      });
+
+      // x labels
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'center';
+      ctx.font = '12px "DM Sans", sans-serif';
+      var step = Math.max(1, Math.floor(months.length / 12));
+      months.forEach(function(m, idx) {
+        if (idx % step === 0) {
+          var x = pad.left + (idx / (months.length - 1)) * chartW;
+          ctx.fillText(fmtMonth(m), x, pad.top + chartH + 16);
+        }
+      });
+    }
+
+    // === 7. GENRES OVER TIME (Smooth Lines, 3-month rolling avg) ===
+    function drawGenreTime() {
+      var canvas = document.getElementById('genreTimeCanvas');
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var W = rect.width - 48;
+      var H = 440;
+      var ctx = setupCanvas(canvas, W, H);
+
+      var months = getSortedMonths();
+      var pad = { top: 20, right: 120, bottom: 45, left: 50 };
+      var chartW = W - pad.left - pad.right;
+      var chartH = H - pad.top - pad.bottom;
+
+      var topGenres = Object.entries(DATA.genreCounts)
+        .filter(function(e) { return e[0] !== 'Other'; })
+        .sort(function(a, b) { return b[1] - a[1]; })
+        .slice(0, 8)
+        .map(function(e) { return e[0]; });
+
+      var genrePalette = ['#4A6FA5', '#B5616A', '#5B8C5A', '#C4944A', '#7B6B8D', '#D4A574', '#6B8E9B', '#A67C52'];
+
+      var raw = {};
+      topGenres.forEach(function(g) {
+        raw[g] = months.map(function(m) { return (DATA.monthlyGenres[m] && DATA.monthlyGenres[m][g]) || 0; });
+      });
+
+      var smoothed = {};
+      topGenres.forEach(function(g) {
+        smoothed[g] = raw[g].map(function(v, i) {
+          var start = Math.max(0, i - 2);
+          var slice = raw[g].slice(start, i + 1);
+          return slice.reduce(function(s, x) { return s + x; }, 0) / slice.length;
+        });
+      });
+
+      var allVals = [];
+      topGenres.forEach(function(g) { allVals = allVals.concat(smoothed[g]); });
+      var maxVal = Math.max.apply(null, allVals);
+      var yMax = Math.ceil(maxVal / 5) * 5;
+
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      ctx.font = '12px "DM Sans", sans-serif';
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'right';
+      for (var i = 0; i <= 4; i++) {
+        var y = pad.top + chartH - (chartH * i / 4);
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(pad.left + chartW, y);
+        ctx.stroke();
+        ctx.fillText(Math.round(yMax * i / 4), pad.left - 8, y + 4);
+      }
+
+      var endLabels = [];
+      topGenres.forEach(function(g, gi) {
+        var pts = smoothed[g].map(function(v, idx) {
+          return {
+            x: pad.left + (idx / (months.length - 1)) * chartW,
+            y: pad.top + chartH - (v / yMax) * chartH
+          };
+        });
+
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, pts[0].y);
+        for (var j = 1; j < pts.length; j++) {
+          var cp1x = pts[j - 1].x + (pts[j].x - pts[j - 1].x) / 3;
+          var cp2x = pts[j].x - (pts[j].x - pts[j - 1].x) / 3;
+          ctx.bezierCurveTo(cp1x, pts[j - 1].y, cp2x, pts[j].y, pts[j].x, pts[j].y);
+        }
+        ctx.strokeStyle = genrePalette[gi];
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        endLabels.push({ y: pts[pts.length - 1].y, color: genrePalette[gi], text: g });
+      });
+
+      // de-overlap end labels
+      endLabels.sort(function(a, b) { return a.y - b.y; });
+      var labelH = 14;
+      for (var k = 1; k < endLabels.length; k++) {
+        if (endLabels[k].y - endLabels[k - 1].y < labelH) {
+          endLabels[k].y = endLabels[k - 1].y + labelH;
+        }
+      }
+      endLabels.forEach(function(l) {
+        ctx.fillStyle = l.color;
+        ctx.font = '12px "DM Sans", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(l.text, pad.left + chartW + 8, l.y + 4);
+      });
+
+      // x labels
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'center';
+      ctx.font = '12px "DM Sans", sans-serif';
+      var xStep = Math.max(1, Math.floor(months.length / 10));
+      months.forEach(function(m, idx) {
+        if (idx % xStep === 0) {
+          var x = pad.left + (idx / (months.length - 1)) * chartW;
+          ctx.fillText(fmtMonth(m), x, pad.top + chartH + 16);
+        }
+      });
+    }
+
+    // === 8. WHO'S BORROWING (Stacked % Bar) ===
+    function drawBorrowing() {
+      var canvas = document.getElementById('borrowingCanvas');
+      var rect = canvas.parentElement.getBoundingClientRect();
+      var W = rect.width - 48;
+      var H = 420;
+      var ctx = setupCanvas(canvas, W, H);
+
+      var months = getRecentMonths(24);
+      var pad = { top: 20, right: 20, bottom: 45, left: 50 };
+      var chartW = W - pad.left - pad.right;
+      var chartH = H - pad.top - pad.bottom;
+      var gap = chartW / months.length;
+      var barW = Math.max(4, gap * 0.7);
+
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      ctx.font = '12px "DM Sans", sans-serif';
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'right';
+      for (var i = 0; i <= 4; i++) {
+        var y = pad.top + chartH - (chartH * i / 4);
+        ctx.beginPath();
+        ctx.moveTo(pad.left, y);
+        ctx.lineTo(pad.left + chartW, y);
+        ctx.stroke();
+        ctx.fillText(Math.round(100 * i / 4) + '%', pad.left - 8, y + 4);
+      }
+
+      months.forEach(function(m, idx) {
+        var d = DATA.monthlyByPerson[m] || {};
+        var total = (d.Andrew || 0) + (d.Martha || 0) + (d.Eli || 0);
+        if (total === 0) return;
+
+        var x = pad.left + idx * gap + (gap - barW) / 2;
+        var yPos = pad.top + chartH;
+
+        PERSONS.forEach(function(p) {
+          var pct = (d[p] || 0) / total;
+          var h = pct * chartH;
+          if (h > 0) {
+            ctx.fillStyle = COLORS[p];
+            ctx.beginPath();
+            ctx.roundRect(x, yPos - h, barW, h, 2);
+            ctx.fill();
+            yPos -= h;
+          }
+        });
+      });
+
+      ctx.fillStyle = AXIS;
+      ctx.textAlign = 'center';
+      ctx.font = '12px "DM Sans", sans-serif';
+      months.forEach(function(m, idx) {
+        if (idx % 3 === 0) {
+          var x = pad.left + idx * gap + gap / 2;
+          ctx.fillText(fmtMonth(m), x, pad.top + chartH + 16);
+        }
+      });
+    }
+
+    // === INIT ===
+    function init() {
+      initHeroStats();
+      drawTimeline();
+      drawGenreBubbles();
+      drawTopAuthors();
+      buildProfiles();
+      drawVelocity();
+      drawGenreTime();
+      drawBorrowing();
+    }
+
+    // Resize handler
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        drawTimeline();
+        drawTopAuthors();
+        drawVelocity();
+        drawGenreTime();
+        drawBorrowing();
+      }, 250);
+    });
+
+    // Scroll reveal
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+    // Nav scroll shadow
+    window.addEventListener('scroll', function() {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+
+</body>
+</html>
