@@ -1,0 +1,3 @@
+# Pollen tracker — redirect to GitHub Pages
+/pollen https://honeypercent.github.io/atlanta-pollen/ 302
+/pollen/* https://honeypercent.github.io/atlanta-pollen/:splat 302
