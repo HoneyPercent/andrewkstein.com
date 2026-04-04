@@ -3,106 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrew K. Stein</title>
-  <meta name="description" content="AI consulting and strategy. Helping individuals and organizations use modern AI tools with clarity and confidence.">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: #fafaf9;
-      color: #1c1917;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-
-    .card {
-      max-width: 520px;
-      width: 100%;
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.25rem;
-    }
-
-    .tagline {
-      font-size: 1.125rem;
-      color: #57534e;
-      margin-bottom: 1.5rem;
-    }
-
-    .bio {
-      font-size: 0.975rem;
-      color: #44403c;
-      margin-bottom: 1.5rem;
-    }
-
-    .services {
-      font-size: 0.975rem;
-      color: #44403c;
-      margin-bottom: 1.75rem;
-      padding-left: 1.25rem;
-    }
-
-    .services li {
-      margin-bottom: 0.35rem;
-    }
-
-    .divider {
-      border: none;
-      border-top: 1px solid #e7e5e4;
-      margin: 1.75rem 0;
-    }
-
-    .links {
-      display: flex;
-      gap: 1.25rem;
-      font-size: 0.925rem;
-    }
-
-    .links a {
-      color: #1c1917;
-      text-decoration: none;
-      border-bottom: 1px solid #d6d3d1;
-      padding-bottom: 1px;
-      transition: border-color 0.15s;
-    }
-
-    .links a:hover {
-      border-color: #1c1917;
-    }
-  </style>
+  <title>Andrew K. Stein — AI Consultant & Workshop Facilitator | Atlanta</title>
+  <meta name="description" content="Atlanta-based AI consultant and executive facilitator. I help professionals build AI workflows that save hours per week — and facilitate the strategic conversations that move organizations forward.">
+  <meta property="og:title" content="Andrew K. Stein — AI Consultant & Workshop Facilitator">
+  <meta property="og:description" content="I help people work better — with AI and with each other. Personal AI consulting and executive workshop facilitation in Atlanta.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://andrewkstein.com">
+  <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="card">
-    <h1>Andrew K. Stein</h1>
-    <p class="tagline">AI Strategy &amp; Consulting</p>
 
-    <p class="bio">
-      I help people and organizations get clearer and more confident about how
-      modern AI tools can help them. Former Big 4 management consultant, MBA,
-      with experience across hundreds of clients&mdash;large and small, for- and
-      not-for-profit&mdash;on five continents.
-    </p>
-
-    <ul class="services">
-      <li>Personal productivity &amp; workflows</li>
-      <li>Writing &amp; communication with AI</li>
-      <li>Small business AI integration</li>
-      <li>Vibe-coding &amp; building with AI</li>
-      <li>"How should I be using this stuff?" guidance</li>
-    </ul>
-
-    <div class="links">
-      <a href="https://www.linkedin.com/in/andrewkstein/">LinkedIn</a>
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Andrew K. Stein</a>
+      <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="how-i-work.html">AI Consulting</a></li>
+        <li><a href="facilitation.html">Facilitation</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero bg-cream">
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="hero__tagline">AI Strategy &amp; Facilitation</p>
+          <h1>I help people work better&mdash;with AI and with each other.</h1>
+          <p class="lead">You know AI can help your work. You just don't know where to start&mdash;or you've started and it's not sticking. I sit down with people like you, learn how you actually work, and build AI systems that fit. I also facilitate the high-stakes conversations where having the right person in the room makes all the difference.</p>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">MBA, Emory (Woodruff Scholar). Mechanical engineering, Brown. 6 years at Deloitte. Hundreds of clients across 5 continents.</p>
+          <div class="hero__buttons" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="how-i-work.html" class="btn btn--primary">Work with me</a>
+            <a href="how-i-work.html" class="btn btn--outline">AI consulting</a>
+          </div>
+        </div>
+        <div class="hero__photo-wrap">
+          <img src="assets/headshot.jpg" alt="Andrew K. Stein" class="hero__photo" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two Pillars -->
+  <section class="bg-sand">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Two things I do</h2>
+        <p class="lead">Different skills, same instinct: figure out what's actually going on and help you move forward.</p>
+      </div>
+
+      <div class="grid-2 reveal-stagger">
+        <!-- Pillar 1: AI -->
+        <div class="card reveal">
+          <h3>AI Strategy &amp; Consulting</h3>
+          <p>I help people stop wondering "should I be using AI?" and start actually using it&mdash;in ways that fit their real work, not some hypothetical future.</p>
+          <hr class="divider">
+          <ul class="icon-list">
+            <li>Personal productivity &amp; workflows</li>
+            <li>Writing &amp; communication with AI</li>
+            <li>Small business AI integration</li>
+            <li>Vibe-coding &amp; building with AI</li>
+            <li>"How should I be using this stuff?" guidance</li>
+          </ul>
+          <a href="how-i-work.html" class="btn btn--outline mt-lg" style="display: inline-block;">See how it works &rarr;</a>
+        </div>
+
+        <!-- Pillar 2: Facilitation -->
+        <div class="card reveal">
+          <h3>Facilitation &amp; Workshops</h3>
+          <p>Strategic planning sessions, board retreats, team alignment&mdash;the high-stakes conversations where having the right person in the room changes everything.</p>
+          <hr class="divider">
+          <p>Facilitating executive sessions across private, public, and nonprofit sectors for nearly two decades.</p>
+          <a href="facilitation.html" class="btn btn--outline mt-lg" style="display: inline-block;">Learn more &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client logo bar -->
+  <section class="bg-cream" style="padding: var(--space-xl) 0 var(--space-lg);">
+    <div class="container">
+      <p class="reveal" style="text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--stone); margin-bottom: var(--space-lg);">Organizations I've worked with</p>
+      <div class="reveal" style="filter: grayscale(100%); opacity: 0.5;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.25rem 2rem;">
+          <img src="assets/logos/deloitte.png" alt="Deloitte" style="height: 20px; width: auto;" loading="lazy">
+          <img src="assets/logos/ge.png" alt="General Electric" style="height: 14px; width: auto;" loading="lazy">
+          <img src="assets/logos/emory-university.png" alt="Emory University" style="height: 24px; width: auto;" loading="lazy">
+          <img src="assets/logos/caterpillar.png" alt="Caterpillar" style="height: 24px; width: auto;" loading="lazy">
+          <img src="assets/logos/cdc.png" alt="CDC" style="height: 28px; width: auto;" loading="lazy">
+          <img src="assets/logos/brown-university.png" alt="Brown University" style="height: 14px; width: auto;" loading="lazy">
+          <img src="assets/logos/toolbank-usa.png" alt="ToolBank USA" style="height: 16px; width: auto;" loading="lazy">
+          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">State Dept</span>
+          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">Anthem</span>
+          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">USPS</span>
+          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">FDA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-sand">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>What people say</h2>
+      </div>
+      <div class="grid-2 reveal-stagger">
+        <div class="testimonial reveal">
+          <p class="testimonial__text">I'm blown away by Andrew's insights.</p>
+          <div class="testimonial__footer">
+            <img src="assets/mike-moraski.jpg" alt="Mike Moraski" class="testimonial__avatar">
+            <p class="testimonial__author">&mdash; Mike Moraski, Software Leader, DFRNT</p>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <p class="testimonial__text">I really like working with Andrew. Easy to talk to, good listener. I always come away energized after talking to him.</p>
+          <div class="testimonial__footer">
+            <img src="assets/terry-anderson.jpg" alt="Terry Anderson" class="testimonial__avatar">
+            <p class="testimonial__author">&mdash; Terry Anderson, former colleague at 1Unit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio teaser -->
+  <section class="bg-sand">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Things I've built</h2>
+        <p class="lead">I use AI to build real tools&mdash;not demos. A pollen forecasting model, a family library tracker, and more.</p>
+      </div>
+      <div class="grid-2 reveal-stagger">
+        <div class="card reveal" style="overflow: hidden; padding: 0;">
+          <img src="assets/pollen-tracker-screenshot.jpg" alt="Atlanta Pollen Tracker" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy">
+          <div style="padding: var(--space-md);">
+            <h4>Atlanta Pollen Tracker</h4>
+            <p style="font-size: 0.875rem;">Real-time pollen forecasts for Atlanta, built with AI-assisted development.</p>
+          </div>
+        </div>
+        <div class="card reveal" style="overflow: hidden; padding: 0;">
+          <img src="assets/library-viz-screenshot.jpg" alt="Family Library Tracker" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy">
+          <div style="padding: var(--space-md);">
+            <h4>Family Library Tracker</h4>
+            <p style="font-size: 0.875rem;">2,000+ books visualized. Built in a weekend.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-lg reveal">
+        <a href="projects.html" class="btn btn--outline">See all projects &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Background stats -->
+  <section class="bg-dark">
+    <div class="container">
+      <div class="grid-3 reveal" style="text-align: center;">
+        <div class="stat">
+          <p class="stat__number">18+</p>
+          <p class="stat__label">Years in consulting &amp; facilitation</p>
+        </div>
+        <div class="stat">
+          <p class="stat__number">100s</p>
+          <p class="stat__label">Clients across 5 continents</p>
+        </div>
+        <div class="stat">
+          <p class="stat__number">2</p>
+          <p class="stat__label">Things I've vibe-coded this month</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-cream cta-section">
+    <div class="container reveal">
+      <h2>Curious? Let's talk.</h2>
+      <p class="lead">I'd love to hear what you're working on.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--primary">Book a free intro call</a>
+        <a href="mailto:andrew@andrewkstein.com" class="btn btn--outline">Send me an email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__name">Andrew K. Stein</p>
+      <ul class="footer__links">
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+<li><a href="mailto:andrew@andrewkstein.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav scroll shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
 </body>
 </html>

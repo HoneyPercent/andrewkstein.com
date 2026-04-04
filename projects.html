@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Andrew K. Stein</title>
+  <meta name="description" content="Things I've built with AI-assisted development: an Atlanta pollen forecasting model, a family library visualization, and more.">
+  <meta property="og:title" content="Projects — Andrew K. Stein">
+  <meta property="og:description" content="Things I've built with AI-assisted development — real tools, not demos.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://andrewkstein.com/projects.html">
+  <meta property="og:image" content="https://andrewkstein.com/assets/pollen-tracker-screenshot.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Andrew K. Stein</a>
+      <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-i-work.html">AI Consulting</a></li>
+        <li><a href="facilitation.html">Facilitation</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero bg-cream" style="padding-bottom: var(--space-xl);">
+    <div class="container container--reading">
+      <p class="hero__tagline">Projects</p>
+      <h1>Things I've built with AI.</h1>
+      <p class="lead mt-md">I use AI-assisted development ("vibe-coding") to build real tools&mdash;not demos, not wrappers. These are things I actually use, built from scratch with AI doing most of the coding while I handle the design and judgment calls.</p>
+    </div>
+  </section>
+
+  <!-- Pollen Tracker -->
+  <section class="bg-sand">
+    <div class="container">
+      <div class="portfolio-teaser reveal">
+        <div class="portfolio-teaser__img">
+          <img src="assets/pollen-tracker-screenshot.jpg" alt="Atlanta Pollen Tracker — real-time forecast dashboard" style="width: 100%; height: auto; border-radius: var(--radius);" loading="lazy">
+        </div>
+        <div>
+          <h3>Atlanta Pollen Tracker</h3>
+          <p>A real-time pollen forecasting model for Atlanta&mdash;one of the worst cities for pollen in America. Pulls daily data from the Atlanta Allergy & Asthma clinic, runs a statistical model, and generates forecasts with causal explanations ("why is tomorrow going to be bad?").</p>
+          <p class="mt-sm">Built because I wanted to know whether to keep my windows open tomorrow. The model runs daily, tracks season progress, and estimates how many bad days are left.</p>
+          <p class="mt-md"><a href="/pollen" style="font-weight: 600;">Try it &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Library Viz -->
+  <section class="bg-cream">
+    <div class="container">
+      <div class="portfolio-teaser reveal">
+        <div class="portfolio-teaser__img">
+          <img src="assets/library-viz-screenshot.jpg" alt="Family library borrowing visualization" style="width: 100%; height: auto; border-radius: var(--radius);" loading="lazy">
+        </div>
+        <div>
+          <h3>Family Library Tracker</h3>
+          <p>An interactive visualization of our family's public library borrowing history&mdash;over 2,000 books across four library cards. Searchable, filterable, with reading trends and stats per family member.</p>
+          <p class="mt-sm">Built in a weekend because my kids wanted to know how many books they'd read this year. Turned into a surprisingly useful tool for finding books we loved and forgot about.</p>
+          <p class="mt-md"><a href="library-viz.html" style="font-weight: 600;">Explore it &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What these have in common -->
+  <section class="bg-sand">
+    <div class="container container--reading">
+      <div class="callout reveal">
+        <h3>What these have in common</h3>
+        <p class="mt-sm">Neither of these required a developer. I designed them, described what I wanted, and built them using AI-assisted development&mdash;the same approach I teach clients. If you're curious what that looks like, <a href="my-approach.html">read how I think about building with AI</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-dark cta-section">
+    <div class="container reveal">
+      <h2>Want to build something like this?</h2>
+      <p class="lead">I help people build custom tools with AI&mdash;no coding background required.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+        <a href="how-i-work.html" class="btn btn--warm">Learn about AI consulting</a>
+        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--outline" style="border-color: var(--stone); color: var(--cream);">Book a free intro call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__name">Andrew K. Stein</p>
+      <ul class="footer__links">
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+<li><a href="mailto:andrew@andrewkstein.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>

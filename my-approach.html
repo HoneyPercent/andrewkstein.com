@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Approach — Andrew K. Stein</title>
+  <meta name="description" content="You're not learning a tool — you're onboarding a teammate. My philosophy on how to actually get value from AI in your daily work.">
+  <meta property="og:title" content="You're Onboarding a Teammate, Not Learning a Tool — Andrew K. Stein">
+  <meta property="og:description" content="Most AI advice tells you what buttons to click. Here's what I actually believe about using AI well.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://andrewkstein.com/my-approach.html">
+  <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Andrew K. Stein</a>
+      <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-i-work.html">AI Consulting</a></li>
+        <li><a href="facilitation.html">Facilitation</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <article class="article bg-cream">
+    <header class="article__header container--narrow">
+      <p class="hero__tagline">My Approach</p>
+      <h1>You're onboarding a teammate, not learning a tool.</h1>
+      <p class="lead mt-md">Most AI advice tells you what buttons to click. I think that misses the point entirely. Here's what I actually believe about using AI well.</p>
+    </header>
+
+    <div class="article__body">
+
+      <h2>The one mental model that matters</h2>
+
+      <p>The sentence I say most often when working with clients: <strong>"You're not learning a tool. You're onboarding a teammate."</strong></p>
+
+      <p>Think about what it's like to onboard a really good new hire. You don't just show them the software&mdash;you give them context. Who are the clients. What's the voice. Where do things live. What have we tried before. What are we worried about.</p>
+
+      <p>AI works the same way. Out of the box, it's a generic smart person who knows nothing about your work. With the right context files in place, it becomes a useful collaborator who remembers your preferences, knows your clients, and picks up where you left off.</p>
+
+      <p>That shift&mdash;from "chatting with a tool" to "working with a teammate who has institutional knowledge"&mdash;is the difference between using AI for party tricks and using it to do real work.</p>
+
+      <h2>Why files beat chat history</h2>
+
+      <p>Most people use AI like a search engine: open a chat, ask a question, get an answer, close the tab. The next day they start from scratch.</p>
+
+      <p>I <a href="how-i-work.html">help people build</a> something different: a set of plain-text files that describe their work, their voice, their priorities, and their systems. Every new AI conversation starts by reading these files. It's like giving your teammate access to the company wiki on day one instead of making them guess.</p>
+
+      <blockquote>Why plain text? Because it's portable. If a better AI tool comes along next year&mdash;and one will&mdash;your files work with anything. You're never locked in. That's the whole point of building on files instead of chat history.</blockquote>
+
+      <p>This is also why I'm opinionated about Markdown and local files. They're not trendy. They're not sexy. But they're the only format that guarantees your setup survives the next platform shift.</p>
+
+      <h2>Good setup pays you back</h2>
+
+      <p>What I've learned from building my own system and helping others build theirs: <strong>a few hours of thoughtful setup pays you back for months.</strong></p>
+
+      <p>A style guide that captures your writing voice means every draft sounds like you. A project folder with context about a client means you don't re-explain everything each session. A task system that your AI reads at the start of each day means nothing falls through the cracks.</p>
+
+      <p>It compounds. Each new file, each new preference captured, each new workflow automated&mdash;they all build on each other. After a few weeks, you have something that feels less like a tool and more like institutional memory.</p>
+
+      <!-- Mid-article CTA -->
+      <div class="callout" style="margin: 2.5rem 0; text-align: center;">
+        <p style="font-weight: 600; margin-bottom: 0.75rem;">This is what I build with clients.</p>
+        <p style="margin-bottom: 1rem;">If you want to see what it looks like in practice:</p>
+        <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--primary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Book a free intro call</a>
+          <a href="how-i-work.html" class="btn btn--outline" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">See how I work</a>
+        </div>
+      </div>
+
+      <!-- Pull-quote testimonial -->
+      <div class="testimonial" style="margin: 2rem 0; padding-left: 2.5rem;">
+        <p class="testimonial__text">Andrew helped me dramatically reshape how I work. A couple hours with him has saved me dozens of hours on big projects, and small ones too.</p>
+        <div class="testimonial__footer">
+          <img src="assets/daniel-stone.jpg" alt="Daniel Stone" class="testimonial__avatar">
+          <p class="testimonial__author">&mdash; Daniel Stone, writer</p>
+        </div>
+      </div>
+
+      <h2>Know what's possible, not how it works</h2>
+
+      <p>You don't need to understand how neural networks work. You don't need to learn Python. You don't need to "learn prompt engineering" (a phrase that has mercifully started to fade).</p>
+
+      <p>What you need is <strong>a sense of what's achievable</strong>. Knowing that a thing exists&mdash;even without knowing the details&mdash;is the zero-to-one difference.</p>
+
+      <p>If you know SEO is a thing, you can say "I think I'm supposed to be doing SEO for my website, walk me through it" and make real progress in an hour. If you know data analysis is possible, you can hand your AI a spreadsheet and say "what's interesting here?" The AI handles the method. You handle the judgment.</p>
+
+      <p>That's why I spend a lot of time helping clients see what's possible before we build anything. Once you know a workflow <em>can</em> be automated, describing the outcome is the easy part.</p>
+
+      <h2>AI is "middle to middle"</h2>
+
+      <p>A framing I keep coming back to: <strong>AI handles the middle. You own both ends.</strong></p>
+
+      <p>You define the task on one side. You verify the output on the other. The AI does the work in between. The interesting design questions are at those interfaces: How clearly can you scope what you want? How do you tell if the result is good?</p>
+
+      <p>This keeps you from expecting magic. And it helps you focus on where human judgment actually matters: the beginning (what should we build?) and the end (is this right?).</p>
+
+      <h2>When it goes wrong, look upstream</h2>
+
+      <p>When the output is bad&mdash;and sometimes it will be&mdash;the first question should always be: <strong>did I scope this clearly enough?</strong></p>
+
+      <p>Bad output almost always traces back to ambiguous instructions, missing constraints, or an unclear goal. This mindset shift is one of the hardest and most important: stop blaming the AI and start improving your ask.</p>
+
+      <p>That's the good news: it means the quality is up to you, not the AI.</p>
+
+      <h2>Systems that get smarter over time</h2>
+
+      <p>The best setups aren't static. They learn.</p>
+
+      <p>Every time I correct my AI's approach, that preference gets captured in a memory file. Every time a process breaks, the fix gets baked into the workflow so it doesn't break again. Every time I discover a better way to do something, the relevant instruction file gets updated.</p>
+
+      <p>I've built myself a system with dozens of specialized workflows, expert reviewers, and automated checks. But it didn't start that way. It started with a single instruction file and a willingness to keep improving it.</p>
+
+      <p>That's what I help clients build: not a perfect system on day one, but a system that gets meaningfully better every week. It builds on itself. A few weeks in, you'll wonder how you worked without it.</p>
+
+      <hr class="divider divider--center" style="margin: 3rem auto;">
+
+      <div class="text-center">
+        <p class="lead">Curious what this could look like for your work?</p>
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="how-i-work.html" class="btn btn--primary">See how I work with clients</a>
+          <a href="mailto:andrew@andrewkstein.com" class="btn btn--outline">Get in touch</a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__name">Andrew K. Stein</p>
+      <ul class="footer__links">
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+<li><a href="mailto:andrew@andrewkstein.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>
