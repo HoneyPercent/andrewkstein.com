@@ -205,8 +205,8 @@ section {
 }
 .nav__logo:hover { color: var(--accent); }
 .nav__logo-icon {
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   display: block;
   flex-shrink: 0;
 }
