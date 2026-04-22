@@ -510,6 +510,15 @@ section {
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
 }
 
+/* Centered orphan below grid-2 (for an odd number of testimonials) */
+.testimonial-orphan {
+  max-width: calc((var(--max-width) - var(--space-lg)) / 2);
+  margin: var(--space-lg) auto 0;
+}
+@media (max-width: 768px) {
+  .testimonial-orphan { max-width: 100%; }
+}
+
 /* --- Section header --- */
 .section-header {
   text-align: center;
