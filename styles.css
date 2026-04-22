@@ -199,8 +199,17 @@ section {
   text-decoration: none;
   letter-spacing: -0.02em;
   transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .nav__logo:hover { color: var(--accent); }
+.nav__logo-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  flex-shrink: 0;
+}
 .nav__links {
   display: flex;
   gap: 2rem;
