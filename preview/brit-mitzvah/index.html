@@ -309,6 +309,19 @@
       margin: 0 auto;
     }
 
+    /* ── Cohort feature illustration ── */
+    .cohort-feature {
+      margin: 1.75rem auto 2.75rem; max-width: 720px; text-align: center;
+    }
+    .cohort-feature img {
+      width: 100%; height: auto; display: block;
+    }
+    .cohort-feature figcaption {
+      margin-top: 0.85rem;
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 0.95rem; color: var(--bark);
+    }
+
     /* ── Who checklist ── */
     .who-checklist {
       display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.5rem;
@@ -343,17 +356,85 @@
     }
     .urgency strong { color: var(--charcoal); }
 
-    /* ── Photo placeholder ── */
+    /* ── Photo row ── */
     .photo-row {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 0.75rem; margin: 2.5rem 0 0;
     }
-    .photo-ph {
-      background: var(--sand); border: 2px dashed var(--clay);
-      border-radius: 10px; aspect-ratio: 4/3;
+    .photo {
+      position: relative; border-radius: 10px; overflow: hidden;
+      aspect-ratio: 4/3; background: var(--sand);
+    }
+    .photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .photo figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 0.65rem 0.85rem 0.6rem;
+      background: linear-gradient(to top, rgba(44,36,32,0.78), rgba(44,36,32,0));
+      color: #fff; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    button.photo {
+      border: 0; padding: 0; cursor: zoom-in; font: inherit; color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    button.photo:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(44,36,32,0.18); }
+    button.photo:hover img { transform: scale(1.03); }
+    button.photo img { transition: transform 0.4s ease; }
+
+    /* ── Lightbox ── */
+    dialog.lightbox {
+      border: 0; padding: 0; background: transparent;
+      width: 100vw; height: 100vh; max-width: 100vw; max-height: 100vh;
+      margin: 0; color: #fff; overflow: hidden;
+    }
+    dialog.lightbox::backdrop {
+      background: rgba(20, 14, 30, 0.94);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .lb-inner {
+      position: relative; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 3vh 4vw;
+    }
+    .lb-img-wrap {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      width: 100%; min-height: 0;
+    }
+    .lb-inner img {
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    }
+    .lb-caption {
+      margin-top: 1.25rem; color: rgba(255,255,255,0.85);
+      font-family: var(--font-serif); font-style: italic;
+      font-size: 1rem; text-align: center;
+    }
+    .lb-counter {
+      color: rgba(255,255,255,0.5); font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+    .lb-btn {
+      position: absolute; background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25); color: #fff;
+      border-radius: 50%; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      color: var(--bark); font-size: 0.78rem; font-style: italic;
-      text-align: center; padding: 1rem;
+      transition: background 0.15s, transform 0.15s;
+      font-family: inherit;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,0.22); }
+    .lb-btn:active { transform: scale(0.95); }
+    .lb-close { top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; font-size: 1.5rem; line-height: 1; }
+    .lb-prev, .lb-next { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; font-size: 1.6rem; }
+    .lb-prev { left: 1.25rem; }
+    .lb-next { right: 1.25rem; }
+    .lb-prev:active, .lb-next:active { transform: translateY(-50%) scale(0.95); }
+    @media (max-width: 600px) {
+      .lb-close { top: 0.6rem; right: 0.6rem; }
+      .lb-prev { left: 0.4rem; } .lb-next { right: 0.4rem; }
+      .lb-btn { width: 38px; height: 38px; font-size: 1.3rem; }
     }
 
     /* ── CTA ── */
@@ -575,10 +656,30 @@
       </div>
 
       <div class="photo-row">
-        <div class="photo-ph">Cohort photo<br>(placeholder)</div>
-        <div class="photo-ph">Shabbaton<br>(placeholder)</div>
-        <div class="photo-ph">Community event<br>(placeholder)</div>
+        <button type="button" class="photo" data-large="cohort-fire-large.jpg" data-caption="Around the fire" aria-label="View larger: Around the fire">
+          <img src="cohort-fire.jpg" alt="Cohort gathered around the campfire at the Shabbaton" loading="lazy">
+          <figcaption>Around the fire</figcaption>
+        </button>
+        <button type="button" class="photo" data-large="shabbaton-lake-large.jpg" data-caption="Down at the lake" aria-label="View larger: Down at the lake">
+          <img src="shabbaton-lake.jpg" alt="Cohort exploring the lake at the spring Shabbaton" loading="lazy">
+          <figcaption>Down at the lake</figcaption>
+        </button>
+        <button type="button" class="photo" data-large="washing-dishes-large.jpg" data-caption="Working together" aria-label="View larger: Working together">
+          <img src="washing-dishes.jpg" alt="Two cohort members washing dishes together at the Shabbaton" loading="lazy">
+          <figcaption>Working together</figcaption>
+        </button>
       </div>
+
+      <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+        <div class="lb-inner">
+          <button class="lb-btn lb-close" type="button" aria-label="Close">&times;</button>
+          <button class="lb-btn lb-prev" type="button" aria-label="Previous photo">&#8249;</button>
+          <button class="lb-btn lb-next" type="button" aria-label="Next photo">&#8250;</button>
+          <div class="lb-img-wrap"><img id="lb-img" src="" alt=""></div>
+          <div class="lb-caption" id="lb-cap"></div>
+          <div class="lb-counter" id="lb-count"></div>
+        </div>
+      </dialog>
     </div>
   </section>
 
@@ -604,6 +705,12 @@
     <div class="s-wide reveal">
       <h2>How It Started</h2>
       <p class="changed" style="max-width: 640px;">In 2024, a handful of Tish parents asked: what if bar mitzvah or bat mitzvah prep actually your family instead of just being something you survived? They couldn't find it &mdash; so they built it.</p>
+
+      <figure class="cohort-feature">
+        <img src="cohort-watercolor.jpg" alt="Watercolor illustration of the first cohort holding a hand-painted Brit Mitzvah at Tish sign" loading="lazy">
+        <figcaption>Our first cohort &mdash; Fall 2025</figcaption>
+      </figure>
+
       <div class="origin-timeline">
         <div class="origin-step">
           <div class="origin-step-year">2024</div>
@@ -733,6 +840,42 @@
       q.addEventListener('click', toggle);
       q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
     });
+
+    // Lightbox
+    (() => {
+      const dlg = document.getElementById('lightbox');
+      if (!dlg) return;
+      const img = document.getElementById('lb-img');
+      const cap = document.getElementById('lb-cap');
+      const count = document.getElementById('lb-count');
+      const buttons = Array.from(document.querySelectorAll('button.photo'));
+      let idx = 0;
+
+      const open = i => {
+        idx = (i + buttons.length) % buttons.length;
+        const b = buttons[idx];
+        img.src = b.dataset.large;
+        img.alt = b.querySelector('img').alt;
+        cap.textContent = b.dataset.caption || '';
+        count.textContent = `${idx + 1} / ${buttons.length}`;
+        if (!dlg.open) dlg.showModal();
+      };
+
+      buttons.forEach((b, i) => b.addEventListener('click', () => open(i)));
+      dlg.querySelector('.lb-close').addEventListener('click', () => dlg.close());
+      dlg.querySelector('.lb-prev').addEventListener('click', () => open(idx - 1));
+      dlg.querySelector('.lb-next').addEventListener('click', () => open(idx + 1));
+
+      dlg.addEventListener('click', e => {
+        // close on backdrop click
+        if (e.target === dlg) dlg.close();
+      });
+      document.addEventListener('keydown', e => {
+        if (!dlg.open) return;
+        if (e.key === 'ArrowLeft') open(idx - 1);
+        else if (e.key === 'ArrowRight') open(idx + 1);
+      });
+    })();
 
     // FAQ expand/collapse all
     const expandLink = document.querySelector('.faq-expand-all');
