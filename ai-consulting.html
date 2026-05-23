@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Consulting Packages & Pricing — Andrew K. Stein | Atlanta</title>
-  <meta name="description" content="Personal AI consulting: free intro call, 4-session starter package ($1,950), and monthly retainer. Custom AI workflows built around your actual work.">
-  <meta property="og:title" content="AI Consulting Packages & Pricing — Andrew K. Stein">
-  <meta property="og:description" content="Hands-on AI consulting: free intro call, starter package, and monthly retainer. No generic tips — custom systems for your real work.">
+  <title>AI Consulting — set up your AI Chief of Staff — Andrew K. Stein | Atlanta</title>
+  <meta name="description" content="I help you set up your AI Chief of Staff — an AI-native work system that knows your voice, your priorities, and your projects. Discovery call free; Starter Package $1,950.">
+  <meta property="og:title" content="AI Consulting — set up your AI Chief of Staff — Andrew K. Stein">
+  <meta property="og:description" content="An AI-native work system that knows your voice, your priorities, and your projects. Built together over four working sessions.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://andrewkstein.com/ai-consulting.html">
   <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
@@ -41,8 +41,9 @@
   <section class="hero bg-cream" style="padding-bottom: var(--space-xl);">
     <div class="container container--reading">
       <p class="hero__tagline">AI Consulting</p>
-      <h1>I build AI systems around how you actually work.</h1>
-      <p class="lead mt-md">Not a course. Not a webinar. I sit down with you, learn your workflows, and build the tools and habits that make AI useful for your specific work. You walk away with a system you actually use.</p>
+      <h1>I help you set up your AI Chief of Staff.</h1>
+      <p class="lead mt-md">An AI-native work system that knows your voice, your priorities, and your projects &mdash; and operates on your inbox, your files, and your browser. Not a chatbot. What most pros will be working with by 2027.</p>
+      <p class="mt-sm" style="font-size: 1.05rem; color: var(--text-secondary);">We build it together over four working sessions. You walk away in 5th gear &mdash; with a system you understand, own, and use every day.</p>
       <div class="testimonial reveal" style="margin-top: 2rem;">
         <p class="testimonial__text">I've watched how cleverly Andrew uses AI. He's an architect. His Expert Review system is so helpful, I use it every day.</p>
         <div class="testimonial__footer">
@@ -53,77 +54,417 @@
     </div>
   </section>
 
-  <!-- What I help with -->
+  <!-- NEW: Where are you on the ladder? — UPDATED 2026-05-23 with 5-stage model.
+       Built as native HTML/CSS (no image), so text is editable + scales crisply + theme-friendly. -->
+  <section class="bg-sand">
+    <div class="container container--reading">
+      <div class="section-header reveal">
+        <h2>Where are you on the ladder?</h2>
+        <p class="lead">Most pros use AI as a smart chatbot. A few have it operating on their files, their inbox, their browser &mdash; with a markdown vault of context alongside. The difference between those two isn't the model. It's the layer you build underneath.</p>
+      </div>
+
+      <style>
+        .ladder {
+          display: flex;
+          flex-direction: column-reverse;
+          max-width: 720px;
+          margin: 2rem auto 1rem;
+          gap: 0.4rem;
+        }
+        .ladder__step {
+          background: var(--cream);
+          border: 1.5px solid var(--accent);
+          border-radius: 6px;
+          padding: 0.95rem 1.2rem;
+          display: grid;
+          grid-template-columns: 48px 1fr;
+          gap: 1rem;
+          align-items: center;
+          box-shadow: 0 1px 3px var(--shadow-warm);
+          position: relative;
+        }
+        .ladder__step--1 { margin-right: 28%; }
+        .ladder__step--2 { margin-right: 21%; margin-left: 7%; }
+        .ladder__step--3 { margin-right: 14%; margin-left: 14%; }
+        .ladder__step--4 { margin-right: 7%; margin-left: 21%; }
+        .ladder__step--5 {
+          margin-left: 28%;
+          background: linear-gradient(135deg, #faf4e0 0%, #f6e9c4 100%);
+          border-color: var(--accent-warm);
+          border-width: 2px;
+          box-shadow: 0 4px 14px rgba(196, 144, 10, 0.18);
+        }
+        .ladder__num {
+          width: 44px; height: 44px;
+          border: 2px solid var(--accent);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: var(--font-heading);
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--accent);
+          background: var(--white);
+          flex-shrink: 0;
+        }
+        .ladder__step--5 .ladder__num {
+          border-color: var(--accent-warm);
+          color: var(--accent-warm);
+        }
+        .ladder__body { line-height: 1.3; }
+        .ladder__name {
+          font-family: var(--font-heading);
+          font-style: italic;
+          font-weight: 700;
+          font-size: 1.15rem;
+          color: var(--accent);
+          letter-spacing: 0.01em;
+          display: block;
+          text-transform: uppercase;
+        }
+        .ladder__step--5 .ladder__name { color: var(--accent-warm); }
+        .ladder__desc {
+          font-size: 0.9rem;
+          color: var(--text-secondary);
+          display: block;
+          margin-top: 0.15rem;
+        }
+        .ladder__step--5 .ladder__desc { color: #8a6608; }
+        @media (max-width: 720px) {
+          .ladder__step { margin-left: 0 !important; margin-right: 0 !important; }
+          .ladder__step--5 { /* keep highlight, drop offset */ }
+        }
+      </style>
+
+      <div class="ladder reveal">
+        <div class="ladder__step ladder__step--1">
+          <div class="ladder__num">1</div>
+          <div class="ladder__body">
+            <span class="ladder__name">Chatbot</span>
+            <span class="ladder__desc">Ask &amp; receive &mdash; a Q&amp;A box.</span>
+          </div>
+        </div>
+        <div class="ladder__step ladder__step--2">
+          <div class="ladder__num">2</div>
+          <div class="ladder__body">
+            <span class="ladder__name">Reused Conversation</span>
+            <span class="ladder__desc">Context lives in one chat thread.</span>
+          </div>
+        </div>
+        <div class="ladder__step ladder__step--3">
+          <div class="ladder__num">3</div>
+          <div class="ladder__body">
+            <span class="ladder__name">Custom Project</span>
+            <span class="ladder__desc">The AI reads a few files at the start.</span>
+          </div>
+        </div>
+        <div class="ladder__step ladder__step--4">
+          <div class="ladder__num">4</div>
+          <div class="ladder__body">
+            <span class="ladder__name">Claude Code / Cowork</span>
+            <span class="ladder__desc">Agentic AI on the desktop &mdash; operates on your inbox, browser, files.</span>
+          </div>
+        </div>
+        <div class="ladder__step ladder__step--5">
+          <div class="ladder__num">5</div>
+          <div class="ladder__body">
+            <span class="ladder__name">AI Chief of Staff</span>
+            <span class="ladder__desc">Stage 4 plus a markdown vault of context &mdash; your <code>CLAUDE.md</code>, your skills, your files.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The AI Chief of Staff Menu -->
+  <section class="bg-cream">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>The AI Chief of Staff Menu</h2>
+        <p class="lead">What we can build, in four categories. Pick what matters to you &mdash; we work on the most useful few first; the rest layer on over time.</p>
+      </div>
+
+      <style>
+        .cos-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+        /* Stack vertically on tablets and below, not just phones — single column reads cleaner on anything <= 900px */
+        @media (max-width: 900px) { .cos-menu { grid-template-columns: 1fr; } }
+        .cos-panel { border-radius: 10px; padding: 1.25rem 1.4rem; border: 1px solid var(--warm-gray); position: relative; }
+        .cos-panel .cos-roman { font-family: 'Playfair Display', serif; font-weight: 700; color: #c4900a; font-size: 2.4rem; line-height: 1; position: absolute; top: 0.9rem; right: 1.1rem; opacity: 0.6; }
+        .cos-panel h3 { font-family: 'Playfair Display', serif; font-style: italic; color: #722F37; font-size: 1.15rem; font-weight: 700; margin: 0 0 0.6rem; }
+        .cos-panel ul { list-style: none; padding: 0; margin: 0; }
+        .cos-panel ul li { margin: 0.45rem 0; font-size: 0.95rem; line-height: 1.5; color: var(--text); }
+        .cos-panel ul li strong { color: #722F37; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 1.02rem; }
+        .cos-panel.cat-focus  { background: #F3ECCC; }
+        .cos-panel.cat-daily  { background: #F2D9D4; }
+        .cos-panel.cat-assets { background: #C8D1E8; }
+        .cos-panel.cat-memory { background: #C7E0DA; }
+      </style>
+
+      <div class="cos-menu reveal-stagger">
+        <div class="cos-panel cat-focus reveal">
+          <span class="cos-roman">I</span>
+          <h3>Appetizers &middot; Focus</h3>
+          <ul>
+            <li><strong>Daily North Star</strong> &mdash; surface what matters today, filter out the clutter</li>
+            <li><strong>Streamlined Scheduling</strong> &mdash; answer "when's a good time?" in seconds; protect deep work</li>
+            <li><strong>Always Know What's Next</strong> &mdash; clear next actions, owners, deadlines, reminders</li>
+            <li><strong>Operating Rhythm</strong> &mdash; weekly &amp; monthly reviews, quarterly planning, retros</li>
+          </ul>
+        </div>
+        <div class="cos-panel cat-daily reveal">
+          <span class="cos-roman">II</span>
+          <h3>Entrees &middot; Daily Work</h3>
+          <ul>
+            <li><strong>Inbox Zero</strong> &mdash; curated inbox, auto-drafted replies in your voice</li>
+            <li><strong>Closed-Loop Meetings</strong> &mdash; full prep before, "phone a friend" during, commitments captured after</li>
+            <li><strong>Writing That's You</strong> &mdash; collateral and copy that feels human, not AI &mdash; tailored per audience</li>
+            <li><strong>Morning Briefings</strong> &mdash; the info you want, in your preferred format (text, audio)</li>
+            <li><strong>Total Project View</strong> &mdash; every project tracked: what's stale, where you left off, what's next</li>
+          </ul>
+        </div>
+        <div class="cos-panel cat-assets reveal">
+          <span class="cos-roman">III</span>
+          <h3>Specialties &middot; Assets</h3>
+          <ul>
+            <li><strong>Set-and-Forget Workflows</strong> &mdash; repetitive computer work, automated end-to-end</li>
+            <li><strong>Custom Apps</strong> &mdash; lightweight internal tools: trackers, forms, automations, visualizations</li>
+            <li><strong>Dashboards</strong> &mdash; a silver platter of the metrics you actually care about</li>
+            <li><strong>Industry Radar</strong> &mdash; daily industry scan with useful briefs and analysis</li>
+            <li><strong>"Jarvis"</strong> &mdash; an agent you can message in Slack, Discord, or WhatsApp to handle any request</li>
+          </ul>
+        </div>
+        <div class="cos-panel cat-memory reveal">
+          <span class="cos-roman">IV</span>
+          <h3>Desserts &middot; Memory</h3>
+          <ul>
+            <li><strong>Omnicapture</strong> &mdash; brain dumps, voice memos, links &mdash; all processed and filed automatically</li>
+            <li><strong>Your Second Brain</strong> &mdash; a deep context repo, so the AI doesn't hallucinate what matters</li>
+            <li><strong>Personal CRM</strong> &mdash; customized for you; stay close to the right people</li>
+            <li><strong>Decision Memory</strong> &mdash; capture the data, assumptions, and tradeoffs to avoid re-litigating</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Who this is for — persona sketches matching the Professor Cat mascot style -->
   <section class="bg-sand">
     <div class="container">
       <div class="section-header reveal">
-        <h2>What I help people do</h2>
-        <p class="lead">Every engagement is different, but the work usually falls into a few categories.</p>
+        <h2>Who this is for</h2>
+        <p class="lead">Four kinds of people I work with most. Find yourself.</p>
       </div>
 
-      <div class="grid-2 reveal-stagger">
-        <div class="card reveal">
-          <h4>Get your daily work done faster</h4>
-          <p>Email, writing, research, meeting prep, follow-ups&mdash;the stuff that eats your day. I help you set up AI workflows that handle the repetitive parts so you can focus on the parts that need your brain.</p>
+      <style>
+        .personas {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.25rem;
+          margin: 2rem auto 1.5rem;
+          max-width: 880px;
+        }
+        @media (max-width: 760px) { .personas { grid-template-columns: 1fr; } }
+        .persona {
+          display: grid;
+          grid-template-columns: 110px 1fr;
+          gap: 1.1rem;
+          align-items: center;
+          padding: 1.1rem 1.3rem;
+          background: var(--cream);
+          border: 1px solid var(--warm-gray);
+          border-radius: 12px;
+          transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        }
+        .persona:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px var(--shadow-warm);
+          border-color: var(--accent-warm-light);
+        }
+        .persona__sketch {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+        .persona__label {
+          font-family: var(--font-heading);
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: var(--text);
+          margin-bottom: 0.2rem;
+          line-height: 1.2;
+        }
+        .persona__desc {
+          font-size: 0.95rem;
+          color: var(--text-secondary);
+          line-height: 1.45;
+          margin: 0;
+        }
+        /* Subtle stagger — give the 2-2 grid a magazine offset rather than a flat tile look */
+        .personas .persona:nth-child(2) { transform: translateY(0.9rem); }
+        .personas .persona:nth-child(3) { transform: translateY(-0.4rem); }
+        .personas .persona:nth-child(4) { transform: translateY(0.6rem); }
+        .personas .persona:hover { transform: translateY(-3px); } /* hover wins */
+        @media (max-width: 760px) {
+          .personas .persona:nth-child(2),
+          .personas .persona:nth-child(3),
+          .personas .persona:nth-child(4) { transform: none; }
+          .personas .persona:hover { transform: translateY(-3px); }
+        }
+      </style>
+
+      <div class="personas reveal-stagger">
+        <div class="persona reveal">
+          <img src="assets/persona-writer.jpeg" alt="A friendly cat with eyeglasses, writing with a quill pen" class="persona__sketch">
+          <div>
+            <p class="persona__label">Writers &amp; creators</p>
+            <p class="persona__desc">who want AI to handle research, drafts, and editing &mdash; without losing their voice.</p>
+          </div>
         </div>
-        <div class="card reveal">
-          <h4>Write better, in your own voice</h4>
-          <p>AI can draft, edit, and rework your writing&mdash;but only if it knows your voice. I help you build a style guide and feedback loop so your AI writes like you, not like a robot.</p>
+        <div class="persona reveal">
+          <img src="assets/persona-smallbiz.jpeg" alt="A cat with eyeglasses juggling a calendar, a phone, and a book" class="persona__sketch">
+          <div>
+            <p class="persona__label">Small business owners</p>
+            <p class="persona__desc">drowning in admin work that could be systematized.</p>
+          </div>
         </div>
-        <div class="card reveal">
-          <h4>Integrate AI into your business</h4>
-          <p>Client intake, proposals, reporting, scheduling&mdash;small businesses run on processes that AI can streamline. I help you figure out which ones are worth automating and build the systems to do it.</p>
+        <div class="persona reveal">
+          <img src="assets/persona-consultant.jpeg" alt="A cat with eyeglasses and a bow tie, holding a briefcase and pocket watch" class="persona__sketch">
+          <div>
+            <p class="persona__label">Consultants &amp; senior professionals</p>
+            <p class="persona__desc">who bill for their time and want more of it back.</p>
+          </div>
         </div>
-        <div class="card reveal">
-          <h4>Build tools with AI ("vibe-coding")</h4>
-          <p>You don't need to be a developer to build useful software anymore. I help non-technical people design and create custom tools&mdash;dashboards, trackers, internal apps&mdash;using AI-assisted development.</p>
+        <div class="persona reveal">
+          <img src="assets/persona-nonprofit.jpeg" alt="A cat with eyeglasses wearing three hats stacked on its head" class="persona__sketch">
+          <div>
+            <p class="persona__label">Nonprofit leaders</p>
+            <p class="persona__desc">doing the work of three people, looking for leverage.</p>
+          </div>
         </div>
       </div>
 
-      <div class="callout reveal mt-lg" style="max-width: var(--max-width-narrow); margin-left: auto; margin-right: auto;">
-        <p style="font-weight: 600; margin-bottom: 0.25rem;">Not sure where you fit?</p>
-        <p>Most people start with "I know AI can help, I just don't know where." That's exactly what the intro call is for. We'll talk about your work and I'll tell you honestly whether I can help.</p>
+      <div class="reveal" style="max-width: var(--max-width-narrow); margin: 2.5rem auto 0;">
+        <h4 style="margin-bottom: 0.4rem;">About me</h4>
+        <p style="font-size: 0.9375rem; color: var(--text-secondary);">Brown ME &middot; Emory MBA (Woodruff Scholar) &middot; 6 yrs Deloitte &middot; 18+ years consulting &middot; hundreds of clients across six continents. A business leader who builds things &mdash; not a developer. I think about your problems the way you do, not the way an engineer does.</p>
       </div>
     </div>
   </section>
 
-  <!-- Who this is for -->
+  <!-- How a setup engagement works -->
   <section class="bg-cream">
     <div class="container container--reading">
-      <h2 class="reveal">Who I typically work with</h2>
-      <ul class="icon-list reveal">
-        <li><strong>Writers and creators</strong> who want AI to handle research, drafts, and editing without losing their voice</li>
-        <li><strong>Small business owners</strong> drowning in admin work that could be systematized</li>
-        <li><strong>Consultants and professionals</strong> who bill for their time and want more of it back</li>
-        <li><strong>Nonprofit leaders</strong> doing the work of three people and looking for leverage</li>
-        <li><strong>Curious people</strong> who've tried ChatGPT a few times and know there's more to it</li>
-      </ul>
-      <p class="reveal mt-md" style="font-size: 0.9375rem; color: var(--text-secondary);">My background is mechanical engineering (Brown) and an MBA (Emory, Woodruff Scholar), plus 6 years at Deloitte and hundreds of clients across five continents. I'm not a developer&mdash;I'm a consultant who builds things. That means I think about your problems the way you do, not the way an engineer does.</p>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="bg-sand">
-    <div class="container container--reading">
-      <h2 class="reveal">How the engagement works</h2>
+      <h2 class="reveal">How a setup engagement works</h2>
       <ol class="process-steps reveal">
         <li class="process-step">
-          <h4>Free intro call <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 30 minutes</span></h4>
-          <p>We talk about what you do, what's frustrating, and whether AI can actually help. No sales pitch. If I'm not the right fit, I'll tell you.</p>
+          <h4>Discovery call <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 30 min, free</span></h4>
+          <p>We talk about what you do and what's frustrating. No pitch. If I'm not the right fit, I'll tell you.</p>
         </li>
         <li class="process-step">
           <h4>Deep dive <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 2 hours</span></h4>
-          <p>I map your workflows, understand your tools, and identify the biggest opportunities. You leave this session with a clear plan for what we'll build.</p>
+          <p>I map your workflows and identify the highest-leverage opportunities. You leave with a clear build plan.</p>
         </li>
         <li class="process-step">
           <h4>Build sessions <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 3 &times; 90 min</span></h4>
-          <p>We build and test your system together. Custom templates, AI workflows, automation&mdash;whatever makes the biggest difference for your work. You're hands-on the whole time, so you know how everything works when we're done.</p>
+          <p>We build and test your system together &mdash; your <code>CLAUDE.md</code>, your skills, your context files, your custom workflows. You're hands-on, so you know how it all works when we're done.</p>
         </li>
         <li class="process-step">
           <h4>Ongoing support <span style="font-weight: 400; color: var(--text-secondary);">&mdash; optional</span></h4>
-          <p>AI evolves fast. A monthly retainer keeps your setup current and lets you add new workflows as your needs change.</p>
+          <p>Monthly retainer to add new workflows, integrate new tools, and ride each model upgrade as it lands. They're coming fast.</p>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- NEW: Stranger vs. Colleague — UPDATED 2026-05-23 (image dropped per Andrew, HTML table is primary) -->
+  <section class="bg-sand">
+    <div class="container container--reading">
+      <div class="section-header reveal">
+        <h2>Stranger vs. Colleague.</h2>
+        <p class="lead">Out of the box, AI is a smart stranger on day 1 &mdash; generic, re-explains itself every session, no idea what you care about. After we work together, it's a 6-month colleague who knows you.</p>
+      </div>
+
+      <style>
+        .sc-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: var(--font-body);
+          margin: 1.5rem 0;
+          background: var(--cream);
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 2px 12px var(--shadow-warm);
+        }
+        .sc-table thead th {
+          text-align: left;
+          padding: 0.85rem 1.1rem;
+          font-family: var(--font-heading);
+          font-weight: 700;
+          font-size: 1.15rem;
+          letter-spacing: -0.01em;
+          border-bottom: 2px solid var(--warm-gray);
+        }
+        .sc-table thead th.sc-left  { color: var(--stone); }
+        .sc-table thead th.sc-right { color: var(--accent); }
+        .sc-table thead th .sc-when {
+          display: block;
+          font-family: var(--font-body);
+          font-style: italic;
+          font-weight: 400;
+          font-size: 0.85rem;
+          color: var(--text-secondary);
+          margin-top: 0.15rem;
+        }
+        .sc-table tbody td {
+          padding: 0.6rem 1.1rem;
+          font-size: 1rem;
+          line-height: 1.5;
+          border-bottom: 1px solid var(--sand-deep);
+          vertical-align: top;
+        }
+        .sc-table tbody tr:last-child td { border-bottom: none; }
+        .sc-table tbody td.sc-left  { color: var(--text-secondary); }
+        .sc-table tbody td.sc-right { color: var(--text); }
+        .sc-table tbody td .sc-mark { display: inline-block; width: 1.4em; font-weight: 700; }
+        .sc-table tbody td.sc-left  .sc-mark { color: #c53030; }
+        .sc-table tbody td.sc-right .sc-mark { color: var(--accent-warm); }
+        @media (max-width: 640px) {
+          .sc-table thead th, .sc-table tbody td { padding: 0.55rem 0.7rem; font-size: 0.9rem; }
+        }
+      </style>
+
+      <table class="sc-table reveal">
+        <thead>
+          <tr>
+            <th class="sc-left">Out of the box <span class="sc-when">Generic &middot; Day 1</span></th>
+            <th class="sc-right">After we work together <span class="sc-when">Six months in</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sc-left"><span class="sc-mark">&times;</span>Smart stranger on day 1</td>
+            <td class="sc-right"><span class="sc-mark">&check;</span>A 6-month colleague who knows you</td>
+          </tr>
+          <tr>
+            <td class="sc-left"><span class="sc-mark">&times;</span>Re-explains every session</td>
+            <td class="sc-right"><span class="sc-mark">&check;</span>Picks up where you left off</td>
+          </tr>
+          <tr>
+            <td class="sc-left"><span class="sc-mark">&times;</span>One-size priorities</td>
+            <td class="sc-right"><span class="sc-mark">&check;</span>Knows what matters this month</td>
+          </tr>
+          <tr>
+            <td class="sc-left"><span class="sc-mark">&times;</span>No team / client context</td>
+            <td class="sc-right"><span class="sc-mark">&check;</span>Knows who's who &mdash; clients, team, family</td>
+          </tr>
+          <tr>
+            <td class="sc-left"><span class="sc-mark">&times;</span>Generic model everyone shares</td>
+            <td class="sc-right"><span class="sc-mark">&check;</span>Becomes yours</td>
+          </tr>
+        </tbody>
+      </table>
+
     </div>
   </section>
 
@@ -133,7 +474,16 @@
       <div class="section-header reveal">
         <h2>What people say</h2>
       </div>
-      <div class="grid-2 reveal">
+      <div class="testimonial-orphan reveal">
+        <div class="testimonial" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <p class="testimonial__text">Andrew's really opened my eyes. He helped me create this awesome second brain thing. It's pretty incredible, mind-blowing, exactly what I need. And his consulting approach is very calm and strategic &mdash; he sits, listens, and then points out, &ldquo;OK, here's what you can do.&rdquo; I come in with so many questions and leave with so many answers.</p>
+          <div class="testimonial__footer">
+            <img src="assets/justin-blake.jpg" alt="Justin Blake" class="testimonial__avatar">
+            <p class="testimonial__author">&mdash; Justin Blake, AI Marketing Automation</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2 reveal mt-md">
         <div class="testimonial" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
           <p class="testimonial__text">I thought I knew AI pretty well, but Andrew set me up with a system that is on a whole new level. We connected AI to my email and produced a writing guide that was spooky accurate. I have so many ideas of what to do with this now.</p>
           <div class="testimonial__footer">
@@ -149,15 +499,6 @@
           </div>
         </div>
       </div>
-      <div class="testimonial-orphan reveal">
-        <div class="testimonial" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <p class="testimonial__text">Andrew's really opened my eyes. He helped me create this awesome second brain thing. It's pretty incredible, mind-blowing, exactly what I need. And his consulting approach is very calm and strategic &mdash; he sits, listens, and then points out, &ldquo;OK, here's what you can do.&rdquo; I come in with so many questions and leave with so many answers.</p>
-          <div class="testimonial__footer">
-            <img src="assets/justin-blake.jpg" alt="Justin Blake" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Justin Blake, AI Marketing Automation</p>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -165,25 +506,28 @@
   <section class="bg-sand">
     <div class="container container--reading">
       <div class="section-header reveal">
+        <p style="font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-warm); margin: 0 0 0.5rem;">Case study</p>
         <h2>A real engagement, start to finish</h2>
-        <p class="lead">What a single setup session actually looks like.</p>
+        <p class="lead">What a single setup session looks like.</p>
       </div>
 
       <div class="case-study reveal">
-        <p class="case-study__org">From ChatGPT User to AI-Powered Workflow</p>
+        <p class="case-study__org">From Stage 1 to Stage 5 in two hours</p>
         <p class="case-study__detail">Nonprofit executive &middot; Washington, DC &middot; Single 2-hour session</p>
 
-        <p><strong>Before:</strong> A senior nonprofit leader who'd been using ChatGPT for about a year. Typed prompts, got answers, moved on. No persistent memory, no integrations, no reusable workflows.</p>
+        <p><strong>Before:</strong> Using ChatGPT for about a year. Typed prompts, got answers, moved on. No persistent memory, no integrations, no reusable workflows. Pure Stage 1.</p>
 
-        <p><strong>What we built together:</strong></p>
+        <p><strong>What we built:</strong></p>
         <ul style="margin: 0.75rem 0 1rem; padding-left: 1.5rem;">
-          <li>Connected AI to her Gmail. It read 500+ sent emails and produced a writing style guide that captured her actual voice and patterns.</li>
-          <li>Set up safety guardrails so AI can draft but never send on her behalf.</li>
+          <li>A starter <code>CLAUDE.md</code> &mdash; her role, her voice, her clients, her current priorities &mdash; so the AI picks up where she left off each session.</li>
+          <li>Connected the AI to her Gmail; it read 500+ sent emails and produced a writing style guide that captured her actual voice.</li>
+          <li>Set up safety guardrails so the AI can draft but never send on her behalf.</li>
           <li>Ran a multi-perspective review of a blog draft using three AI &ldquo;expert sub-agents,&rdquo; each critiquing from a different professional lens.</li>
-          <li>Scoped a competitive intelligence system: automated monitoring of who&rsquo;s shaping the conversation on her organization&rsquo;s key issues.</li>
+          <li>Scoped a competitive-intelligence workflow: automated monitoring of who's shaping the conversation on her organization's key issues.</li>
         </ul>
 
-        <p><strong>After:</strong> A system that knows her voice, connects to her tools, and picks up where she left off. Two hours to go from &ldquo;ChatGPT is useful&rdquo; to &ldquo;this is a working partner.&rdquo;</p>
+        <p><strong>After:</strong> A system that knows her voice, connects to her tools, and picks up where she left off. Stage 5. Two hours.</p>
+        <p style="font-size: 0.9375rem; color: var(--text-secondary); font-style: italic; margin-top: 0.5rem;">That was the foundation. The full Starter Package adds the breadth &mdash; more skills, more integrations, a deeper <code>CLAUDE.md</code>, the workflows that fit her actual week.</p>
       </div>
 
       <p class="reveal mt-md" style="text-align: center; font-size: 0.9375rem; color: var(--text-secondary);">
@@ -201,14 +545,14 @@
       </div>
 
       <div class="grid-3 reveal">
-        <!-- Free call -->
+        <!-- Discovery call -->
         <div class="pricing-card">
-          <h3>Intro Call</h3>
+          <h3>Discovery Call</h3>
           <p class="pricing-card__price">Free</p>
           <p style="color: var(--text-secondary); font-size: 0.9375rem;">30 minutes</p>
           <ul>
-            <li>Talk through your work and challenges</li>
-            <li>See if this makes sense for you</li>
+            <li>Talk through your work</li>
+            <li>See if this makes sense</li>
             <li>No commitment, no pitch</li>
           </ul>
           <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--outline" style="width: 100%; text-align: center;">Book a call</a>
@@ -221,10 +565,10 @@
           <p class="pricing-card__price">$1,950</p>
           <p style="color: var(--text-secondary); font-size: 0.9375rem;">4 sessions over 2&ndash;4 weeks</p>
           <ul>
-            <li>Session 1: 2-hour deep dive&mdash;map workflows, define what to build</li>
-            <li>Sessions 2&ndash;4: 90 min each&mdash;build &amp; test your system together</li>
-            <li>Custom templates, workflows, and tools</li>
+            <li>1&times; 2-hour deep dive &mdash; workflows mapped, build plan locked</li>
+            <li>3&times; 90-min build sessions &mdash; your <code>CLAUDE.md</code>, your skills, your key workflows</li>
             <li>Email support between sessions</li>
+            <li>Stage 5 setup in 2&ndash;4 weeks</li>
           </ul>
           <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--primary" style="width: 100%; text-align: center;">Get started</a>
         </div>
@@ -235,7 +579,7 @@
           <p class="pricing-card__price">$750<span>/month</span></p>
           <p style="color: var(--text-secondary); font-size: 0.9375rem;">Ongoing support</p>
           <ul>
-            <li>Up to 3 hours/month of tweaks, new workflows, and troubleshooting</li>
+            <li>3 hours/month &mdash; new workflows, integrations, model upgrades</li>
             <li>Additional time at $250/hr</li>
             <li>A co-pilot as you settle into your new cockpit</li>
           </ul>
@@ -246,24 +590,40 @@
     </div>
   </section>
 
-  <!-- Will it pay for itself -->
+  <!-- Why now — UPDATED 2026-05-23 with workshop's "This moment is different" prelude -->
   <section class="bg-sand">
     <div class="container container--reading">
-      <div class="callout reveal">
-        <h3>Will it pay for itself?</h3>
-        <p class="mt-sm">Probably. If you save even a few hours a week, it pays for itself in a month. Most people find bigger wins than that.</p>
-        <p class="mt-sm">I've spent 18+ years solving business problems&mdash;AI is just the newest tool in the kit. Each session, we go after whatever will make the biggest difference.</p>
+      <div class="section-header reveal">
+        <h2>Why now</h2>
       </div>
+      <div class="reveal" style="background: #F3ECCC; border-left: 4px solid #c4900a; padding: 0.85rem 1.1rem; margin-bottom: 1.5rem; border-radius: 4px;">
+        <p style="margin: 0; font-size: 1.08rem; line-height: 1.6;"><strong>This moment is different.</strong> In summer 2025, the best AI model was beating expert humans on professional work about <strong>48%</strong> of the time, blind-judged. By summer 2026, it's <strong>85%</strong>. The capability curve is steep &mdash; and in five years, using a keyboard and mouse for most things is going to look kind of funny.</p>
+      </div>
+      <ol class="reveal" style="font-size: 1.05rem; line-height: 1.65; padding-left: 1.4rem;">
+        <li style="margin-bottom: 1rem;">
+          <strong>The models get smarter every quarter.</strong><br>
+          <span style="color: var(--text-secondary);">They're on track to be 2&times; smarter by 2027. An AI-native setup compounds with each upgrade &mdash; when their capabilities go up, yours do too. Without the setup, the upgrades skip you.</span>
+        </li>
+        <li style="margin-bottom: 1rem;">
+          <strong>It gets sharper the more you use it.</strong><br>
+          <span style="color: var(--text-secondary);">Each session, you'll notice an edge to smooth &mdash; a skill to add, a prompt to refine, a recurring chore worth automating. Small improvements stack up. The system you have in a few months is meaningfully more useful than the one we set up &mdash; and you didn't have to plan that.</span>
+        </li>
+        <li>
+          <strong>It pays for itself fast.</strong><br>
+          <span style="color: var(--text-secondary);">A few hours back per week pays the Starter Package off in under a month. Most clients find bigger wins.</span>
+        </li>
+      </ol>
+      <p class="reveal mt-md" style="font-style: italic; color: var(--text-secondary); font-size: 0.9375rem;">&mdash; 18+ years solving business problems. AI is just the newest tool in the kit.</p>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="bg-dark cta-section" id="book">
     <div class="container reveal">
-      <h2>Ready to start?</h2>
-      <p class="lead">Book a free 30-minute intro call. We'll talk about your work and whether this makes sense.</p>
+      <h2>Make AI your Chief of Staff.</h2>
+      <p class="lead">Book a free 30-min discovery call. We'll talk through your work and whether this makes sense. If it does, we'll walk through what your week looks like in 90 days.</p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--warm" style="color: #fff; font-size: 1rem;">Book your free intro call</a>
+        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--warm" style="color: #fff; font-size: 1rem;">Book your discovery call</a>
       </div>
     </div>
   </section>
