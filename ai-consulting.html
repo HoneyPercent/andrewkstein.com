@@ -42,7 +42,7 @@
     <div class="container container--reading">
       <p class="hero__tagline">AI Consulting</p>
       <h1>I help you set up your AI Chief of Staff.</h1>
-      <p class="lead mt-md">Together we'll build you an AI-native work system (more than a chatbot) that knows your voice, your priorities, and your projects &mdash; and operates on your inbox, your files, and your browser.</p>
+      <p class="lead mt-md">Together we'll build your AI-native work system (more than a chatbot) that knows your voice, your priorities, and your projects &mdash; and operates on your inbox, your files, and your browser.</p>
       <div class="testimonial reveal" style="margin-top: 2rem;">
         <p class="testimonial__text">I've watched how cleverly Andrew uses AI. He's an architect. His Expert Review system is so helpful, I use it every day.</p>
         <div class="testimonial__footer">
@@ -97,17 +97,20 @@
           width: 44px; height: 44px;
           border: 2px solid var(--accent);
           border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          /* Single-character centering: use line-height === inner-height + text-align center,
+             rather than flex. This bypasses the flex-baseline issue that put Playfair digits
+             slightly high. Combined with lining-nums (digits all same height, no descenders) +
+             tabular-nums (uniform digit widths), centering is now pixel-stable. */
+          line-height: 40px; /* 44px height - 2*2px border = 40px inner */
+          text-align: center;
           font-family: var(--font-heading);
+          font-feature-settings: "lnum" 1, "tnum" 1;
+          font-variant-numeric: lining-nums tabular-nums;
           font-size: 1.25rem;
           font-weight: 700;
-          line-height: 1;
           color: var(--accent);
           background: var(--white);
           flex-shrink: 0;
-          padding-top: 3px; /* Playfair digits sit high — nudge down for true vertical center */
         }
         .ladder__step--5 .ladder__num {
           border-color: var(--accent-warm);
@@ -183,7 +186,7 @@
     <div class="container">
       <div class="section-header reveal">
         <h2>The AI Chief of Staff Menu</h2>
-        <p class="lead">Every engagement is different, but the work usually falls into a few categories. Pick 2 or 3 satisfying dishes from the menu that you're most excited about.</p>
+        <p class="lead">Pick 2 or 3 satisfying dishes from the menu that you're most excited about.</p>
       </div>
 
       <style>
@@ -192,7 +195,26 @@
         @media (max-width: 900px) { .cos-menu { grid-template-columns: 1fr; } }
         .cos-panel { border-radius: 10px; padding: 1.25rem 1.4rem; border: 1px solid var(--warm-gray); position: relative; }
         .cos-panel .cos-roman { font-family: 'Playfair Display', serif; font-weight: 700; color: #c4900a; font-size: 2.4rem; line-height: 1; position: absolute; top: 0.9rem; right: 1.1rem; opacity: 0.6; }
-        .cos-panel h3 { font-family: 'Playfair Display', serif; font-style: italic; color: #722F37; font-size: 1.15rem; font-weight: 700; margin: 0 0 0.6rem; }
+        .cos-panel h3 { font-family: 'Playfair Display', serif; margin: 0 0 0.7rem; line-height: 1.2; }
+        .cos-panel .cos-course {
+          display: block;
+          font-family: 'DM Sans', sans-serif;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 0.72rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: var(--text-secondary);
+          margin-bottom: 0.15rem;
+        }
+        .cos-panel .cos-category {
+          font-family: 'Playfair Display', serif;
+          font-style: italic;
+          font-weight: 700;
+          font-size: 1.3rem;
+          color: #722F37;
+          display: block;
+        }
         .cos-panel ul { list-style: none; padding: 0; margin: 0; }
         .cos-panel ul li { margin: 0.45rem 0; font-size: 0.95rem; line-height: 1.5; color: var(--text); }
         .cos-panel ul li strong { color: #722F37; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 1.02rem; }
@@ -205,7 +227,7 @@
       <div class="cos-menu reveal-stagger">
         <div class="cos-panel cat-focus reveal">
           <span class="cos-roman">I</span>
-          <h3>Appetizers &middot; Focus</h3>
+          <h3><span class="cos-course">Appetizers</span><span class="cos-category">Focus</span></h3>
           <ul>
             <li><strong>Daily North Star</strong> &mdash; surface what matters today, filter out the clutter</li>
             <li><strong>Streamlined Scheduling</strong> &mdash; answer "when's a good time?" in seconds; protect deep work</li>
@@ -215,7 +237,7 @@
         </div>
         <div class="cos-panel cat-daily reveal">
           <span class="cos-roman">II</span>
-          <h3>Entrees &middot; Daily Work</h3>
+          <h3><span class="cos-course">Entrees</span><span class="cos-category">Daily Work</span></h3>
           <ul>
             <li><strong>Inbox Zero</strong> &mdash; curated inbox, auto-drafted replies in your voice</li>
             <li><strong>Closed-Loop Meetings</strong> &mdash; full prep before, "phone a friend" during, commitments captured after</li>
@@ -226,7 +248,7 @@
         </div>
         <div class="cos-panel cat-assets reveal">
           <span class="cos-roman">III</span>
-          <h3>Specialties &middot; Assets</h3>
+          <h3><span class="cos-course">Specialties</span><span class="cos-category">Assets</span></h3>
           <ul>
             <li><strong>Set-and-Forget Workflows</strong> &mdash; repetitive computer work, automated end-to-end</li>
             <li><strong>Custom Apps</strong> &mdash; lightweight internal tools: trackers, forms, automations, visualizations</li>
@@ -237,7 +259,7 @@
         </div>
         <div class="cos-panel cat-memory reveal">
           <span class="cos-roman">IV</span>
-          <h3>Desserts &middot; Memory</h3>
+          <h3><span class="cos-course">Desserts</span><span class="cos-category">Memory</span></h3>
           <ul>
             <li><strong>Omnicapture</strong> &mdash; brain dumps, voice memos, links &mdash; all processed and filed automatically</li>
             <li><strong>Your Second Brain</strong> &mdash; a deep context repo, so the AI doesn't hallucinate what matters</li>
@@ -247,7 +269,7 @@
         </div>
       </div>
 
-      <p class="reveal" style="font-style: italic; color: var(--text-secondary); text-align: center; max-width: var(--max-width-narrow); margin: 1.5rem auto 0; font-size: 1rem;">Not sure where to start? Most people pick two from Section II and one from Section IV. We can sort it out on the discovery call.</p>
+      <p class="reveal" style="font-style: italic; color: var(--text-secondary); text-align: center; max-width: var(--max-width-narrow); margin: 1.5rem auto 0; font-size: 1rem;">These items are prepared to order.</p>
 
     </div>
   </section>
@@ -257,7 +279,6 @@
     <div class="container">
       <div class="section-header reveal">
         <h2>Who this is for</h2>
-        <p class="lead">Four kinds of people I work with most. Find yourself.</p>
       </div>
 
       <style>
@@ -336,14 +357,14 @@
           <img src="assets/persona-consultant.jpeg" alt="A cat with eyeglasses and a bow tie, holding a briefcase and pocket watch" class="persona__sketch">
           <div>
             <p class="persona__label">Consultants &amp; senior professionals</p>
-            <p class="persona__desc">who bill for their time and want more of it back.</p>
+            <p class="persona__desc">who want to impress while getting more time back.</p>
           </div>
         </div>
         <div class="persona reveal">
           <img src="assets/persona-nonprofit.jpeg" alt="A cat with eyeglasses wearing three hats stacked on its head" class="persona__sketch">
           <div>
             <p class="persona__label">Nonprofit leaders</p>
-            <p class="persona__desc">doing the work of three people, looking for leverage.</p>
+            <p class="persona__desc">wearing many hats, looking for leverage.</p>
           </div>
         </div>
       </div>
@@ -366,15 +387,15 @@
         </li>
         <li class="process-step">
           <h4>Deep dive <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 2 hours</span></h4>
-          <p>I map your workflows and identify the highest-leverage opportunities. You leave with a clear build plan.</p>
+          <p>We map your workflows and develop a clear build plan.</p>
         </li>
         <li class="process-step">
           <h4>Build sessions <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 3 &times; 90 min</span></h4>
-          <p>We build and test your system together &mdash; your <code>CLAUDE.md</code>, your skills, your context files, your custom workflows. You're hands-on, so you know how it all works when we're done.</p>
+          <p>We build your system together &mdash; your skills, your context files, your custom workflows.</p>
         </li>
         <li class="process-step">
           <h4>Ongoing support <span style="font-weight: 400; color: var(--text-secondary);">&mdash; optional</span></h4>
-          <p>Monthly retainer to add new workflows, integrate new tools, and ride each model upgrade as it lands. They're coming fast.</p>
+          <p>Monthly retainer to add new workflows, integrate new tools, and get the most out of each model upgrade.</p>
         </li>
       </ol>
     </div>
@@ -385,7 +406,7 @@
     <div class="container container--reading">
       <div class="section-header reveal">
         <h2>Stranger vs. Colleague.</h2>
-        <p class="lead">Out of the box, AI is a smart stranger on day 1 &mdash; generic, re-explains itself every session, no idea what you care about. After we work together, it's a 6-month colleague who knows you.</p>
+        <p class="lead">Chatbot AI is a smart stranger, but Chief of Staff AI is your teammate who knows you.</p>
       </div>
 
       <style>
@@ -440,14 +461,14 @@
       <table class="sc-table reveal">
         <thead>
           <tr>
-            <th class="sc-left">Out of the box <span class="sc-when">Generic &middot; Day 1</span></th>
-            <th class="sc-right">After we work together <span class="sc-when">Six months in</span></th>
+            <th class="sc-left">Generic &middot; Day 1</th>
+            <th class="sc-right">Fully custom</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="sc-left"><span class="sc-mark">&times;</span>Smart stranger on day 1</td>
-            <td class="sc-right"><span class="sc-mark">&check;</span>A 6-month colleague who knows you</td>
+            <td class="sc-left"><span class="sc-mark">&times;</span> Smart stranger</td>
+            <td class="sc-right"><span class="sc-mark">&check;</span> Like a 6-month colleague who knows you</td>
           </tr>
           <tr>
             <td class="sc-left"><span class="sc-mark">&times;</span>Re-explains every session</td>
@@ -460,10 +481,6 @@
           <tr>
             <td class="sc-left"><span class="sc-mark">&times;</span>No team / client context</td>
             <td class="sc-right"><span class="sc-mark">&check;</span>Knows who's who &mdash; clients, team, family</td>
-          </tr>
-          <tr>
-            <td class="sc-left"><span class="sc-mark">&times;</span>Generic model everyone shares</td>
-            <td class="sc-right"><span class="sc-mark">&check;</span>Becomes yours</td>
           </tr>
         </tbody>
       </table>
