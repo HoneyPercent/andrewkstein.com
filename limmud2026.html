@@ -1,0 +1,1043 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1a3a4a">
+  <title>LimmudFest 2026 - Schedule</title>
+  <meta name="description" content="Schedule and presenters for LimmudFest 2026 at Ramah Darom, May 21-25, 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream: #faf7f2; --sand: #ede8df; --sand-deep: #e2dbd0; --warm-gray: #d5cfc4;
+      --stone: #a09888; --text: #1e1b18; --text-secondary: #55504a;
+      --accent: #1a3a4a; --accent-light: #24566e; --accent-warm: #c4900a; --accent-warm-light: #d4a830;
+      --white: #fffefb; --rose: #b85c4e; --rose-soft: #f4e2dd;
+      --shadow-warm: rgba(44, 30, 10, 0.08); --shadow-warm-lg: rgba(44, 30, 10, 0.16);
+      --font-heading: 'Playfair Display', 'Georgia', serif;
+      --font-body: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+      --tab-h: 64px;
+    }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: var(--font-body); background: var(--cream); color: var(--text);
+      line-height: 1.55; font-size: 16px;
+      padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom, 0));
+      min-height: 100vh;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover, a:focus { color: var(--accent-light); }
+    button { font-family: inherit; cursor: pointer; }
+    header.hdr {
+      background: linear-gradient(155deg, var(--accent) 0%, #0f2832 100%);
+      color: var(--cream); padding: 1.4rem 1.1rem 1.2rem;
+      padding-top: calc(1.4rem + env(safe-area-inset-top, 0));
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: 0 2px 14px var(--shadow-warm-lg);
+    }
+    .hdr__title { font-family: var(--font-heading); font-weight: 700; font-size: 1.55rem;
+      letter-spacing: -0.01em; color: var(--cream); line-height: 1.1; }
+    .hdr__meta { margin-top: 0.25rem; font-size: 0.82rem; color: var(--sand); letter-spacing: 0.02em; }
+    .hdr__clock { font-family: var(--font-heading); font-size: 0.95rem; color: var(--accent-warm-light);
+      margin-top: 0.45rem; font-style: italic; }
+    .hdr__clock strong { font-style: normal; color: var(--cream); font-weight: 700; }
+    nav.tabs {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: var(--tab-h); padding-bottom: env(safe-area-inset-bottom, 0);
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      border-top: 1px solid var(--warm-gray);
+      display: grid; grid-template-columns: repeat(4, 1fr); z-index: 60;
+    }
+    .tab { background: none; border: none; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.18rem;
+      color: var(--text-secondary); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.03em; padding: 0.4rem 0.25rem 0.5rem;
+      transition: color 0.2s; position: relative;
+    }
+    .tab svg { width: 22px; height: 22px; stroke-width: 1.6; }
+    .tab[aria-selected="true"] { color: var(--accent); }
+    .tab[aria-selected="true"]::before {
+      content: ''; position: absolute; top: 0; left: 22%; right: 22%; height: 3px;
+      background: var(--accent-warm); border-radius: 0 0 3px 3px;
+    }
+    .tab__badge {
+      position: absolute; top: 4px; right: calc(50% - 26px);
+      background: var(--accent-warm); color: var(--white); font-size: 0.62rem;
+      font-weight: 700; min-width: 17px; height: 17px; border-radius: 9px;
+      padding: 0 4px; display: flex; align-items: center; justify-content: center; line-height: 1;
+    }
+    main { padding: 0; }
+    section.panel { display: none; }
+    section.panel.active { display: block; }
+    .container { padding: 1rem 1.1rem 2rem; }
+    h2.panel__title { font-family: var(--font-heading); font-size: 1.55rem;
+      letter-spacing: -0.01em; margin: 0.4rem 0 0.6rem; line-height: 1.15; }
+    .panel__sub { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.1rem; }
+    .day-pills { display: flex; gap: 0.45rem; overflow-x: auto;
+      padding: 0.65rem 1.1rem 0.85rem; background: var(--sand);
+      border-bottom: 1px solid var(--warm-gray);
+      position: sticky; top: 0; z-index: 20; scrollbar-width: none;
+    }
+    .day-pills::-webkit-scrollbar { display: none; }
+    .day-pill { background: var(--cream); border: 1px solid var(--warm-gray);
+      color: var(--text-secondary); border-radius: 999px; padding: 0.45rem 0.95rem;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em;
+      white-space: nowrap; transition: all 0.2s;
+    }
+    .day-pill[aria-selected="true"] { background: var(--accent); color: var(--cream);
+      border-color: var(--accent); box-shadow: 0 2px 8px rgba(26, 58, 74, 0.18); }
+    .day-pill__date { display: block; font-size: 0.65rem; font-weight: 500;
+      opacity: 0.75; margin-top: 0.05rem; }
+    .slot { margin: 1.4rem 0 0.4rem; }
+    .slot__time { font-family: var(--font-heading); font-size: 1.05rem; color: var(--accent);
+      font-weight: 700; letter-spacing: -0.005em; margin-bottom: 0.5rem;
+      padding-bottom: 0.35rem; border-bottom: 1px solid var(--sand-deep);
+      display: flex; align-items: baseline; gap: 0.5rem;
+    }
+    .slot__time::before { content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent-warm); display: inline-block; }
+    .slot--now .slot__time { color: var(--rose); }
+    .slot--now .slot__time::before { background: var(--rose); }
+    .slot--now .slot__time::after {
+      content: 'NOW'; margin-left: auto; font-family: var(--font-body);
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      background: var(--rose); color: var(--white);
+      padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 700;
+    }
+    .session { background: var(--white); border: 1px solid var(--warm-gray);
+      border-radius: 10px; padding: 0.85rem 0.9rem 0.9rem; margin-bottom: 0.65rem;
+      box-shadow: 0 1px 4px var(--shadow-warm); position: relative;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    }
+    .session:hover { box-shadow: 0 4px 16px var(--shadow-warm-lg); }
+    .session--saved { border-color: var(--accent-warm); border-left-width: 4px;
+      background: linear-gradient(96deg, #fdf6e1 0%, var(--white) 60%); }
+    .session__title { font-family: var(--font-heading); font-size: 1.07rem;
+      font-weight: 700; letter-spacing: -0.005em; color: var(--text);
+      line-height: 1.2; margin-right: 2.6rem; }
+    .session__meta { margin-top: 0.45rem; display: flex; flex-wrap: wrap;
+      gap: 0.35rem 0.7rem; font-size: 0.82rem; color: var(--text-secondary); }
+    .session__presenter, .session__location { display: inline-flex; align-items: center; gap: 0.25rem; }
+    .session__presenter button { background: none; border: none; color: var(--accent);
+      font-weight: 600; font-size: 0.82rem; padding: 0;
+      text-decoration: underline; text-decoration-color: rgba(196, 144, 10, 0.6);
+      text-underline-offset: 2px; }
+    .session__presenter button:hover { color: var(--accent-light); }
+    .session__location svg, .session__presenter svg { width: 13px; height: 13px;
+      color: var(--stone); flex-shrink: 0; }
+    .session__desc { margin-top: 0.55rem; font-size: 0.86rem;
+      color: var(--text-secondary); line-height: 1.55; display: none; }
+    .session.expanded .session__desc { display: block; }
+    .session__expand { background: none; border: none; color: var(--accent);
+      font-size: 0.78rem; font-weight: 600; padding: 0.4rem 0 0;
+      margin-top: 0.25rem; letter-spacing: 0.02em; }
+    .session__expand::after { content: ' \25BC'; font-size: 0.65rem; margin-left: 0.15rem; }
+    .session.expanded .session__expand::after { content: ' \25B2'; }
+    .session__add { position: absolute; top: 0.55rem; right: 0.55rem;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--cream); border: 1px solid var(--warm-gray);
+      color: var(--accent); font-size: 1.4rem; font-weight: 400;
+      line-height: 36px; text-align: center; padding: 0;
+      transition: all 0.18s; }
+    .session__add:hover { background: var(--accent); color: var(--cream); border-color: var(--accent); }
+    .session--saved .session__add { background: var(--accent-warm); color: var(--white); border-color: var(--accent-warm); }
+    .session--saved .session__add:hover { background: var(--rose); border-color: var(--rose); }
+    .overlap { display: inline-block; background: var(--rose-soft); color: var(--rose);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+      padding: 0.18rem 0.55rem; border-radius: 999px;
+      margin-left: 0.4rem; vertical-align: middle; }
+    .now-block { margin-bottom: 1.6rem; }
+    .now-block__h { font-family: var(--font-body); font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.13em; font-weight: 700;
+      color: var(--stone); margin-bottom: 0.5rem; }
+    .empty { background: var(--sand); border-radius: 10px; padding: 1rem 1.1rem;
+      color: var(--text-secondary); font-size: 0.9rem; font-style: italic; }
+    .you-next { background: linear-gradient(110deg, #fff5d6 0%, #fdf2dc 100%);
+      border: 1px solid var(--accent-warm-light);
+      border-left: 4px solid var(--accent-warm);
+      border-radius: 10px; padding: 0.95rem 1rem 1rem; }
+    .you-next__starts { font-size: 0.72rem; text-transform: uppercase;
+      letter-spacing: 0.1em; font-weight: 700; color: var(--accent-warm);
+      margin-bottom: 0.3rem; }
+    .you-next__title { font-family: var(--font-heading); font-size: 1.15rem;
+      font-weight: 700; line-height: 1.2; }
+    .you-next__meta { font-size: 0.83rem; color: var(--text-secondary); margin-top: 0.3rem; }
+    .my-day { margin-bottom: 1.8rem; }
+    .my-day__h { font-family: var(--font-heading); font-size: 1.15rem;
+      letter-spacing: -0.005em; color: var(--accent); margin-bottom: 0.7rem;
+      padding-bottom: 0.35rem; border-bottom: 1px solid var(--sand-deep); }
+    .my-day__h small { font-family: var(--font-body); font-size: 0.72rem;
+      color: var(--stone); font-weight: 500; margin-left: 0.4rem;
+      letter-spacing: 0.04em; }
+    .my-empty { background: var(--sand); border-radius: 12px;
+      padding: 2rem 1.2rem; text-align: center; }
+    .my-empty h3 { font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .my-empty p { color: var(--text-secondary); margin-bottom: 1rem; }
+    .my-empty button { background: var(--accent); color: var(--cream);
+      border: none; padding: 0.65rem 1.4rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; }
+    .presenter-search { width: 100%; padding: 0.7rem 0.9rem;
+      border: 1px solid var(--warm-gray); border-radius: 999px;
+      background: var(--white); font-family: inherit; font-size: 0.92rem;
+      color: var(--text); margin-bottom: 1rem; box-shadow: 0 1px 4px var(--shadow-warm); }
+    .presenter-search:focus { outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(26, 58, 74, 0.12); }
+    .presenters-list { list-style: none; }
+    .presenter-row { background: var(--white); border: 1px solid var(--warm-gray);
+      border-radius: 10px; padding: 0.75rem 0.9rem; margin-bottom: 0.55rem;
+      box-shadow: 0 1px 4px var(--shadow-warm); }
+    .presenter-row__name { font-family: var(--font-heading); font-size: 1.02rem;
+      font-weight: 700; color: var(--text); letter-spacing: -0.005em; }
+    .presenter-row__count { font-size: 0.75rem; color: var(--stone);
+      letter-spacing: 0.03em; margin-left: 0.35rem; font-weight: 500; }
+    .presenter-row__btn { background: none; border: none; width: 100%;
+      text-align: left; padding: 0; display: flex; align-items: center;
+      justify-content: space-between; }
+    .presenter-row__chev { color: var(--accent-warm); font-size: 0.9rem;
+      transition: transform 0.2s; }
+    .presenter-row.expanded .presenter-row__chev { transform: rotate(180deg); }
+    .presenter-row__body { display: none; margin-top: 0.65rem;
+      padding-top: 0.65rem; border-top: 1px solid var(--sand-deep); }
+    .presenter-row.expanded .presenter-row__body { display: block; }
+    .presenter-row__bio { font-size: 0.87rem; color: var(--text-secondary); line-height: 1.6; }
+    .presenter-row__source { display: inline-block; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700;
+      color: var(--accent-warm); background: #fdf6e1;
+      padding: 0.1rem 0.45rem; border-radius: 4px; margin-bottom: 0.55rem; }
+    .presenter-row__sessions { margin-top: 0.7rem; padding-top: 0.55rem;
+      border-top: 1px dashed var(--sand-deep); }
+    .presenter-row__sessions h4 { font-family: var(--font-body); font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--stone); font-weight: 700; margin-bottom: 0.35rem; }
+    .presenter-row__session { font-size: 0.82rem; color: var(--text); margin-bottom: 0.3rem; }
+    .presenter-row__session-meta { color: var(--text-secondary);
+      font-size: 0.74rem; letter-spacing: 0.02em; }
+    .modal { position: fixed; inset: 0; background: rgba(15, 40, 50, 0.55);
+      display: none; z-index: 100; padding: 1rem;
+      align-items: flex-end; justify-content: center; }
+    .modal.open { display: flex; }
+    .modal__inner { width: 100%; max-width: 540px; max-height: 84vh;
+      background: var(--cream); border-radius: 18px 18px 0 0;
+      padding: 1.4rem 1.3rem 1.6rem;
+      box-shadow: 0 -8px 32px rgba(15, 40, 50, 0.3);
+      overflow-y: auto;
+      animation: slideup 0.25s cubic-bezier(0.2, 0.7, 0.3, 1); }
+    @keyframes slideup { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .modal__close { float: right; background: none; border: none;
+      font-size: 1.4rem; color: var(--text-secondary);
+      padding: 0 0.2rem; line-height: 1; }
+    .modal h3 { font-family: var(--font-heading); font-size: 1.45rem;
+      letter-spacing: -0.01em; margin-bottom: 0.4rem;
+      max-width: calc(100% - 2rem); }
+    .modal__bio { font-size: 0.9rem; line-height: 1.65;
+      color: var(--text); margin-bottom: 1rem; }
+    .footer-note { margin: 2rem 1.1rem 0; padding: 1rem;
+      background: var(--sand); border-radius: 10px;
+      font-size: 0.78rem; color: var(--text-secondary);
+      text-align: center; line-height: 1.6; }
+    .footer-note a { color: var(--accent); font-weight: 600; }
+    @media (min-width: 720px) {
+      body { font-size: 17px; }
+      .container, .footer-note { max-width: 720px; margin-left: auto; margin-right: auto; }
+      .day-pills { padding-left: max(1.1rem, calc(50vw - 360px)); padding-right: max(1.1rem, calc(50vw - 360px)); }
+      header.hdr { padding-left: max(1.1rem, calc(50vw - 360px)); padding-right: max(1.1rem, calc(50vw - 360px)); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr__title">LimmudFest 2026</div>
+  <div class="hdr__meta">Ramah Darom &middot; May 21-25 &middot; Shavuot in the mountains</div>
+  <div class="hdr__clock" id="hdrClock">Loading...</div>
+</header>
+
+<main>
+  <section class="panel active" id="panel-now" data-panel="now">
+    <div class="container">
+      <h2 class="panel__title">Now &amp; up next</h2>
+      <p class="panel__sub">Clock pinned to Eastern time (Ramah Darom local).</p>
+      <div class="now-block" id="yourNextBlock"></div>
+      <div class="now-block" id="nowBlock">
+        <div class="now-block__h">Happening now</div>
+        <div id="nowList"></div>
+      </div>
+      <div class="now-block" id="upNextBlock">
+        <div class="now-block__h">Coming up</div>
+        <div id="upNextList"></div>
+      </div>
+      <div class="now-block" id="endedBlock" style="display:none">
+        <div class="now-block__h">After LimmudFest</div>
+        <div class="empty">The festival has wrapped. Browse the full schedule or your saved sessions to relive it.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-mine" data-panel="mine">
+    <div class="container">
+      <h2 class="panel__title">My schedule</h2>
+      <p class="panel__sub">Tap the <strong>+</strong> on any session to save it. Stored on this device only.</p>
+      <div id="mineBody"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-browse" data-panel="browse">
+    <div class="day-pills" id="dayPills"></div>
+    <div class="container" id="browseBody"></div>
+  </section>
+
+  <section class="panel" id="panel-presenters" data-panel="presenters">
+    <div class="container">
+      <h2 class="panel__title">Presenters</h2>
+      <input class="presenter-search" id="presenterSearch" type="search" placeholder="Search by name..." autocomplete="off">
+      <ul class="presenters-list" id="presentersList"></ul>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    Built for LimmudFest 2026 attendees by <a href="https://andrewkstein.com">Andrew K. Stein</a>.
+    Schedule and bios extracted from the official Program Guide.
+    <br>Times shown in Eastern Time regardless of device timezone.
+  </div>
+</main>
+
+<nav class="tabs" role="tablist">
+  <button class="tab" data-tab="now" aria-selected="true" role="tab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    Now
+  </button>
+  <button class="tab" data-tab="mine" role="tab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14v17l-7-4-7 4V4z"/></svg>
+    My list<span class="tab__badge" id="mineBadge" hidden></span>
+  </button>
+  <button class="tab" data-tab="browse" role="tab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+    Browse
+  </button>
+  <button class="tab" data-tab="presenters" role="tab">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 5-6 8-6s7 2 8 6"/></svg>
+    People
+  </button>
+</nav>
+
+<div class="modal" id="bioModal" role="dialog" aria-modal="true">
+  <div class="modal__inner">
+    <button class="modal__close" id="modalClose" aria-label="Close">&times;</button>
+    <h3 id="modalName"></h3>
+    <div class="modal__bio" id="modalBio"></div>
+    <div id="modalSessions"></div>
+  </div>
+</div>
+
+<script type="application/json" id="festData">{"event":"LimmudFest 2026","dates":"May 21-25, 2026","location":"Ramah Darom, Clayton, GA","timezone":"America/New_York","schedule":[{"day":"Thursday","label":"May 21, 2026","iso":"2026-05-21","slots":[{"time":"3:00-6:00pm","sessions":[]},{"time":"5:15-6:00pm","sessions":[]},{"time":"5:30-6:45pm","sessions":[{"title":"Family Gaga Tournament & Playground Time","presenter":null,"description":"Play gaga (ages 6 and up) or enjoy the playground (ages 5 and under) and schmooze with other parents while the kiddos play. Parental supervision required.","location":"Lower Roads Gaga Pit & Gan"},{"title":"Guided Meditation—Start Limmud with Presence","presenter":"Andrew Stein","description":"Judaism and meditation are like bagels and cream cheese. It was Buddhism-curious Jews in the 70s (like Goldstein, Kornfield, and Salzberg) who brought mindfulness to the West. Join this annual session as we carry their torch, exploring a \"non-dualism\" path which treats meditation not as a fancy stress ball but as a personal Large Hadron Collider: a tool for making profound discoveries about the nature of our own minds. All are welcome, beginners and veteran sitters alike.","location":"Y oga & Dance Studio"},{"title":"Sensory Mikvah—A Ritual of Renewal","presenter":"Bekah Starr","description":"In this gentle, immersive workshop, we’ll explore the practice of mikvah; its history, symbolism, and role in spiritual renewal and transformation. Instead of full-body immersion, we’ll create a sensory ritual using sacred water, blessing our senses (touch, sight, smell, sound, and taste), inner knowing, and more! This accessible practice offers space for reflection, pause, and reconnection with self and spirit, leaving you feeling grounded, refreshed, and ready to move into Shavuot and Shabbat.","location":"Margam (Lakeside Pavilion)"},{"title":"Write a New Liturgical Melody","presenter":"Cary Reich","description":"Explore how to put a creative spin on a prayer, Torah, or Haftorah passage.","location":"Beit Knesset (Synagogue)"}]},{"time":"6:00-6:45pm","sessions":[{"title":"Let's Connect! Speed Story Sharing","presenter":"Donna Friedman Meir","description":"Whether you are attending LimmudFest for the first time or are a veteran, join us for a casual, fun, interactive, and inspiring way to kick off the weekend and meet some new people! We’ll deepen our connection with one another through sharing personal stories. No preparation or storytelling experience required, just bring your open heart, playful spirit, and life experience. Open to ages 12+.","location":"Program Center Lounge"}]},{"time":"6:30-7:00pm","sessions":[{"title":"Meet the Counselors","presenter":null,"description":null,"location":"K & Under: Story Time Moadon (Multipurpose Room) 1st-2nd: Get-to-Know-Y ou Games Mercaz Aryeh (Library) 3rd-4th: Get-to-Know-Y ou Games Y oga & Dance Studio Middle School: Icebreakers & Oneg Time Lakeside Chadar Ochel (Dining Hall)"}]},{"time":"7:00-8:15pm","sessions":[{"title":"Welcome & Pre-Shavuot Dinner","presenter":null,"description":null,"location":"Chadar Ochel (Dining Hall)"}]},{"time":"7:45-8:15pm","sessions":[{"title":"Individual Candle Lighting Available","presenter":null,"description":"Candles are available during this time for those who wish to light individually. Candle lighting in Clayton, GA is at 8:16pm.","location":null}]},{"time":"8:16pm","sessions":[]},{"time":"8:30-9:00pm","sessions":[]},{"time":"9:00-11:00pm","sessions":[]},{"time":"9:05-9:45pm","sessions":[]},{"time":"9:45-10:35pm","sessions":[{"title":"Eco-Judaism (Is there any other kind?!)—Torah, Climate, Biosphere & Us","presenter":"Fred Scherlander Dobb","description":"Ecology means “study of the house,” known variously as Earth, nature, existence, and Creation. Most other disciplines or endeavors are essentially subsets of it, with an asterisk around theology and Torah – so we’ll put these foundational topics side by side! How might our sacred texts, practices, and values inform this environmentally-imperiled era, and how can emphasizing the “eco” bring new life to Judaism? Let’s explore, together.","location":"Moadon (Multipurpose Room)"},{"title":"On the Origins of Tikkun Leil Shavuot","presenter":"Edward Queen","description":"While many commemorate Shavuot with study, why we do so is often ignored. This session examines the sources of Tikkun Leil Shavuot from ancient Alexandria to Salonica to Tzfat and thence to the wider Jewish world. It also reflects on the “original” Shavuot study guide as established, according to tradition, by Rabbi Yitzchak Luria as a journey through the Tanakh. Oh, yeah, we will also talk about the role of coffee.","location":"Mercaz Aryeh (Library)"},{"title":"Not Just Black & White—Southern Jews Caught in the Civil Rights Battleground","presenter":"Larry Brook","description":"While the civil rights era is generally thought of in terms of black and white, the Southern Jewish community was caught in the middle. While people think Black-Jewish cooperation was either close or nonexistent, the reality was a lot more complicated. There was also a North-South divide as Southern Jews were resentful of the precarious position northern activists put them in, while their livelihoods were threatened by boycotts from both sides, along with the possibility — and reality — of retaliatory Klan bombings. Nevertheless, many Southern Jews were active behind the scenes, often facing near-impossible odds as Jim Crow was being pushed aside.","location":"Beit Knesset (Synagogue)"},{"title":"Late Night Kid-Friendly Shavuot Scavenger Hunt","presenter":null,"description":"Great for campers in 5th grade and up!","location":"Meet at Volleyball Court"}]},{"time":"10:45pm-12:00am","sessions":[{"title":"How To Give the Gift of Wisdom","presenter":"Ayal Robkin","description":"What does it take to preserve and learn wisdom—not just to study, but to be transformed by it? Drawing on a rich rabbinic meditation on the verse “Haskeit u’shema Yisrael” (“Be still and hear, Israel”), this session explores the spiritual craft of learning through the eyes of the sages. Together we’ll uncover the profound origins of learning in chevruta—in partnership— and the mindset our tradition demands: a continuously renewed sense of wonder, listening before speaking, humility in the face of correction, and the courage to wrestle for understanding.","location":"Mercaz Aryeh (Library)"},{"title":"One Holiday, Many Texts—Learning to Navigate Jewish Sources","presenter":"Kat Shambaugh","description":"What’s the difference between Torah and Tanakh — or Midrash and Mishnah? What’s really going on in the Talmud? And who was Rashi anyway? Using the story of Shavuot as our guide, this beginner-friendly session will help you untangle Jewish texts, learn practical reading and analysis techniques, and leave with tools to bring Jewish learning into your everyday life. No Hebrew knowledge necessary.","location":"Moadon (Multipurpose Room)"},{"title":"Torah Markings, Serifs & Special Characters, Oh My!","presenter":"Howie Slomka","description":"As we celebrate the gift of the Torah, we will explore places where the Torah hides secret calligraphy. Why are some letters oversized, undersized, or in some cases missing? Why are some words written one way but pronounced another way? We will unroll a sefer Torah and examine the idiosyncrasies.","location":"Beit Knesset (Synagogue)"}]},{"time":"12:00am-Sunrise","sessions":[{"title":"Mingling & Mixing on The Porch","presenter":null,"description":"Hang out, sing, and spend time with LimmudFest friends into the late hours of the night. Alcoholic and non-alcoholic beverages will be available starting at 9:45pm. No musical instruments please!","location":"Levine Center Porch"},{"title":"Tikkun Leil Shavuot \"All-Night\" Learning","presenter":null,"description":"For some, Torah learning on Shavuot goes until the break of dawn. Stay up as long as you would like learning on your own or in chevruta (pairs or small groups) using Hadar's Project Zug Shavuot Companion or other \"ready-to-study\" materials. Thought-provoking study sheets accessible for people of all Jewish backgrounds include: \"To Share or Not to Share: The Torah of Social Media\", \"Money and Power, Tzedakah - The Jewish Approach to Giving\", \"The Torah of Music\", and \"Visiting the Sick - A Talmudic Exploration.\"","location":"Mercaz Aryeh (Library)"}]}]},{"day":"Friday","label":"May 22, 2026","iso":"2026-05-22","slots":[{"time":"8:30-9:30am","sessions":[]},{"time":"9:30-11:45am","sessions":[{"title":"Y om Tov Services—Mechitza Minyan","presenter":null,"description":null,"location":"Mirpeset Tefillah (Lower Roads Pavilion)"}]},{"time":"9:30-10:45am","sessions":[{"title":"Nature Hike for Shavuot—If Not Sinai, Then the Appalachians","presenter":"Amy Price & Fred Scherlinder Dobb","description":"Beauty, meaning, and inspiration are all around us. This hike gives us the opportunity to thank G!d “for Your miracles that are every day with us”—we’re talking photosynthesis, mountains, flora and fauna (including us), cycles, poetry, you name it. We’ll notice these miracles, together, on the trail as we use text and trees, silence and song, observation, and collaboration to exercise our bodies, minds, and souls. Wear good shoes, and be ready to get in tune with a truly Divine landscape. There will be one water crossing. All ages welcome.","location":"Meet at Levine Center Portico"}]},{"time":"10:00-10:30am","sessions":[{"title":"Tot Shavuot Service","presenter":null,"description":"Great for ages 5 and under with their grown-ups. Sing, pray,","location":"learn, and enjoy! Moadon (Multipurpose Room)"}]},{"time":"11:45am-12:25pm","sessions":[{"title":"Campus Tour","presenter":null,"description":"Still figuring out the lay of the land? Take a guided stroll through the campus to see all the amenities and points of interest.","location":"Meet at Levine Center Portico Family Soccer Game Kikar (Activity Field)"}]},{"time":"12:30-1:30pm","sessions":[]},{"time":"12:45-1:30pm","sessions":[{"title":"Lunch & Learn—Talmud at the Table Shavuot Edition Day 1","presenter":"Kat Shambaugh","description":"Celebrate Shavuot with a taste of Talmud! We’ll explore selections from masechet Shabbat and dive into the rabbis’ take on the giving of the Ten Commandments at Sinai. No Hebrew or Talmud experience needed. Bring your lunch, enjoy clear explanations, lively discussion, and a first-time-friendly introduction to the wisdom of the sages. Attend one or attend all three days!","location":"Lakeside Chadar Ochel (Dining Hall)"}]},{"time":"1:20-1:30pm","sessions":[]},{"time":"1:30-5:30pm","sessions":[]},{"time":"1:30-2:45pm","sessions":[{"title":"Bad Habits from the Garden of Eden","presenter":"Ayal Robkin","description":"The story of Adam and Eve offers a powerful metaphor for the ways we try to escape our most painful emotions. Faced with shame and fear, they hide—just as we often hide from ourselves and from others rather than confronting those difficult feelings directly. This avoidance can trap us in harmful patterns, preventing us from growth. Teshuva—the practice of returning—invites us to do the opposite. Instead of running away, we turn back: to ourselves, to one another, and to God.","location":"Moadon (Multipurpose Room)"},{"title":"Eco-Mussar—Goading & Guiding toward Sustainability","presenter":"Fred Scherlinder Dobb","description":"Spirituality, ethics, and psychology unite within Mussar, Judaism’s great set of teachings and practices that tie Torah to self-improvement. Eminently useful for the individual, there’s under-explored potential for macro-Mussar, too. We’ll delve into core attributes and orientations (middot) like anavah/humility, kavod/honor, achrayut/responsibility, and emet/truth, as they pertain to people and planet alike. No experience needed, though starting or redoubling a Mussar practice may well follow.","location":"Margam (Lakeside Pavilion)"},{"title":"Sentimental, Futile & Risky—The Long Jewish Fight Over Antisemitism","presenter":"Arno Rosenfeld","description":"The deep divides over how American Jews should respond to antisemitism may seem like a new phenomenon, but they've been simmering since the early 20th Century. This talk will survey debates largely lost to history — over how to confront Henry Ford in the 1920s, the Nazis in the 1930s, and Communism and the Civil Rights Movement in the post-war era — and explain how they shape contemporary disputes over antisemitism.","location":"Beit Knesset (Synagogue)"},{"title":"Understanding Hebrew & Yiddish First Names","presenter":"Janette Silverman","description":"Sometimes researching Jewish families feels as if one has entered a Russian novel: there are foreign-sounding names and seemingly unrelated nicknames. There are names used in official government records, names used with family or friends, names reserved for ritual purposes. We will discuss some Ashkenazic naming traditions including differences between secular and religious names, relationships between pairs of given names, nicknames, diminutives, and the Americanization of Eastern European first names.","location":"Program Center Lounge"}]},{"time":"3:00-4:00pm","sessions":[{"title":"All Y ou Need Is Love?","presenter":"Dov Rosenblatt","description":"Does pop music shape our values more than Torah does? Modern music influences how we think about love, identity, freedom, and truth. In this interactive session, we’ll explore familiar lyrics through a Jewish lens—asking where Judaism affirms, challenges, or deepens the messages we absorb every day.","location":"Moadon (Multipurpose Room)"},{"title":"The Learner's Toolkit—Skills for Every Beit Midrash","presenter":"Liana Wertman","description":"Whether you're studying in a traditional yeshiva, a havurah in someone's living room, or on your own at the kitchen table, the skills that transform casual reading into life-changing learning are within you. This session reveals how to make your learning more intentional, offers practical techniques, and will make you a more discerning and engaged learner. Walk away with tools you can use, no matter where your learning happens. This session is made possible thanks to the generosity of The Covenant Foundation.","location":"Beit Knesset (Synagogue)"},{"title":"The Scent of Sinai","presenter":"Margie Jacobs","description":"What new Torah might we receive when we consider not only the sounds and sights, but also the scents of Sinai? This session will include a mindful exploration of smell, Talmud, and Zohar text study.","location":"Program Center Lounge"},{"title":"Grazing Table Creation","presenter":"Eliana Leader","description":"Celebrate the \"dairy of it all\" by chopping, placing, and tasting (as you go) to create a beautiful grazing table that will be served as the afternoon snack to the Limmud community.","location":"Chadar Ochel (Dining Hall)"},{"title":"Join the Catchball Fun!","presenter":"Netta Cohen & Maital Guttman","description":"Learn the basics of catchball! We’ll practice serving, catching, spiking, and blocking. After a few quick drills, we’ll jump right into a game. All levels welcome.","location":"Volleyball Court"}]},{"time":"4:00-4:15pm","sessions":[]},{"time":"4:15-5:30pm","sessions":[{"title":"Divine Wealth—Where G-d, Finances & Creativity Meet","presenter":"Aura Rosenblatt","description":"What does Judaism teach about money and creative flow? In this session, we'll explore where bitachon (trust in Hashem) and hishtadlut (personal effort) intersect with financial responsibility—and how Julia Cameron's \"The Artist's Way\" unlocks our ability to receive. Drawing on Torah wisdom and the Divine Wealth podcast, we'll examine how morning pages, creative recovery, and trust in G-d transform scarcity and anxiety into clarity, spiritual confidence, and abundant living.","location":"Margam (Lakeside Pavilion)"},{"title":"History of Iran & its Iranian Jewry","presenter":"Lior Sternfeld","description":"This session will discuss Iran's modern history, specifically from the 19th century. It will cover major events and developments, national trauma, politics, and culture, and weave the Jewish community into this story. We will discuss the Iranian Revolution of 1979, the emergence of the Islamic Republic and what it meant for Iranians in general, but also for Iranian Jews and other minorities.","location":"Beit Knesset (Synagogue)"},{"title":"Monster Mash—A Tour of Judaism’s Strangest Creatures","presenter":"Kat Shambaugh","description":"Jewish tradition, from the Torah to later folklore, has its share of monsters: colossal sea serpents, demons that leave footprints like chickens, vampiric women of the night, and other strange beings lurking in the shadows. In this session we’ll dive into Judaism’s supernatural bestiary and discover what these creatures reveal about fear, spirituality, and what it means to be human.","location":"Program Center Lounge"},{"title":"Revelation Meditation","presenter":"Lauren Henderson","description":"The main image we associate with Shavuot (besides the Torah itself!) is the image of Mt. Sinai - a journey upward and outward to receive Torah. But we can also think about receiving Torah as a journey inward, into the vast depths of our bodies and hearts. We'll explore a midrash that describes learning Torah as an inner journey, and then do a guided meditation to get in touch with our own inner wisdom.","location":"Y oga & Dance Studio"}]},{"time":"5:30-5:45pm","sessions":[]},{"time":"5:30-6:30pm","sessions":[]},{"time":"6:30-7:00pm","sessions":[]},{"time":"7:00-8:00pm","sessions":[]},{"time":"8:15-8:45pm","sessions":[{"title":"Shabbat & Y om Tov Maariv & Kiddush—Mechitza Minyan","presenter":null,"description":null,"location":"Moadon (Multipurpose Room)"}]},{"time":"8:45-9:45pm","sessions":[{"title":"Comedy & Community","presenter":"Aaron Friedman","description":"Our most famous Jewish prayer is the Sh’ma, or \"Listen\"... but how good are we at really listening to each other? In this session we'll play partner & group \"Mitzprov\" games together to become better listeners, build stronger connections, and learn more about ourselves. Sweet Tea & Schmaltz—A Southern Take on Jewish Cuisine with Marisa Baggett: What happens when Southern flavors meet Jewish tradition? Drawing on her Mississippi roots, Marisa Baggett explores the creative and cultural possibilities that emerge when these two worlds intersect. From familiar ingredients used in new ways to questions of tradition and adaptation, this session invites you to rethink what \"traditional\" can mean.","location":"Beit Knesset (Synagogue)"},{"title":"Shabbat Tisch","presenter":"Lauren Henderson & Amy Robertson","description":"Join this joyous Shabbat tradition, usually around the table - a time for singing, drinking, and celebrating Shabbat. Grab a beverage of your choice. We'll learn to sing niggunim (wordless tunes) and zemirot (songs), with a little Torah here and there. Have a story, song, or favorite melody to teach? Just want to listen? Come on in and share a \"L'chaim\" with fellow Limmudniks and make new friends.","location":"Tent"}]},{"time":"9:15-11:15pm","sessions":[]},{"time":"9:45-11:00pm","sessions":[{"title":"Flowers Aren’t Enough—A One-Woman Show","presenter":"Naomi Ackerman","description":"Flowers Aren’t Enough tells Michal’s powerful story of surviving an abusive relationship. Based on true stories and voices from diverse cultures, this show has been performed worldwide, in four languages, over 2,000 times, raising awareness and touching hearts across seven continents. This is a call to empathy, action, and change. This session is made possible thanks to the generosity of The Covenant Foundation.","location":"Beit Knesset (Synagogue)"},{"title":"Iran-Israel History & Current Relations","presenter":"Lior Sternfeld","description":"Iran was the second Muslim country to recognize Israel in 1949, and Israel's closest regional ally until 1979. What in the history of those relations can be understood as a precursor to the radical shift after 1979? This talk will analyze the history of the two countries, the role of the 1979 Camp David Accords in Israel's realignment, the relations between Israel and the Islamic Republic during the 1980s, and how to understand the tensions that peaked in the past 2.5 years, especially since June 2025.","location":"Moadon (Multipurpose Room)"},{"title":"Revelation in the Face of the Other","presenter":"Margie Jacobs","description":"In recent years, our access to direct encounter with each other's faces has been limited by COVID masks, Zoom screens, political differences, and more. This session explores what it means to truly see and be seen, face to face by considering the moment of revelation at Sinai. What might we learn about our own glimpses of the Divine and of wisdom (Torah) through the lens of the archetypal narrative of Sinai?","location":"Mercaz Aryeh (Library)"}]},{"time":"10:45-11:30pm","sessions":[{"title":"Shavuot Trivia for Grades K & Up","presenter":null,"description":"Campers are encouraged to join a fun game for an alternative and age-appropriate experience to traditional services.","location":"Playground Time: For kids ages 5 and under with parental supervision. Gan"}]},{"time":"11:00pm-12:00am","sessions":[{"title":"Mingling & Mixing on The Porch","presenter":null,"description":"Hang out, sing, and spend time with LimmudFest friends into the late hours of the night. Alcoholic and non-alcoholic beverages will be available starting at 9:30pm. No musical instruments please.","location":"Levine Center Porch"}]}]},{"day":"Saturday","label":"May 23, 2026","iso":"2026-05-23","slots":[{"time":"8:30-9:30am","sessions":[]},{"time":"9:30am-12:15pm","sessions":[{"title":"Shabbat & Y om Tov Services—Mechitza Minyan","presenter":null,"description":null,"location":"Mirpeset Tefillah (Lower Roads Pavilion)"}]},{"time":"9:30-10:30am","sessions":[{"title":"Chant Shabbat Service","presenter":"Reuben Haller & McKenzie Wren","description":"Join us for a peaceful meditative Shabbat morning chant service, using words drawn from psalms and liturgy. The melodies are beautiful, simple, and easy to learn. All are welcome!","location":"Margam (Lakeside Pavilion)"}]},{"time":"10:00-10:30am","sessions":[{"title":"Tot Shabbat","presenter":null,"description":"Great for ages 5 and under with their grown-ups. Sing, pray, learn, and enjoy!","location":"Moadon (Multiprupose Room)"}]},{"time":"10:45-11:30am","sessions":[{"title":"Musical Shabbat Morning","presenter":"Lauren Henderson & Amy Robertson & Drew Cohen","description":"Join Congregation Or Hadash’s Tefillah team for an experience of communal prayer through song. Let’s celebrate Shabbat with spirit and harmony. Enjoy some new and perhaps some familiar melodies as we raise our voices together in community and praise. Acoustic instruments will be used.","location":"Moadon (Multipurpose Room) Playground Time: For kids ages 5 and under with parental supervision. Gan"},{"title":"Feel the Tefillah—A Service for Children & Parents","presenter":"Aaron Friedman","description":"For ages 5-12 and their adults! Join The Bible Players' relaxed family-friendly Tefillot workshop focused on experiential education. Enjoy interactive \"Mitzprov\" exercises to help children and adults alike connect with the stories and sentiments behind the prayers. Activities include a \"Hands-On Sh'ma\", Amidah Ancestors Walk, and \"Todah Rabbah\" gratitude exercise.","location":"Margam (Lakeside Pavilion)"}]},{"time":"11:45am-12:25pm","sessions":[{"title":"D'var Slam—3 Minute Pearls of Wisdom","presenter":"Howie Slomka","description":"At LimmudFest we are all teachers and learners, but especially at this session! Come to share and learn from your fellow Limmudniks. Like an open mic night at Yeshiva...come ready to share a favorite lesson, teaching, story, or a song. All are welcome to lead and learn. The 3 minute time limit is strictly enforced!","location":"Lakeside Chadar Ochel (Dining Hall)"},{"title":"Chess for All","presenter":"Oriel Kistenberg & Noam Guttman","description":"Join Noam and Ori as they teach you the basics! There will be boards and opportunities to play. All skill levels welcome!","location":"Mercaz Aryeh (Library) Family Ultimate Frisbee Game Kikar (Activity Field)"}]},{"time":"12:30-1:30pm","sessions":[]},{"time":"12:45-1:30pm","sessions":[{"title":"Lunch & Learn—Talmud At The Table Shavuot Edition Day 2","presenter":"Kat Shambaugh","description":"Celebrate Shavuot with a taste of Talmud! We’ll explore selections from masechet Shabbat and dive into the rabbis’ take on the giving of the Ten Commandments at Sinai. No Hebrew or Talmud experience needed. Bring your lunch, enjoy clear explanations, lively discussion, and a first-time-friendly introduction to the wisdom of the sages.","location":"Lakeside Chadar Ochel (Dining Hall)"}]},{"time":"1:20-1:30pm","sessions":[]},{"time":"1:30-5:30pm","sessions":[]},{"time":"1:30-2:45pm","sessions":[{"title":"Cards on the Table—Exploring Jewish Educational Decks","presenter":"Kelly Cohen","description":"From Israel to Jewish values to conversation prompts and images, card decks spark learning in dynamic, accessible ways. This interactive session invites participants to explore a curated collection of Jewish educational card decks and experience their different approaches firsthand. This session is not just for educators; it offers a chance to learn for yourself, discover new ideas, and engage Jewish content through creative, flexible tools that spark meaningful conversation across ages and settings.","location":"Program Center Lounge"},{"title":"Have a Voice. Be a Voice.","presenter":"Naomi Ackerman","description":"This is an interactive, drama-based workshop that uses theater, storytelling, and facilitated dialogue to teach practical communication and relationship-building skills. Participants are invited to explore what it means to find their voice and how to use it with intention, courage, and responsibility. Through a Jewish lens, the workshop weaves together text study, conversation, and embodied practice to examine questions of justice, power, and accountability. This session is made possible thanks to the generosity of The Covenant Foundation.","location":"Moadon (Multipurpose Room)"},{"title":"They Like Us! They Really Like Us?","presenter":"Larry Brook","description":"Christian attitudes toward Jews and Judaism have undergone a sea change over the last few decades. Though there is a proliferation of Christians who express love and solidarity with the Jewish people, and huge support for Israel, many in the Jewish community are unsure how to react and question their motives (not to mention how most are on the \"other end\" of the political spectrum) — and many Christians are surprised by the skepticism they often encounter. This talk explores the massive shift in Christian attitudes, and looks at Christian Zionists and who they really are –and aren’t.","location":"Lakeside Chadar Ochel (Dining Hall)"},{"title":"What Our Laughter Reveals About Our Beliefs","presenter":"Ira Bedzow","description":"What do different types of laughter convey? In this session, we’ll explore how similar reactions can carry very different meanings and what that reveals about how we interpret our experiences. Turning to Genesis 17–18, we’ll examine two moments of surprising news met with laughter, unpacking how each character’s perception shaped their response. Together, we’ll consider what our own reactions say about how we make meaning in moments of uncertainty, surprise, and possibility.","location":"Beit Knesset (Synagogue)"}]},{"time":"3:00-4:00pm","sessions":[{"title":"A Chasidic Story—Exploring One Tale & its Mysteries","presenter":"Nesanel Segal","description":"Three Chasidic masters – Yisrael Ba’al Shem Tov, his disciple, Dovber the Maggid of Mezritch, and one of the Maggid’s disciples, Rebbe Moshe Leib of Sasov, face similar matters of life and death, but have diminishing means to avert the danger. Rebbe Moshe Leib of Sasov is helpless except to tell the stories of his predecessors. With G-d’s help, the danger is once again averted. Versions of this well-known Chassidic tale have circulated widely. Nesanel presents its authentic version, explores how a chasid hears it, and reviews several literary treatments.","location":"Mercaz Aryeh (Library)"},{"title":"Mayim Chaim—A Hike, Immersion & Sacred Pause for Women","presenter":"Amy Price & Eliana Leader","description":"Come walk, wade, and reflect in a guided journey of renewal for female-identifying participants. We’ll hike together to Kilby Mill, where we’ll explore the meaning of mayim chaim—living waters—as both a source of Jewish ritual and a symbol of personal transformation. Along the way, we’ll engage with texts that speak to cycles of release and renewal, culminating in an optional mikvah-inspired immersion and musical closing ritual. Bring a towel and anything you’d like to offer to the water as part of your own intention-setting or letting go.","location":"Meet at Levine Center Portico"},{"title":"A Multidimensional Story about a Multidimensional Man","presenter":"Judy Robkin","description":"Experience Judy's one-of-a-kind interactive artist’s book that brings the story of her father, Henry Birnbrey, to life without a single word. From his childhood in Germany, through his experience in the Holocaust and World War II, to his final days in Atlanta, the book invites the viewer in through sculptural, three-dimensional pages that unfold, lift, and invite touch. Every element has been crafted with intention, transforming memory into movement and silence into storytelling.","location":"Program Center Lounge"},{"title":"Revelation Through Listening","presenter":"Margie Jacobs","description":"The Torah relays that there was a great voice without end at Sinai. We might understand from this that our voices, in conversation with each other, are a continuation of Sinai. How do we hear and speak to each other? It can be challenging to take in the “Torah” that another person offers, especially when it conflicts with our own values or ideas. In this session, we will explore Torah, rabbinic, mystical, and contemporary wisdom to inform how we might productively listen to each other.","location":"Margam (Lakeside Pavilion)"}]},{"time":"4:00-4:15pm","sessions":[]},{"time":"4:15-5:30pm","sessions":[{"title":"The God of War","presenter":"Ayal Robkin","description":"At the Song of the Sea, we encounter a jarring image: God is not praised for the gift of liberty, but for His prowess as an Ish Milchama—a \"Man of War.\" In a tradition where one Midrashic voice cries out \"Great is peace\" in twenty different ways, this celebration of martial might feels like a theological contradiction. Yet, this very Midrash offers a remarkable resolution that reimagines the very nature of Passover. It suggests that the human \"Man of War\" and the Divine \"Man of War\" are complete inverses of one another. Join us as we explore how the Exodus redefines what it means to \"emulate God\"—finding the strength to bear the burden of conflict alone, while recognizing that true peace is never a solo act, but a shared, universal effort.","location":"Program Center Lounge"},{"title":"The Kitchen as a Place of Practice","presenter":"Marisa Baggett","description":"As an adult embracing Judaism, Marisa Baggett reflects on immersing herself in Jewish food traditions that helped shape her identity and practice.","location":"Moadon (Multipurpose Room)"},{"title":"Primer on the Upcoming Israeli Elections","presenter":"Lior Sternfeld","description":"We'll go over the lead-up to the elections and which parties are in the running. What are the agendas and platforms? What are the possibilities ahead? How do the elections work?","location":"Beit Knesset (Synagogue)"},{"title":"Chodesh Sivan Moon Circle","presenter":"Aura Rosenblatt for Women Only","description":"Chodesh Sivan carries the energy of revelation, alignment, and receiving Torah anew. In this interactive Moon Circle, we’ll explore the spiritual themes of the month and how to consciously harness its energy for personal growth, clarity, and purpose. Through teaching, guided reflection, and facilitated discussion, participants will deepen their connection to the moment.","location":"Margam (Lakeside Pavilion)"},{"title":"Or Hadash Community Schmooze","presenter":"Lauren Henderson","description":"If you're part of the Or Hadash community in Atlanta, or curious about the Or Hadash community, come on down! We'll gather together for sweet treats and a little learning and mainly time to connect as a smaller community.","location":"Lakeside Chadar Ochel (Dining Hall)"}]},{"time":"5:45-6:15pm","sessions":[]},{"time":"6:15-6:25pm","sessions":[]},{"time":"6:30-7:30pm","sessions":[]},{"time":"7:30-8:00pm","sessions":[{"title":"PJ Library Bedtime Story","presenter":null,"description":"Families with young children are invited to a late-night storytime. Pajama attire encouraged!","location":"Mercaz Aryeh (Library)"}]},{"time":"7:45-9:00pm","sessions":[{"title":"Building Grit in Midlife","presenter":"Ana Robbins","description":"What if the second half of life is the best time to build grit? In this interactive session, participants will explore why grit becomes harder—and more important—as we age, and how intentionally choosing hard challenges can unlock creativity, courage, and stamina in our professional and personal lives. Through storytelling, reflection, and hands-on exercises, participants will: learn practical strategies for building endurance in leadership and life, identify the “hard things” that can stretch them in this stage of life, practice tools for staying steady when the trail gets long and uncertain, and more! Whether your mountain is professional, personal, or physical, this session will leave you with a renewed sense that grit is not something we lose with age—it’s something we can build.","location":"Moadon (Multipurpose Room)"},{"title":"Stories They Never Told Us","presenter":"Janette Silverman","description":"Most American families were immigrants, leaving behind their ancestral homes in search of a better life. What did a better life mean? Maybe your ancestors left their homes to escape poverty or pogroms. What did they do when they arrived in their new home? How did they integrate into a new society, learn a new language, adapt to cultural and religious changes? This talk is based on the speaker's book \"Stories They Never Told Us\" and explores what happened to four families who left Europe between the 1890s and the 1920s and settled in the U.S. Maintaining familial ties with those who remained in Europe but also with those who scattered throughout the world posed challenges for their descendants - how do we find our ancestral families in Europe, how do we find their descendants who left?","location":"Beit Knesset (Synagogue)"},{"title":"Zamru—Song Circle","presenter":"Lauren Henderson & Amy Robertson","description":"Join us to escort the Sabbath Queen on her way with song, as we move from Shabbat into Havdallah. Our melodies will be simple, often wordless, and will invite our bodies and souls fully into this particular moment in time: a season when we seek closeness to God, our time of revelation, the beginning of summer’s abundance, the warm evening. No singing experience needed!","location":"Tent"}]},{"time":"7:45-8:45pm","sessions":[]},{"time":"9:00-9:15pm","sessions":[]},{"time":"9:15-11:15pm","sessions":[]},{"time":"9:15-10:00pm","sessions":[{"title":"Havdallah, Rikud & S'mores","presenter":null,"description":"As we leave behind a memorable Shabbat and Shavuot, join friends old and new for a musical ceremony and treats to welcome in the new week. Too late for the little ones? Don't worry, there will be an opportunity for havdallah and s'mores tomorrow morning (Sunday!) during kids camp for ages 3-2nd grade.","location":"Beit Am Fire Rings"}]},{"time":"10:00-11:00pm","sessions":[{"title":"Sippin' & Smokin'","presenter":"Paul Flexner & Jerry Blumenthal","description":"An evening of savoring single malt or single barrel and cigars overlooking the lake as we remember the characters of our past–Winston Churchill, Groucho Marx, Milton Berle, and George Burns (Who remembers them?). Enjoy the taste and smells of our rich heritage as we pass the night away and share stories and a bit of tradition. Participants are welcome to bring their own smokes and/or bottles for sharing.","location":"Margam (Lakeside Pavilion)"},{"title":"Torah (Art) Studio—Commentary Beyond Words","presenter":"Liana Wertman","description":"What if understanding Torah requires more than just reading and talking about it? In this hands-on session, we'll explore a text together and then pick up pens, markers, scissors, or glue to create art that becomes a commentary on what we've learned. You don't need to be an “artist;” you just need to be curious. Through the act of creating, we’ll unlock layers of meaning that discussion alone can't reach. No art or Torah experience required! This session is made possible thanks to the generosity of The Covenant Foundation.","location":"Tent"},{"title":"Trivia Night","presenter":"Shai Robkin","description":"Enjoy a classic bar trivia night with some Shavuot inspiration.","location":"Lakeside Chadar Ochel (Dining Hall)"},{"title":"Y oung Adult Post-Havdallah Mixer","presenter":"Moishe House hosted by Anne Still & Avi Lyons","description":"Calling all young adults! Join the residents of Moishe House Toco Hills for a social hour following Havdallah. Schmooze with other attendees at LimmudFest, and get plugged into the Atlanta Jewish young adult community to keep the party going beyond Memorial Day weekend.","location":"Moadon (Multipurpose Room)"}]},{"time":"11:00pm-12:00am","sessions":[{"title":"UnKosher Comedy Show (Rated Reish)","presenter":"Aaron Friedman","description":"Laugh your tuchus off with stand-up comedy and improv.","location":"Lakeside Chadar Ochel (Dining Hall)"},{"title":"Porch Bar, Schmooze & Jam","presenter":null,"description":"Bring your own instruments! Alcoholic and non-","location":"alcoholic beverages will be available starting at 9:30pm. Levine Center Porch"}]}]},{"day":"Sunday","label":"May 24, 2026","iso":"2026-05-24","slots":[{"time":"8:00-8:45am","sessions":[]},{"time":"8:30-9:30am","sessions":[]},{"time":"9:20-9:30am","sessions":[]},{"time":"9:30-11:30am","sessions":[{"title":"*Adult Art—Mini-Acrylic Masterpieces","presenter":"Judy Robkin","description":"Transform 4\" × 4\" wood tiles into eye-catching artworks using unconventional tools like credit cards, toothpicks, or whatever odds and ends spark your imagination. The tiny canvas invites big creativity as you swipe, scrape, dot, and drag your way to surprising textures and vibrant abstracts. *Advanced sign-up required.","location":"Omanut (Art Building)"}]},{"time":"9:30-10:45am","sessions":[{"title":"*Adult Art—Torn Paper Landscapes","presenter":"McKenzie Wren","description":"Create torn paper collage landscapes by exploring shadow and light. Working with values rather than images, we'll play with color, shadow, light, and depth to produce gorgeous seascapes, mountainscapes, or any landscape of your imagination. No prior experience necessary. *Advance sign-up required.","location":"Omanut (Art Building)"},{"title":"American Jewish Relationship with Zionism","presenter":"Dov Wilker","description":"Zionism has never meant just one thing—and the American Jewish relationship with it has evolved over time. This session invites an open, thoughtful exploration of how Zionism has been embraced, debated, redefined, and contested within the American Jewish community. Together, we will consider history, identity, and lived experience, and reflect on what it means to engage with Zionism today—on our own terms.","location":"Beit Knesset (Synagogue)"},{"title":"Cheese Making","presenter":"Amy Price","description":"Come learn about the tradition of eating cheese on Shavuot while we learn to make ricotta and farmer's cheese.","location":"Lakeside Chadar Ochel (Dining Hall)"},{"title":"From Redemption to Prayer—Why the Silence Matters","presenter":"Ira Bedzow","description":"Why must we not interrupt between “Ga’al Yisrael” and the Amidah, even to say “Amen”? In this session, we’ll explore the origins of this practice and what it reveals about the relationship between redemption and prayer. Through both halakhic and theological lenses, we’ll uncover why this brief moment of silence carries deep meaning and what it teaches us about how the hope for redemption shapes the very act of turning to God.","location":"Moadon (Multipurpose Room)"},{"title":"Y our Voice is Y our Power. The Work of ADVOT","presenter":"Naomi Ackerman","description":"How can art be a catalyst for change? ADVOT (meaning “ripples” in Hebrew) is a Los Angeles–based nonprofit that uses theater and the arts to empower incarcerated and system-impacted youth to find their voices, build healthy relationships, and imagine new possibilities for their lives. In this session, we’ll share ADVOT’s Ripple Method and the impact of using storytelling and performance as tools for growth and transformation. Through real-world examples, we’ll explore how supporting one young person can create ripples that extend outward — shaping families, communities, and the world beyond. This session is made possible thanks to the generosity of The Covenant Foundation.","location":"Program Center Conference Room"}]},{"time":"11:00am-12:15pm","sessions":[{"title":"Beginnings","presenter":"Margie Jacobs","description":"Many of us know how it all began: “In the beginning…” But the first word of the Torah doesn’t actually mean “In the beginning…” but rather “In a beginning...” This tiny grammatical point opens worlds of creativity for the rabbis and the mystics. In this session, we’ll look at some of the MANY beginnings in our tradition, finding hope for new beginnings for us today.","location":"Program Center Lounge"},{"title":"Decoding Antisemitism","presenter":"Arno Rosenfeld","description":"Antisemitism is rising in the U.S. amid a surge of federal interest in the issue. Yet, Jews remain divided on core questions: What is antisemitism? Where do Israel protests fit in? How do we keep Jews safe? This presentation reviews a decade of federal intervention to explain our current context. Attempts to define anti-Zionism as antisemitism have proven brittle, complicated by the number of anti-Zionist Jews. However, violence and discrimination toward Jews motivated by animosity toward Israel are growing. This talk examines the overlap and distinction between anti-Zionism and antisemitism as both gain influence.","location":"Program Center Conference Room"},{"title":"Sound Bath, Chant & Meditation","presenter":"Robert Kistenberg & Reuben Haller","description":"This highly non-interactive session will offer an immersive experience in sound, chant, and meditation to vibrate you. Participants are asked to come prepared to find a comfortable physical position, to quiet, and to be open. From there, one never knows what will happen; but you'll leave feeling very different from when you arrived.","location":"Margam (Lakeside Pavilion)"},{"title":"Symbols of the Sacred—Uncovering & Creating Y our Sigil","presenter":"Bekah Starr","description":"Step into the mystical world of Jewish symbolism and creative expression in this hands-on class exploring the ancient practice of sigil-making. Rooted in ancient Jewish magic, sigils (intentional symbols) function as tools for focus, meditation, and connection with the Divine or your inner wisdom. Through guided exercises, you’ll then choose an intention, and transform it into a unique visual design using pencils and markers. You’ll leave with a finished artwork embodying a spiritual intention, healing, and hope.","location":"Moadon (Multipurpose Room)"},{"title":"The U.S-Israel-Iran War—Observations & Interim Conclusions","presenter":"Ken Stein","description":"Since October 2023, Israel has been at war with Iran and its proxies. The presentation will identify Iran's political theology and Washington's motivations for joining the war. We shall review the war's accomplishments and failures and grapple with speculation about its impact on the fall 2026 parliamentary elections in Israel and the United States, and where it leaves the Middle East's political landscape.","location":"Beit Knesset (Synagogue)"}]},{"time":"12:15-12:25pm","sessions":[]},{"time":"12:30-1:30pm","sessions":[]},{"time":"12:45-1:30pm","sessions":[{"title":"Lunch & Learn—Talmud At The Table Shavuot Edition Day 3","presenter":"Kat Shambaugh","description":"Celebrate Shavuot with a taste of Talmud! We’ll explore selections from masechet Shabbat and dive into the rabbis’ take on the giving of the Ten Commandments at Sinai. No Hebrew or Talmud experience needed. Bring your lunch, enjoy clear explanations, lively discussion, and a first-time-friendly introduction to the wisdom of the sages.","location":"Lakeside Chadar Ochel (Dining Hall)"}]},{"time":"1:20-1:30pm","sessions":[]},{"time":"1:30-5:30pm","sessions":[{"title":"*Climbing","presenter":null,"description":"Closed-toe shoes required. Campers in 1st-7th grade have climbing built","location":"into their Kids Camp schedule. *Advanced sign-up required Alpine Tower Open Boating—All Welcome! Wait times for a boat may vary. Agam (Lake)"}]},{"time":"1:30-3:30pm","sessions":[{"title":"*Adult Art—Intaglio Printmaking with Chine Collé","presenter":"Judy Robkin","description":"Etch an image into a plastic sheet as you create a unique print. Then learn the delicate printmaking technique of chine collé to add layered color and texture. *Advanced sign-up required.","location":"Omanut (Art Building)"}]},{"time":"1:30-2:45pm","sessions":[{"title":"Adult Art—Open Collage Studio AKA Glue Therapy","presenter":"McKenzie Wren","description":"Join us for \"Glue Therapy,\" our beloved tradition of slow, joyful collage-making in good company. This open studio is a space to cut, paste, and play with paper—no rules, no pressure, just the simple, meditative pleasure of creating with your hands. Space is available on a first-come, first-served basis. Combating Antisemitism—Should We Bother & If So, How? with Maital Guttman, Arno Rosenfeld, & Dov Wilker: The panel will discuss what works and what doesn't work to combat antisemitism and respond to Bret Stephens' \"State of World Jewry\" address delivered earlier this year, where he called for the dismantling of the ADL.","location":"Beit Knesset (Synagogue)"},{"title":"The Creative Depths Within","presenter":"Margie Jacobs","description":"Ignite your creativity and access your imagination as we explore the power of art-making as a spiritual practice. The Jewish Studio Process combines text study, the intuitive use of art materials, and process of inquiry through writing to access inner wisdom and insight; strengthen our capacity to process what is and imagine what might be, and help us to feel more connected and whole even in moments of transition and uncertainty.","location":"Tent"},{"title":"Healthcare & Innovation in Israel in the Shadow of War","presenter":"Zachary Bercu","description":"Israel has long punched above its weight in medical innovation—but how has the war reshaped that story? This session explores the Israeli healthcare system, the interventional radiology landscape, and the startup ecosystem through the lens of October 7 and its aftermath. Drawing on nearly a decade of collaboration with Israeli clinicians and innovators, we examine how war has disrupted, accelerated, and in some cases transformed Israeli medicine and medical education.","location":"Program Center Conference Room"},{"title":"Jewish Mysticism through the Wisdom of Dance","presenter":"Rebecca Sharzer & Bekah Starr","description":"Rooted in ancient Jewish wisdom and contemporary ecstatic dance, this experiential workshop weaves movement, ritual, and sacred teaching.","location":"Moadon (Multipurpose Room)"}]},{"time":"3:00-3:50pm","sessions":[{"title":"Beyond Basic Chatbots—AI for Jewish Professionals & Others","presenter":"Andrew Stein","description":"How can AI help us do more good, not just more work? This practical, practitionerled session draws on real-world use of tools like Claude Cowork in nonprofit and organizational work. Through demos, workflows, and discussion, we’ll explore where agentic AI helps, where the trade-offs are real, and how to use it thoughtfully. Focused on Jewish professionals, but open to anyone curious. We’ll compare notes, swap examples, and learn from one another.","location":"Program Center Conference Room"},{"title":"Conversations We Need on Israel & Palestine—Part One","presenter":"Lily Brent","description":"Is there someone with a different perspective on Zionism who you find impossible to talk to without shouting or hanging up the phone? Do you need space to work through conflicting emotions about your own relationship to Israel? Are you looking to strengthen pluralism in our Jewish community at a time of increasing polarization? Join the Ayeka Project to practice techniques for discernment and dialogue on these fraught topics. Optional second session to follow.","location":"Program Center Lounge"},{"title":"Imagining Jewish Atlanta—Building Community, Crossing Divides & Learning into the Future","presenter":"Eric Robbins","description":"In a moment of transformation for our community and Jewish life more broadly, how do we imagine a Jewish future for Atlanta together? What new frameworks, spaces, and practices can help us deepen connection, bridge differences, and nurture belonging across the many ways we live Jewishly? What does the Limmud community teach us about what we can create in the future?","location":"Beit Knesset (Synagogue)"},{"title":"What if Torah is a Fantasy Novel?","presenter":"Liana Wertman","description":"Plagues, miracles, even animals talking to divine beings - Torah contains all the elements of the fantasy epics we love: entrancing world-building, archetypal hero quests, supernatural encounters, and deep moral complexity. In this playful but serious session, we'll explore the Torah through the lens of fantasy literature, discovering how this frame illuminates the text's dramatic power and invites us deeper into its mythic imagination. Come ready to see the familiar with entirely new eyes. This session is made possible thanks to the generosity of The Covenant Foundation.","location":"Moadon (Multipurpose Room)"}]},{"time":"3:50-4:15pm","sessions":[]},{"time":"4:00-5:15pm","sessions":[{"title":"*Art Class—Make Y our Own Zine","presenter":"Reuben Haller","description":"Short for magazine, a zine is a one-of-a-kind mini magazine. Folks will artfully fold and staple paper to make their small-scale zine. We will then brainstorm with poetic wordplay and use zentangle doodling techniques to create our content. Participants will end up with their very own zine. It can be poetic, reflective, wordless, transgressive, or... any subject is fair game! *Advanced sign-up required.","location":"Omanut (Art Building)"},{"title":"Bringing Y our Full Self to the Table","presenter":"Marisa Baggett","description":"What does it mean to show up fully, especially when your identities don't fit into neat categories? After closing her kosher restaurant, Marisa Baggett stepped into an unexpected chapter on a televised sushi competition show and was faced not only with non-kosher food, but with questions of identity, belonging, and visibility. Through storytelling and optional journaling, this session explores what it means to bring your whole self to the table.","location":"Moadon (Multipurpose Room)"},{"title":"Conversations We Need on Israel & Palestine—Part Two","presenter":"Lily Brent","description":"Following the introductory session, we will explore different modes of healing and reflection including art and somatic work. Participants will have the opportunity to contribute to an original art piece by Atlanta artist Steffi Nicole. The piece gathers quotes from local Jews in the “missing middle” when it comes to Israel, Palestine, and the war in Gaza. Attendance at the previous session (3:00-3:50pm) for training on dialogue techniques and community guidelines is required.","location":"Program Center Lounge"},{"title":"Narcissists & the Nazarite","presenter":"Ira Bedzow","description":"Does the Jewish tradition stand alone or is it counter-cultural? In this session, we’ll explore the Greek myth of Narcissus and a Talmudic story of a Nazirite. By placing these stories in conversation, we’ll uncover competing visions of the self and the tension between self-love and self-discipline. We will also consider how the Jewish tradition critiques or redefines the culture around us.","location":"Lakeside Chadar Ochel (Dining Hall)"},{"title":"The Wisdom of Our Elders—Shavuot Edition!","presenter":"Donna Friedman Meir","description":"Join us for an inspiring intergenerational conversation about how Judaism can serve us throughout our lives. Together we’ll reflect on the wisdom we’ve gained from elders in our own lives and learn from a few of the extraordinary elders in our community. In these fraught times, the perspective of those who have experienced great tragedy as well as great resilience will be valuable for all. Teenagers, young parents, retirees, all — your participation in this session is highly encouraged as we hope for there to be meaningful dialogue among the age cohorts.","location":"Beit Knesset (Synagogue)"}]},{"time":"5:25-6:15pm","sessions":[{"title":"A Doctor's Journey Through a Country at War","presenter":"Zachary Bercu","description":"A firsthand account of bearing witness: from walking through kibbutzim devastated on October 7, to sitting with a medic who served in Gaza and Lebanon, to visiting Soroka Medical Center after it was struck by an Iranian ballistic missile, and to descending into underground hospitals now operating across Israel. This is not a policy discussion — it is a human one. What does medicine look like on the front lines, and what does it mean to see it firsthand?","location":"Moadon (Multipurpose Room)"},{"title":"Navigating Ancestry.com","presenter":"Janette Silverman","description":"Ancestry.com can be intimidating with its many databases, hints, and tools. During this session we will discuss and learn to navigate through the many choices offered. Among the things we will cover will be effectively building a tree, understanding how to make the most of hints, and how to search for specifics in databases housed on Ancestry and using indexes pointing to other databases.","location":"Program Center Conference Room"},{"title":"Sacred Presence—Jewish Wisdom on Somatic Release & Grounding Meditations","presenter":"Aura Rosenblatt","description":"Jewish wisdom understands the body as a vessel for spiritual experience. Drawing on Torah and Chassidus, we’ll explore how somatic release can become a pathway to grounding, presence, and deeper emunah and bitachon — faith and trust in Hashem. This experiential session includes guided meditation and gentle somatic movement to help integrate body and soul.","location":"Mercaz Aryeh (Library)"},{"title":"A Taste of Tai Chi & Qigong","presenter":"Arlette Twersky","description":"Relieve stress, improve heart health, and quiet your mind with flowing movements.","location":"Margam (Lakeside Pavilion)"},{"title":"The Iranian Jewish Diaspora in the US & Israel","presenter":"Lior Sternfeld","description":"We will discuss the history of the Iranian Jewish diaspora in the US and Israel. How did they form? What shaped the communities? How do we understand their role in the broader Iranian opposition, especially regarding the war?","location":"Beit Knesset (Synagogue)"}]},{"time":"6:15-6:30pm","sessions":[]},{"time":"6:15-6:25pm","sessions":[]},{"time":"6:30-7:30pm","sessions":[{"title":"Dinner & Shuk","presenter":null,"description":"Stop by one of the tables to check out what the artists at LimmudFest are selling.","location":"Chadar Ochel (Dining Hall)"}]},{"time":"7:45-9:30pm","sessions":[{"title":"LimmudFest Concert","presenter":"Dov Rosenblatt","description":"Don't miss this annual event, which will delight the senses and bring us all together in a joyous celebration of song and LimmudFest harmony!","location":"Lakeside Chadar Ochel (Dining Hall)"}]},{"time":"9:15-11:15pm","sessions":[]},{"time":"9:30-12:00pm","sessions":[]},{"time":"9:30-9:45pm","sessions":[]},{"time":"9:45-11:00pm","sessions":[{"title":"Israel Pop Music’s Response to October 7","presenter":"Fred Guttman","description":"To a very real extent, pop music in Israel in the first 18 months after October 7 was an expression of the soul of Israel. In this session, we will listen to this music as it appeared on YouTube and discuss the ways in which both the lyrics and the style reflected the very profound shock, sadness, and resilience of Israelis. The Moth for MOTs with Howie Slomka & Shai Robkin: Public radio storytelling comes to LimmudFest! Limmudniks are invited to come prepared to tell a 5-minute personal and true story about something related to being a member of the (Jewish) Tribe. Don't have a story to tell? Come listen to others.","location":"Beit Knesset (Synagogue)"}]},{"time":"11:00pm-12:00am","sessions":[{"title":"Porch Bar, Schmooze & Jam","presenter":null,"description":"Bring your own instruments! Alcoholic and","location":"non-alcoholic beverages will be available starting at 9:30pm. Levine Center Porch"}]}]},{"day":"Monday","label":"May 25, 2026","iso":"2026-05-25","slots":[{"time":"8:00-8:45am","sessions":[]},{"time":"8:30-9:30am","sessions":[]},{"time":"9:20-9:30am","sessions":[]},{"time":"9:30-11:30am","sessions":[{"title":"*Adult Art—Layered Papercut Jerusalem","presenter":"Judy Robkin","description":"Learn traditional techniques as you create a beautiful piece of art using Jerusalem (with paper and an X-Acto knife) as your inspiration. *Advanced sign-up required.","location":"Omanut (Art Building)"},{"title":"Please Have All Luggage Out of Y our Rooms by 9:30am! The program does continue into early afternoon, however we kindly ask that you are out of your rooms by 9:30am so our housekeeping team can turn campus over for summer camp arrivals. Thank you.","presenter":null,"description":"","location":null}]},{"time":"9:30-10:30am","sessions":[{"title":"Modern Jewish Dad—Balancing Duties & Redefining Roles—A Facilitated Discussion","presenter":"Andrew Stein","description":"Fatherhood hits different these days. Partnership and parenting roles compete with careers. Join our annual discussion circle for dad-identifying individuals. If you strive to be a mensch at home, come ready for reflection, open hearts, and a good hang.","location":"Margam (Lakeside Pavilion)"},{"title":"The Economics of Immigration—a Historical (& Somewhat Jewish) Perspective","presenter":"Shai Robkin","description":"How different were the experiences of immigrants from the nineteenth and early twentieth centuries, many of them Jewish, to those of immigrants today? We’ll discuss this and other questions examined by economists Ran Abramitzky and Leah Boustan in their book “Streets of Gold: America’s Untold Story of Immigrant Success.\"","location":"Moadon (Multipurpose Room)"},{"title":"The Great Spiral—Torah of Moshe Meets Dharma of Joanna Macy","presenter":"Fred Scherlinder Dobb","description":"Come from gratitude; honor your and the world’s pain; see with ancient and new eyes; go forth, in love and in tikkun olam; then rinse, and repeat. So taught the late Joanna Macy, whose Buddhist-inflected eco-activist approach can help us transcend this unjust unsustainable Business as Usual, and sustain our efforts to drive the Great Turning. We’ll be moved by Macy’s spiritual system, which Jewish wisdom prefigures and amplifies; both will be deepened, in dialogue.","location":"Mercaz Aryeh (Library)"},{"title":"Write This Song—Receiving Torah As Music","presenter":"Dov Rosenblatt","description":"Moshe’s final charge is striking: “ועתה כתבו לכם את השירה הזאת”And now, write for yourselves this song…” We’ll explore Parshat Ha’azinu and Rabbi Jonathan Sacks’ insight that Torah endures because it is a song - inviting creativity, harmony, and individual voice within our shared sacred tradition.","location":"Beit Knesset (Synagogue)"}]},{"time":"10:45am-12:00pm","sessions":[{"title":"*Adult & Teen Class—Hebrew Calligraphy","presenter":"Reuben Haller","description":"In this hands-on workshop, participants will learn to make several Hebrew letters using felt-tipped calligraphy pens. The workshop will culminate with individuals creating their own piece of art incorporating the calligraphed Hebrew term Shalom Bayit meaning “Peace in the Home” . This class does not require Hebrew literacy or calligraphy experience. Appropriate for ages 11 and up. *Advanced sign-up required.","location":"Omanut (Art Building)"}]},{"time":"10:45-11:45am","sessions":[{"title":"Guard Y our Soul—Halakha, Health & Purpose","presenter":"Ira Bedzow","description":"Is preserving our health a Jewish value or a Jewish obligation? In this session, we’ll explore the Biblical and rabbinic sources behind the command to “guard your soul,” uncovering how it has been interpreted across the tradition. More than a call to physical well-being, we’ll examine how health functions as a means to a higher end: living a life of purpose, service, and spiritual integrity.","location":"Beit Knesset (Synagogue)"},{"title":"Israel Pop Music’s Response to October 7 Part 2","presenter":"Fred Guttman","description":"To a very real extent, pop music in Israel in the first 18 months after October 7 was an expression of the soul of Israel. In this session, we will listen to this music as it appeared on Youtube and discuss the ways in which both the lyrics and the style reflected the very profound shock, sadness and resilience of Israelis. Attendance at Part 1 is not required.","location":"Moadon (Multipurpose Room)"},{"title":"Make Y our Own Sauerkraut","presenter":null,"description":"A Hands-on Fermentation Workshop with Amy Price & Nina Rubin: We've been making fermented pickles at Limmud for many years. We're getting even more creative this year and making sauerkraut using simple fresh ingredients and classic fermentation techniques! Together, we'll salt, massage, and pack cabbage and other vegetables, while learning the science, health benefits, and Jewish history of this beloved food. Everyone will leave with their own jar of kraut to ferment at home. Have fun and gain the confidence to explore gut-healthy fermentation in your own kitchen. There will be supplies to accommodate up to 30 participants on a first-come, firstserved basis. This session can also be observed by anyone who would like to watch.","location":"Lakeside Chadar Ochel (Dining Hall)"}]},{"time":"12:00-12:45pm","sessions":[]},{"time":"12:45pm","sessions":[{"title":"L'hitraot (Goodbye)","presenter":null,"description":"See You Next Year!","location":null}]},{"time":"11:45-12:00pm","sessions":[]}]}],"bios":{"Naomi Ackerman":"Naomi Ackerman is the Founder and Executive Director of Advot, a Los Angeles–based nonprofit using theatre and the arts to build communication skills and foster healthy relationships among youth and marginalized communities. She is the creator of interactive curricula implemented in schools, juvenile detention and lock-up facilities, placement homes, and community centers. Naomi wrote, directed, and produced the acclaimed one-woman show Flowers Aren’t Enough, performed over 2,000 times worldwide, including at the United Nations. For more than three decades, she has used art across the U.S., Israel, and internationally to promote self-empowerment, peace, and social change. She is the proud mother of three daughters: Zohar, Ella, and Hadar.","Marisa Baggett":"Marisa Baggett is a chef, writer, and storyteller based in Nashville. As a former kosher deli owner (and professionally trained sushi chef!), she shares how these experiences continue to shape her perspective on food, culture, and identity. Through her writing and teaching, she explores the connection between food, memory, and belonging.","Ira Bedzow":"Ira Bedzow is a leading voice on purpose-driven leadership, ethical decision-making, and the role of values in shaping lives, organizations, and society. As the executive director of the Emory Purpose Project, he helps students reflect on meaning, align their choices with their core values, and live with greater intentionality. Ira is also a senior scholar at the Aspen Center for Social Values and co-director of the Ferencz Institute for Ethics, Human Rights and the Holocaust. He brings the depth of a philosopher, the heart of a teacher, and, as an Orthodox rabbi, he speaks fluently across traditions, sectors, and audiences.","Zachary Bercu":"Zachary Bercu, MD FSIR, is an interventional radiologist, Professor of Radiology at Emory University, and a Fellow of the Society of Interventional Radiology. He directs Emory's IR training programs and co-directs a medical innovation program for residents. His research focuses on medical robotics, AI, and minimally invasive cancer treatment. He has collaborated extensively with Israeli hospitals and startups, served as faculty at the Innovations in Cardiovascular Interventions meeting in Tel Aviv for nearly a decade, and was among the first physicians worldwide to use a novel Israeli-developed robotic device following FDA approval. His connection to Israel is personal: as a medical student he lived in Arad, built lasting medical relationships across the country, and volunteered with asylum seekers who had fled Eritrea, the Ivory Coast, and Darfur.","Lily Brent":"Lily Brent (she/her) has worked for government and nonprofits in advocacy, research, training and capacity-building. Her facilitation experience spans prison staff and incarcerated people, disability rights advocates, middle school students, and rabbis. Lily draws on social work training and cultural humility learned from working in 8 countries. She previously served as the founding Executive Director of Repair the World Atlanta. Lily currently works for American Jewish World Service, marshaling resources for human rights defenders around the world. Lily founded the Ayeka Project to strengthen civil discourse in the Atlanta Jewish community through reflection and conversation on Israel and Palestine.","Larry Brook":"Larry Brook has been editor and publisher of Southern Jewish Life, a monthly magazine that covers four Southern states, for over 35 years. Based in Birmingham, the magazine covers the Jewish communities of AL, MS, LA, and the FL Panhandle. He also publishes Israel InSight, a magazine for Israel’s Christian supporters. Brook has received 22 national Rockower Awards for excellence in Jewish journalism and several New Orleans Press Club awards. A Birmingham native, he has participated in interfaith dialogue since high school and has covered the phenomenon of Christian Zionism for decades. He currently has three books in the works.","Drew Cohen":"Drew Cohen is the Director of the Music Program at The Weber School in Atlanta, GA. He is a graduate of Brandeis University and the Pardes Educators Program and facilitates communal singing, music-making, and tefillah in various Jewish spaces around Atlanta. Drew teaches during the summer at Camp Ramah Darom. He and his family never pass up an opportunity to spend time at Ramah Darom. He is excited to share music and Torah with this community.","Kelly Cohen":"Kelly Cohen is an experiential Jewish educator, community leader, and creative program designer who serves as Senior Program Director of the Center for Experiential Jewish Education at the Marcus Jewish Community Center of Atlanta. She has worked in Jewish educational institutions across Atlanta and in communities around the United States and worldwide, leading teen engagement, camp, and innovative experiential learning initiatives. Kelly helps communities bring Jewish values to life through immersive programs and meaningful conversation. She is married to fellow Jewish educator Drew Cohen and is the parent of two campers at Camp Ramah Darom. Her work centers on building values-driven Jewish experiences that strengthen identity, connection, and belonging across generations.","Netta Cohen":"Netta Cohen has loved coming to LimmudFest with her family over the years. She is an Israeli therapist living in Atlanta. In her free time, she enjoys playing catchball and invites everyone to come play with her and her wife,","Maital Guttman":"Maital Guttman.","Aaron Friedman":"Aaron Friedman is co-Founder/Artistic Director of The Bible Players, a Jewish comedy team that is Improv-ing Jewish Lives. He is an award-winning Jewish stand-up comedian and has a Masters in Jewish Education from the Davidson School (JTS).","Donna Friedman Meir":"Donna Friedman Meir is a passionate Jewish community builder and currently the Board Chair for Limmud North America. She creates inspiring and meaningful Jewish experiences for people of all ages and stages. Donna is also a Jewish Studio Project Fellow and a recent graduate of the M2 Senior Educators Cohort. Over the past 25+ years, Donna has worked as a creative leader and brand builder of kids and family media content for the world's most respected global brands, including National Geographic, Warner Brothers, and Nickelodeon. Residing in the Bay Area, Donna is a fearless globetrotter and a dedicated mom of two evolving young adults.","Fred Guttman":"Fred Guttman, Rabbi Emeritus of Temple Emanuel in Greensboro, NC, served as senior rabbi from 1995 to 2021 and built a legacy of leadership, activism, and Holocaust education. He contributed to Reform Judaism’s social action work, helped shape key human rights resolutions, and received honors including the NCCJ Brotherhood/Sisterhood Citation Award and recognition as one of America’s Most Inspiring Rabbis. Engaged in civil rights, he supported movements such as Moral Mondays and efforts against discriminatory legislation. Guttman has led March of the Living trips and organized educational programs in Poland for teachers, emphasizing remembrance, resistance, and pursuit of justice. Maital Guttman is the Global Lead for Culture of Inclusion & Belonging at McKinsey & Company, where she leads the firm’s inclusion efforts globally and partners with senior leaders to embed inclusion into organizational culture, leadership, and talent strategy. Previously, Maital founded Dewdrop Films, a documentary film company where she used storytelling as a tool for social change—producing films and impact videos across countries including South Africa, Israel and Ethiopia. She lives in Atlanta with her wife, Netta, and their two boys and goldendoodle. For fun, she loves to play catchall and attend LimmudFest.","Lauren Henderson":"Lauren Henderson serves as the rabbi of Or Hadash in Sandy Springs, GA. Originally from Spartanburg, SC, Lauren earned her BA in Religious Studies and History from Rice University in 2009. She then studied at the Pardes Institute in Jerusalem and the Ziegler School of Rabbinic Studies in LA before transferring to the Jewish Theological Seminary in NY. She was ordained from JTS in 2016 with an MA in Midrash and a Certificate in Pastoral Care. Lauren was part of the Jewish Emergent Network Rabbinic Fellowship at Mishkan Chicago from 2016-2018 and then served as Mishkan’s Associate Rabbi and Director of Family Learning and Spirituality from 2018-2020. She is married to Joel Dworkin, and they are the proud parents of Rafi, Amit, and their dog, Sophie.","Margie Jacobs":"Margie Jacobs is a Reconstructionist rabbi and teacher of meditation and Jewish spirituality. She works with individuals as a spiritual coach, mentors Jewish clergy and educators, and is on the faculty of the Academy for Jewish Religion CA. She has taught nationally on Jewish mysticism, mindfulness, creativity, the Jewish holidays, and on embodied spiritual practices for organizations and congregations. As a Jewish Studio Process facilitator, Margie weaves together text study, artmaking, and reflective writing. She draws from rabbinic midrash, Jewish mysticism, and contemporary poetry and prose, looking to ancient texts to speak to our lives and hearts today.","Oriel Kistenberg":"Oriel \"Ori\" Kistenberg and Noam Cohen are both sports loving kids that are excited to bring chess to LimmudFest!","Rob Kistenberg":"Rob Kistenberg homesteads in Chamblee, GA. He is a 30+ year Certified Prosthetist, a most unique type of body work. Yoga, drumming, music, and meditation have long been a part of his journey towards an existence with good vibrations. He recycles (prosthetic) body parts on Buford Highway (just ask!) and is currently a graduate student in Cognitive Psychology at Georgia Tech. Rob remains fascinated by sensations and perceptions therefrom. He is beyond grateful for this community.","Amy Price":"Amy Price lives in Chamblee, GA, with her husband, son, and growing numbers of chickens and beehives. Professionally, she supports people to find employment opportunities and dream big for their lives. Amy has been working with Adamah Atl supporting environmental programming. She spent time at Isabella Friedman working for The Teva Learning Center doing outdoor Jewish environmental education, studying with Sandor Katz the leading U.S. advocate for fermentation, and farming at a youth village in Rwanda. Amy loves all things outdoors and is dedicated to her homestead and garden oasis.","Edward Queen":"Edward Queen is an historian by training, with avocational interests in Kabbala, Jewish magic and esotericism, Jerusalem, and Zionism. He and his family are long-time Limmudniks having been involved in Limmud Atlanta + Southeast almost from the beginning. A member of Kehillat Ohr Hatorah and Congregation Shearith Israel, Edward teaches for the Brill Institute for Jewish Learning. A current board member of Nechama: Jewish Response to Disaster, he previously served on the boards of both Limmud Atlanta + Southeast and Limmud North America. Edward brings a commitment to ensuring that greater attention is paid to the complex history of Jewish thought.","Cary Reich":"Cary Reich is a professional jingle writer by trade and has been writing contemporary Jewish music for over 40 years. From secular songs to liturgical pieces, Cary’s work has been heard in synagogues and other service venues throughout the Tampa Bay Area. His “A Time for G-d” EP features reimagined melodies from the Reform liturgy, and his work can be heard on Randee Freidman’s \"Sounds of the Torah\" compilations produced by her Sounds Write Publishing. Those who attended LimmudFest ‘25 heard his latest new composition written during his songwriting class.","Ana Robbins":"Ana Robbins is a social entrepreneur transforming Jewish education through Jewish After-School, a model that integrates joyful, camp-like Jewish learning into daily after-school care. She founded Jewish Kids Groups in 2012 with six children in a garage in Atlanta; it has since grown into a national network of 20 programs, with 7 more launching in 2026, serving over 1,000 students. Through the Jewish After-School Accelerator, JKG equips synagogues with curriculum, coaching, and start-up funding to launch sustainable programs that engage new families and strengthen Jewish identity. Ana holds an MS in Education from Georgia State and has received numerous honors for innovation in Jewish communal life.","Eric M. Robbins":"Eric M. Robbins is a nonprofit executive and trusted advisor who supports mission-driven organizations through interim leadership and strategic consulting. A lifelong Jewish communal professional and proud product of Jewish camp, Eric cares deeply about building vibrant, connected Jewish communities and helping leaders and institutions thrive. He is a co-founder of Limmud Atlanta + Southeast and remains passionate about Jewish learning, community building, and immersive Jewish experiences. He’s especially grateful for the relationships and learning that grow when community comes together in shared Jewish space.","Amy Robertson":"Amy Robertson is the Director of Lifelong Learning and Music at Or Hadash in Sandy Springs, where she always places her bets on the transformational power of Jewish learning and soulful communal song and prayer. Outside of work, she sings in the popular Atlanta group The Mamalehs, is the co-host of an interfaith podcast called BibleWorm, and is studying for rabbinic and cantorial ordination through ALEPH: The Alliance for Jewish Renewal. Amy has a PhD in Tanakh from Emory University, as well as two teens who are giving her the *real* education.","Ayal Robkin":"Ayal Robkin is the Director of Hadar Atlanta. A native Atlantan and graduate of Atlanta Jewish Academy and The Weber School, Ayal has taught Talmud, Bible, Jewish Thought, and mindfulness meditation at the Abraham Joshua Heschel High School in New York, NY for the past ten years. Ayal is a graduate of the Pardes Educators Program and holds rabbinic ordination from Yashrut. He lives in Atlanta with his wife, Maddy Bloch, and children Neima and Menashe.","Judy Robkin":"Judy Robkin is an artist and educator whose work has been featured in galleries and juried art shows around the country. In addition to her studio work, Judy has been a clay instructor for the last 30 years at the John C. Campbell Folk School in North Carolina and directs the art program at the Ramah Darom Retreat Center. She is passionate about sharing art and creativity with students of all ages.","Shai Robkin":"Shai Robkin teaches behavioral economics in Atlanta, GA, and consults with companies on using behavioral economics research findings in their business decisions. His exploration into the world of decision-making led him to contribute a kidney to someone he previously did not know and to assume leadership positions in organizations that promote ranked-choice voting. He serves as Chair of the Atlanta Regional Council of the New Israel Fund and as a national board member of the Friends of the Arava Institute for Environmental Studies.","Aura Rosenblatt":"Aura Rosenblatt is the host of Divine Detour, a podcast exploring Jewish spirituality, Divine Purpose, Divine Wealth, and a monthly Rosh Chodesh meditation series aligned with each Hebrew month. Raised in a home rooted in Torah, storytelling, and sacred hospitality, she has been speaking to audiences since childhood. After two decades in the beauty industry, Aura expanded into spiritual teaching and retreat curation. She leads spiritual wellness retreats in Nashville, the Blue Ridge Mountains, and 30A, Florida, and speaks nationally. A published author, her mission is to help people deepen their relationship with the Divine and live with clarity, trust, and joy.","Dov Rosenblatt":"Dov Rosenblatt is a singer-songwriter, Jewish educator, and founder of To Feel Alive (TefillAlive). As frontman of the Jewish rock band Blue Fringe and a member of the folk/pop trio Distant Cousins, Dov has performed all over the world and has had music featured in film, television, and national campaigns. Dov has taught in Jewish day schools and communal settings in Los Angeles, Nashville, New York, and Atlanta. Through TefillAlive, he teaches tefilla by transforming prayer into a collaborative songwriting experience that is creative, participatory, and personally meaningful. Dov and his wife Aura live in Atlanta with their five children.","Arno Rosenfeld":"Arno Rosenfeld is an enterprise reporter at The Forward, the nation's largest Jewish newspaper, where he writes the “Antisemitism Decoded” letter. An award-winning investigative journalist, he has chronicled the Jewish American response to antisemitism, including Jewish college students confronting hostile political climates on campus, local communities grappling with white supremacist propaganda and the deep rifts among national organizations over how to keep Jews safe.","Nina Rubin":"Nina Rubin is a fearless home cook who lives her life in mason jars. She has refined her pickling skills under the tutelage of Amy Price for more than a decade. Nina is a former NY ad agency creative director, a nonprofit comms writer, a resister, a grandma, and a founder of Limmud Atlanta — she has only missed one LimmudFest over 13 years. Nina serves on the advisory board of Adamah Atlanta. Her married kids live in DC and NJ.","Nesanel Segel":"Nesanel (Netanel) Segel is a Torah scholar whose formal Jewish education began with Chabad in Israel and Brooklyn in 1972. He is fluent in Hebrew, reads Yiddish with the aid of a dictionary, and is a native English speaker. He studied Urban Studies at the University of Illinois and the University of Missouri – Kansas City. He spent his professional career as a computer programmer/ analyst. He is now retired and lives near Phoenix, AZ.","Kat Shambaugh":"Kat Shambaugh is an Atlanta native who is delighted to serve as your Event Chair for this historic LimmudFest over Shavuot. She loves exploring Jewish mysticism and Kabbalah and is passionate about making Jewish texts accessible and engaging. Kat is an alumna of the Elie Wiesel Social Action Fellowship, a JFNA Changemaker, and a Birthright Alumni Ambassador. By day she works as a data analyst, but at Limmud, you may find her teaching about Jewish demons, leading Daf Yomi, mixing drinks at the bar, and generally helping make Limmud magical.","Rebecca Sharzer":"Rebecca Sharzer is the author of The Wisdom of Dance, and is a certified Journeydance facilitator, wellness and life coach, and a DJ. Check out her website: WiseWildWellness.com.","Janette Silverman":"Janette Silverman is a professional genealogist, heading up a team of researchers specializing in Eastern European and Jewish genealogy at AncestryProGenealogists®. She began her journey into her family's history more than 40 years ago, with her dad, hoping to answer questions about their family 's early days in the U.S., never thinking they would be able to trace parts of the family back to 18th century Europe. What began as a hobby turned into an obsession and ultimately led to a shift in her career from Jewish education to genealogy. Her doctoral dissertation, \"In Living Memory\" was based on her genealogical research into four branches of her family, putting into historical context their experiences as they made their way from Eastern Europe to settle in the U.S. from the 1880s until the 1920s. She was the chair of the Phoenix JGS, lead co-chair of the 2016 IAJGS conference in Seattle, WA, and a JewishGen volunteer. She speaks all over the world, and has been published in Avotaynu, APGQ, Tennessee Historical Quarterly, Gesher Galicia, and Genealogy-at-a-Glance. Her book Stories They Never Told Us was published in 2024.","Howie Slomka":"Howie Slomka is President of Limmud Atlanta & Southeast and is a regular and enthusiastic Limmudnik! He loves learning and teaching at Fest and can frequently be found doing card tricks after hours. Howie is a member and frequent leyner at Congregation Shearith Israel in Atlanta, GA.","Bekah Starr":"Bekah Starr (she/her) is a multimedia sacred artist, ritualist, and teacher of Jewish mysticism exploring the Divine Feminine through art, magic, and embodied spiritual practice. Ordained as a Kohenet (Hebrew Priestess) in 2019, she weaves ancient Jewish wisdom with contemporary creative expression through mixed media art, illustration, teaching, ritual crafting and spiritual mentorship. Bekah is Director of the Beit Kohenet Arts Collective and serves as Jewish clergy at Ursinus College. Her work has been featured internationally and lives in both private collections and communal ritual spaces. You can find her @BekahStarrArt & BekahStarrArt.com","Andrew Stein":"Andrew Stein designs lively conversations at LimmudFest and, the rest of the year, teaches hospital teams how to collab so patients get home faster. He also offers AI consulting to small businesses and individuals. He is married to a human woman, has two human kids running around here, and lives near other humans in Inman Park, Atlanta (so NOT an alien). He likes chatting about facilitation, meditation, AI, cocktails, cargo bikes, and whatever podcast you're into right now.","Kenneth Stein":"Kenneth Stein is Emory University Professor Emeritus of Middle Eastern history, political science and Israel Studies. He leads the Atlanta based Center of Israel Education (CIE), whose work promotes Zionist and Israel learning. Ken's scholarship focuses on Israel's contemporary history, its relations with Middle Eastern states, and American foreign policy toward the region. He has earned awards for excellence in teaching and student mentoring. Ken is the primary content writer for the CIE website that garnered 3.9 million viewers in 2025.","Lior Sternfeld":"Lior Sternfeld is a historian of Iran, Israel, and the modern Middle East. He teaches at Penn State and is the author of Between Iran and Zion: Jewish Histories of Twentieth Century Iran, Jews of Iran: A Photographic Chronicle, and the recently published book in Hebrew: Iran: Life Itself (Iran: Ha-Hayyim Atzmam). He is also the Associate Editor of the Palestine/Israel Review.","Anne Still":"Anne Still is an Atlanta-based Jewish professional and is passionate about building community. She is the Young Adult Liaison at Congregation Etz Chaim in East Cobb, and a resident at Moishe House Toco Hills.","Arlette Twersky":"Arlette Twersky is a Tai Chi and Qigong practitioner and instructor who enjoys bringing the physical and mental benefits of this gentle, mindful movement to all kinds of people, regardless of age or physical ability. She is also a proud mother of children and grandchildren who all manage to connect to their Judaism. Some live in Israel and some are even here at LimmudFest. Arlette offers an easy, accessible way to experience the benefits of Tai Chi without any prior experience. Just breathe, smile, do what you see, and go with the flow. Arlette is a VA approved provider of Tai Chi for veterans since 2019 and is the owner of Thrive Tai Chi & OT LLC. She holds a Masters degree in Occupational Therapy and a Masters degree in Creative Arts in Therapy.","McKenzie Wren":"McKenzie Wren and Reuben Haller are Atlanta based artists, musicians, and ritual leaders. They lead meaningful, energetic, and musically infused services and rituals using expansive prayer language.","Liana Wertman":"Liana Wertman (she/her) is the founder and Executive Director of The Torah Studio, an online school revitalizing the technical, spiritual, and ethical dimensions of Jewish learning. She received a 2022 Pomegranate Award from the Covenant Foundation for this work. She is an alumna of The Pardes Institute for Jewish Learning, the Classic Talmud Program from Yashrut, and the SVARA Pedagogy Chaburah. Liana got her Masters in Educational Leadership from HUC-JIR (2022). Liana has taught Torah to thousands of students, educators, and clergy around the world at The Torah Studio as well as HUC, MyJewishLearning, Judaism Unbound, BCI, and beyond!","Dov Wilker":"Dov Wilker is a proud Jew and Zionist who has served as the Vice President for Advocacy and Innovation, the Regional Director of AJC Atlanta since 2011, and AJC's National Director for Black Jewish Relations since 2018. After earning his International M.B.A. from Tel Aviv University, Dov worked for an Israeli software start-up. Dov began his career with the Israeli Ministry of Foreign Affairs in the Southeastern United States and previously served as AJC Atlanta’s Assistant Director. Dov is currently a board member of BAMAH, the Atlanta Jewish Film Festival, and an advisory board member for the Atlanta Ballet. In 2025, Dov received AJC Atlanta’s Distinguished Advocate Award. He is married to Julie Jacobson and together they have two daughters. The Naomi Rabkin Experience","Fred Scherlinder Dobb":"Fred Scherlinder Dobb is LimmudFest’s 2026 Chavayat Naomi Rabkin Presenter Naomi Rabkin, z”l, exemplified the heart, ruach (spirit) and soul of LimmudFest in all her supportive roles as a participant, volunteer and the first Executive Director of Limmud Atlanta & Southeast. Naomi inspired us to think boldly and helped us attract people doing the most cutting edge and interesting things in the Jewish world. She had a pulse on the rising community leaders, and she was able to entice them to come to LimmudFest. Food sustainability and food justice were among Naomi’s true passions and that is how many of us met her. In 2007, before it was trendy, Naomi put Congregation Shearith Israel on the map as the first congregation in the Southeast to have a CSA (Community Supported Agriculture). She was the driving force behind Atlanta’s first public space sukkah at the Oakhurst Community Garden, and when she and her family moved to San Diego, Naomi again left her mark by developing a 67-acre farm for Leichtag Foundation, now a thriving vineyard, food forest and Jewish event space. Inspired by Naomi’s values, interests and innovative ideas, LimmudFest created a presenter spot to carry on her legacy. Each year a presenter is chosen by the LimmudFest programming committee based on Naomi’s passions in food justice, local farm to table eating, sustainability, community building, music, reimagining ritual, Israel, feminism, women in leadership and immersive Jewish education. We are thrilled to invite Fred Scherlinder Dobb as our 2026 Chavayat Naomi Rabkin presenter! Fred Scherlinder Dobb is a long-time Jewish environmental activist-educator-troubadour. He is also a rabbi with decades of pulpit experience (now Emeritus at Adat Shalom Reconstructionist Congregation in Bethesda, MD). As the inaugural Director of Climate Partnerships and Advocacy for Adamah, he spearheads multi-faith coalition efforts, eco-policy work, and 'Torah of the Earth' for North America’s largest Jewish environmental group. Ask him about the Jews of Kauai, his Spelmanite daughter and DC high school son, Interfaith Power and Light, or whether it’s easy being green.","Reuben Haller":"McKenzie Wren and Reuben Haller are Atlanta based artists, musicians, and ritual leaders. They lead meaningful, energetic, and musically infused services and rituals using expansive prayer language.","Noam Cohen":"Oriel \"Ori\" Kistenberg and Noam Cohen are both sports loving kids that are excited to bring chess to LimmudFest!","Noam Guttman":"Oriel \"Ori\" Kistenberg and Noam Cohen are both sports loving kids that are excited to bring chess to LimmudFest!","Robert Kistenberg":"Rob Kistenberg homesteads in Chamblee, GA. He is a 30+ year Certified Prosthetist, a most unique type of body work. Yoga, drumming, music, and meditation have long been a part of his journey towards an existence with good vibrations. He recycles (prosthetic) body parts on Buford Highway (just ask!) and is currently a graduate student in Cognitive Psychology at Georgia Tech. Rob remains fascinated by sensations and perceptions therefrom. He is beyond grateful for this community.","Ken Stein":"Kenneth Stein is Emory University Professor Emeritus of Middle Eastern history, political science and Israel Studies. He leads the Atlanta based Center of Israel Education (CIE), whose work promotes Zionist and Israel learning. Ken's scholarship focuses on Israel's contemporary history, its relations with Middle Eastern states, and American foreign policy toward the region. He has earned awards for excellence in teaching and student mentoring. Ken is the primary content writer for the CIE website that garnered 3.9 million viewers in 2025.","Nesanel Segal":"Nesanel (Netanel) Segel is a Torah scholar whose formal Jewish education began with Chabad in Israel and Brooklyn in 1972. He is fluent in Hebrew, reads Yiddish with the aid of a dictionary, and is a native English speaker. He studied Urban Studies at the University of Illinois and the University of Missouri – Kansas City. He spent his professional career as a computer programmer/ analyst. He is now retired and lives near Phoenix, AZ.","Fred Scherlander Dobb":"Fred Scherlinder Dobb is LimmudFest’s 2026 Chavayat Naomi Rabkin Presenter Naomi Rabkin, z”l, exemplified the heart, ruach (spirit) and soul of LimmudFest in all her supportive roles as a participant, volunteer and the first Executive Director of Limmud Atlanta & Southeast. Naomi inspired us to think boldly and helped us attract people doing the most cutting edge and interesting things in the Jewish world. She had a pulse on the rising community leaders, and she was able to entice them to come to LimmudFest. Food sustainability and food justice were among Naomi’s true passions and that is how many of us met her. In 2007, before it was trendy, Naomi put Congregation Shearith Israel on the map as the first congregation in the Southeast to have a CSA (Community Supported Agriculture). She was the driving force behind Atlanta’s first public space sukkah at the Oakhurst Community Garden, and when she and her family moved to San Diego, Naomi again left her mark by developing a 67-acre farm for Leichtag Foundation, now a thriving vineyard, food forest and Jewish event space. Inspired by Naomi’s values, interests and innovative ideas, LimmudFest created a presenter spot to carry on her legacy. Each year a presenter is chosen by the LimmudFest programming committee based on Naomi’s passions in food justice, local farm to table eating, sustainability, community building, music, reimagining ritual, Israel, feminism, women in leadership and immersive Jewish education. We are thrilled to invite Fred Scherlinder Dobb as our 2026 Chavayat Naomi Rabkin presenter! Fred Scherlinder Dobb is a long-time Jewish environmental activist-educator-troubadour. He is also a rabbi with decades of pulpit experience (now Emeritus at Adat Shalom Reconstructionist Congregation in Bethesda, MD). As the inaugural Director of Climate Partnerships and Advocacy for Adamah, he spearheads multi-faith coalition efforts, eco-policy work, and 'Torah of the Earth' for North America’s largest Jewish environmental group. Ask him about the Jews of Kauai, his Spelmanite daughter and DC high school son, Interfaith Power and Light, or whether it’s easy being green.","Eric Robbins":"Eric M. Robbins is a nonprofit executive and trusted advisor who supports mission-driven organizations through interim leadership and strategic consulting. A lifelong Jewish communal professional and proud product of Jewish camp, Eric cares deeply about building vibrant, connected Jewish communities and helping leaders and institutions thrive. He is a co-founder of Limmud Atlanta + Southeast and remains passionate about Jewish learning, community building, and immersive Jewish experiences. He’s especially grateful for the relationships and learning that grow when community comes together in shared Jewish space.","Eliana Leader":"Eliana Leader is the Director of the Ramah Darom Retreat Center. She leads the team that hosts LimmudFest and a year-round calendar of retreats and immersive Jewish experiences in the Northeast Georgia mountains. (Bio web-sourced; not in the program presenter section.)","Jerry Blumenthal":"Jerry Blumenthal is a longtime LimmudFest community member who co-hosts the annual \"Sippin' & Smokin'\" evening, an Atlanta-area tradition pairing single-malts and cigars with stories from Jewish history and comedy. (Bio web-sourced; not in the program presenter section.)","Paul Flexner":"Paul Flexner is a longtime Atlanta Jewish educator and a regular LimmudFest contributor. He co-hosts \"Sippin' & Smokin'\", a lakeside evening of single-malt, cigars, and stories. (Bio web-sourced; not in the program presenter section.)"},"bio_sources":{"Naomi Ackerman":"program-guide","Marisa Baggett":"program-guide","Ira Bedzow":"program-guide","Zachary Bercu":"program-guide","Lily Brent":"program-guide","Larry Brook":"program-guide","Drew Cohen":"program-guide","Kelly Cohen":"program-guide","Netta Cohen":"program-guide","Maital Guttman":"program-guide","Aaron Friedman":"program-guide","Donna Friedman Meir":"program-guide","Fred Guttman":"program-guide","Lauren Henderson":"program-guide","Margie Jacobs":"program-guide","Oriel Kistenberg":"program-guide","Rob Kistenberg":"program-guide","Amy Price":"program-guide","Edward Queen":"program-guide","Cary Reich":"program-guide","Ana Robbins":"program-guide","Eric M. Robbins":"program-guide","Amy Robertson":"program-guide","Ayal Robkin":"program-guide","Judy Robkin":"program-guide","Shai Robkin":"program-guide","Aura Rosenblatt":"program-guide","Dov Rosenblatt":"program-guide","Arno Rosenfeld":"program-guide","Nina Rubin":"program-guide","Nesanel Segel":"program-guide","Kat Shambaugh":"program-guide","Rebecca Sharzer":"program-guide","Janette Silverman":"program-guide","Howie Slomka":"program-guide","Bekah Starr":"program-guide","Andrew Stein":"program-guide","Kenneth Stein":"program-guide","Lior Sternfeld":"program-guide","Anne Still":"program-guide","Arlette Twersky":"program-guide","McKenzie Wren":"program-guide","Liana Wertman":"program-guide","Dov Wilker":"program-guide","Fred Scherlinder Dobb":"program-guide","Reuben Haller":"program-guide","Noam Cohen":"program-guide","Noam Guttman":"program-guide","Robert Kistenberg":"program-guide","Ken Stein":"program-guide","Nesanel Segal":"program-guide","Fred Scherlander Dobb":"program-guide","Eric Robbins":"program-guide","Eliana Leader":"web","Jerry Blumenthal":"web","Paul Flexner":"web"},"presenter_names_from_schedule":["Aaron Friedman","Amy Price","Amy Robertson","Ana Robbins","Andrew Stein","Arlette Twersky","Arno Rosenfeld","Aura Rosenblatt","Ayal Robkin","Bekah Starr","Cary Reich","Donna Friedman Meir","Dov Rosenblatt","Dov Wilker","Drew Cohen","Edward Queen","Eliana Leader","Eric Robbins","Fred Guttman","Fred Scherlander Dobb","Fred Scherlinder Dobb","Howie Slomka","Ira Bedzow","Janette Silverman","Jerry Blumenthal","Judy Robkin","Kat Shambaugh","Kelly Cohen","Ken Stein","Larry Brook","Lauren Henderson","Liana Wertman","Lily Brent","Lior Sternfeld","Maital Guttman","Margie Jacobs","Marisa Baggett","McKenzie Wren","Moishe House","Naomi Ackerman","Nesanel Segal","Netta Cohen","Noam Guttman","Oriel Kistenberg","Paul Flexner","Rebecca Sharzer","Reuben Haller","Robert Kistenberg","Shai Robkin","Zachary Bercu"]}</script>
+<script>
+(function() {
+  'use strict';
+  var DATA = JSON.parse(document.getElementById('festData').textContent);
+  var STORAGE_KEY = 'limmud2026.mySchedule.v1';
+  var TZ = 'America/New_York';
+
+  function loadMy() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return new Set();
+      return new Set(JSON.parse(raw));
+    } catch (e) { return new Set(); }
+  }
+  function saveMy(set) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(set))); }
+    catch (e) {}
+  }
+  var mySet = loadMy();
+
+  function parseTimeRange(timeStr, dayIso) {
+    if (!timeStr) return null;
+    var sunriseMatch = timeStr.match(/^(\d{1,2}):(\d{2})(am|pm)?-Sunrise$/i);
+    if (sunriseMatch) {
+      var sh = parseInt(sunriseMatch[1], 10), sm = parseInt(sunriseMatch[2], 10);
+      var sap = (sunriseMatch[3] || 'am').toLowerCase();
+      return makeRange(dayIso, toMin(sh, sm, sap), toMin(5, 30, 'am'));
+    }
+    var m = timeStr.match(/^(\d{1,2}):(\d{2})(am|pm)?-(\d{1,2}):(\d{2})(am|pm)$/i);
+    if (!m) return null;
+    var sh2 = parseInt(m[1], 10), sm2 = parseInt(m[2], 10);
+    var eh = parseInt(m[4], 10), em = parseInt(m[5], 10);
+    var sap2 = (m[3] || '').toLowerCase();
+    var eap = m[6].toLowerCase();
+    if (!sap2) {
+      if (sh2 === 12) {
+        sap2 = eap;
+      } else if (sh2 > eh) {
+        sap2 = (eap === 'am' ? 'pm' : 'am');
+      } else {
+        sap2 = eap;
+      }
+    }
+    return makeRange(dayIso, toMin(sh2, sm2, sap2), toMin(eh, em, eap));
+  }
+  function toMin(h, m, ap) {
+    var H = h;
+    if (ap === 'pm' && H !== 12) H += 12;
+    else if (ap === 'am' && H === 12) H = 0;
+    return H * 60 + m;
+  }
+  function makeRange(dayIso, startMin, endMin) {
+    var dayCarry = 0;
+    if (startMin < 6 * 60) dayCarry = 1;
+    var crosses = endMin <= startMin;
+    var endCarry = crosses ? (dayCarry + 1) : dayCarry;
+    return {
+      startMin: startMin + dayCarry * 1440,
+      endMin: crosses ? (endMin + 1440) : endMin,
+      startDate: etDateAt(dayIso, startMin, dayCarry),
+      endDate: etDateAt(dayIso, endMin, endCarry)
+    };
+  }
+  function etDateAt(dayIso, minutes, dayOffsetCarry) {
+    var parts0 = dayIso.split('-').map(Number);
+    var y = parts0[0], mo = parts0[1], d = parts0[2];
+    var h = Math.floor(minutes / 60), mi = minutes % 60;
+    var probe = new Date(Date.UTC(y, mo - 1, d + (dayOffsetCarry || 0), h, mi));
+    var fmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: TZ, year: 'numeric', month: 'numeric', day: 'numeric',
+      hour: 'numeric', minute: 'numeric', hourCycle: 'h23'
+    });
+    var parts = fmt.formatToParts(probe);
+    var obj = {};
+    parts.forEach(function(p) { if (p.type !== 'literal') obj[p.type] = p.value; });
+    var etAsUtc = Date.UTC(+obj.year, +obj.month - 1, +obj.day, +obj.hour, +obj.minute);
+    var diff = probe.getTime() - etAsUtc;
+    return new Date(probe.getTime() + diff);
+  }
+
+  function etNow() { return new Date(); }
+  function fmtETClock(date) {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: TZ, weekday: 'long', month: 'short', day: 'numeric',
+      hour: 'numeric', minute: '2-digit', hour12: true
+    }).format(date);
+  }
+  function fmtETDayName(date) {
+    return new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'long' }).format(date);
+  }
+  function fmtETIso(date) {
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(date);
+  }
+  function fmtETHm(date) {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: TZ, hour: 'numeric', minute: '2-digit', hour12: true
+    }).format(date);
+  }
+
+  var ALL_SESSIONS = [];
+  DATA.schedule.forEach(function(day) {
+    day.slots.forEach(function(slot) {
+      slot.sessions.forEach(function(s, idx) {
+        var range = parseTimeRange(slot.time, day.iso);
+        var idBase = (day.iso + '-' + slot.time + '-' + (s.title || ('sess' + idx)))
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .slice(0, 110);
+        s._id = idBase;
+        s._day = day;
+        s._slot = slot;
+        s._range = range;
+        ALL_SESSIONS.push(s);
+      });
+    });
+  });
+
+  function parsePresenterNames(raw) {
+    if (!raw) return [];
+    var r = raw.replace(/\s+hosted by\s+.+$/i, '').replace(/\s+for Women[^.]*$/i, '');
+    return r.split(/\s*[,&]\s*(?:and\s+)?/).map(function(s) { return s.trim(); }).filter(Boolean);
+  }
+
+  function sessionEl(s) {
+    var div = document.createElement('div');
+    div.className = 'session';
+    if (mySet.has(s._id)) div.classList.add('session--saved');
+
+    var titleH = document.createElement('div');
+    titleH.className = 'session__title';
+    titleH.textContent = s.title || '(untitled)';
+    div.appendChild(titleH);
+
+    var meta = document.createElement('div');
+    meta.className = 'session__meta';
+
+    if (s.presenter) {
+      var pSpan = document.createElement('span');
+      pSpan.className = 'session__presenter';
+      var pSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3 4-5 7-5s6 2 7 5"/></svg>';
+      pSpan.insertAdjacentHTML('beforeend', pSvg);
+      var names = parsePresenterNames(s.presenter);
+      var namesSpan = document.createElement('span');
+      var modifier = '';
+      var modMatch = s.presenter.match(/\s+(hosted by .+|for Women[^.]*)$/i);
+      if (modMatch) modifier = ' ' + modMatch[1];
+      names.forEach(function(n, i) {
+        if (i > 0) namesSpan.appendChild(document.createTextNode(' & '));
+        if (DATA.bios[n]) {
+          var btn = document.createElement('button');
+          btn.textContent = n;
+          btn.type = 'button';
+          btn.addEventListener('click', function() { openBio(n); });
+          namesSpan.appendChild(btn);
+        } else {
+          namesSpan.appendChild(document.createTextNode(n));
+        }
+      });
+      if (modifier) namesSpan.appendChild(document.createTextNode(modifier));
+      pSpan.appendChild(namesSpan);
+      meta.appendChild(pSpan);
+    }
+
+    if (s.location) {
+      var lSpan = document.createElement('span');
+      lSpan.className = 'session__location';
+      var lSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+      lSpan.insertAdjacentHTML('beforeend', lSvg);
+      lSpan.appendChild(document.createTextNode(s.location));
+      meta.appendChild(lSpan);
+    }
+    div.appendChild(meta);
+
+    if (s.description) {
+      var desc = document.createElement('div');
+      desc.className = 'session__desc';
+      desc.textContent = s.description;
+      div.appendChild(desc);
+      var moreBtn = document.createElement('button');
+      moreBtn.className = 'session__expand';
+      moreBtn.type = 'button';
+      moreBtn.textContent = 'More';
+      moreBtn.addEventListener('click', function() {
+        div.classList.toggle('expanded');
+        moreBtn.textContent = div.classList.contains('expanded') ? 'Less' : 'More';
+      });
+      div.appendChild(moreBtn);
+    }
+
+    var addBtn = document.createElement('button');
+    addBtn.className = 'session__add';
+    addBtn.type = 'button';
+    addBtn.title = mySet.has(s._id) ? 'Remove from my list' : 'Add to my list';
+    addBtn.setAttribute('aria-label', addBtn.title);
+    addBtn.textContent = mySet.has(s._id) ? "✓" : '+';
+    addBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleSaved(s._id);
+      rerenderActive();
+      renderMine();
+      renderNow();
+      updateMineBadge();
+    });
+    div.appendChild(addBtn);
+    return div;
+  }
+
+  function toggleSaved(id) {
+    if (mySet.has(id)) mySet.delete(id); else mySet.add(id);
+    saveMy(mySet);
+  }
+
+  function rerenderActive() {
+    var active = document.querySelector('section.panel.active');
+    if (!active) return;
+    if (active.id === 'panel-browse') renderBrowseDay(currentDayIdx);
+    if (active.id === 'panel-presenters') renderPresenters(document.getElementById('presenterSearch').value);
+  }
+
+  function updateMineBadge() {
+    var b = document.getElementById('mineBadge');
+    if (mySet.size > 0) { b.textContent = mySet.size; b.hidden = false; }
+    else b.hidden = true;
+  }
+
+  var currentDayIdx = 0;
+  function renderDayPills() {
+    var pills = document.getElementById('dayPills');
+    while (pills.firstChild) pills.removeChild(pills.firstChild);
+    DATA.schedule.forEach(function(day, idx) {
+      var btn = document.createElement('button');
+      btn.className = 'day-pill';
+      btn.setAttribute('aria-selected', idx === currentDayIdx);
+      var label = document.createElement('span');
+      label.appendChild(document.createTextNode(day.day));
+      var date = document.createElement('span');
+      date.className = 'day-pill__date';
+      date.textContent = day.label.replace(/, 2026/, '');
+      btn.appendChild(label);
+      btn.appendChild(date);
+      btn.addEventListener('click', function() {
+        currentDayIdx = idx;
+        renderDayPills();
+        renderBrowseDay(idx);
+      });
+      pills.appendChild(btn);
+    });
+  }
+
+  function renderBrowseDay(idx) {
+    var day = DATA.schedule[idx];
+    var body = document.getElementById('browseBody');
+    while (body.firstChild) body.removeChild(body.firstChild);
+    var h = document.createElement('h2');
+    h.className = 'panel__title';
+    h.style.marginTop = '0.4rem';
+    h.textContent = day.day;
+    body.appendChild(h);
+    var sub = document.createElement('p');
+    sub.className = 'panel__sub';
+    sub.textContent = day.label;
+    body.appendChild(sub);
+
+    var now = etNow();
+    day.slots.forEach(function(slot) {
+      var wrap = document.createElement('div');
+      wrap.className = 'slot';
+      var sample = slot.sessions[0];
+      var isNow = sample && sample._range &&
+        now >= sample._range.startDate && now < sample._range.endDate;
+      if (isNow) wrap.classList.add('slot--now');
+      var tEl = document.createElement('div');
+      tEl.className = 'slot__time';
+      var tSpan = document.createElement('span');
+      tSpan.textContent = slot.time;
+      tEl.appendChild(tSpan);
+      wrap.appendChild(tEl);
+      slot.sessions.forEach(function(s) { wrap.appendChild(sessionEl(s)); });
+      body.appendChild(wrap);
+    });
+  }
+
+  function renderMine() {
+    var body = document.getElementById('mineBody');
+    while (body.firstChild) body.removeChild(body.firstChild);
+    var saved = ALL_SESSIONS.filter(function(s) { return mySet.has(s._id); });
+    if (saved.length === 0) {
+      var empty = document.createElement('div');
+      empty.className = 'my-empty';
+      var hh = document.createElement('h3');
+      hh.textContent = 'Nothing saved yet';
+      empty.appendChild(hh);
+      var pp = document.createElement('p');
+      var pt = document.createTextNode('Browse the schedule and tap + on sessions you want to attend.');
+      pp.appendChild(pt);
+      empty.appendChild(pp);
+      var bb = document.createElement('button');
+      bb.type = 'button';
+      bb.textContent = 'Browse schedule';
+      bb.addEventListener('click', function() { activateTab('browse'); });
+      empty.appendChild(bb);
+      body.appendChild(empty);
+      return;
+    }
+    var byDay = {};
+    saved.forEach(function(s) {
+      if (!byDay[s._day.iso]) byDay[s._day.iso] = [];
+      byDay[s._day.iso].push(s);
+    });
+    DATA.schedule.forEach(function(day) {
+      if (!byDay[day.iso]) return;
+      var items = byDay[day.iso].slice().sort(function(a, b) {
+        return (a._range ? a._range.startMin : 0) - (b._range ? b._range.startMin : 0);
+      });
+      var overlapIds = new Set();
+      for (var i = 0; i < items.length; i++) {
+        for (var j = i + 1; j < items.length; j++) {
+          if (!items[i]._range || !items[j]._range) continue;
+          if (items[i]._range.startMin < items[j]._range.endMin &&
+              items[j]._range.startMin < items[i]._range.endMin) {
+            overlapIds.add(items[i]._id);
+            overlapIds.add(items[j]._id);
+          }
+        }
+      }
+      var dayWrap = document.createElement('div');
+      dayWrap.className = 'my-day';
+      var h2 = document.createElement('div');
+      h2.className = 'my-day__h';
+      h2.appendChild(document.createTextNode(day.day));
+      var small = document.createElement('small');
+      small.textContent = day.label.replace(/, 2026/, '');
+      h2.appendChild(small);
+      dayWrap.appendChild(h2);
+      items.forEach(function(s) {
+        var wrap = document.createElement('div');
+        wrap.className = 'slot';
+        var tEl = document.createElement('div');
+        tEl.className = 'slot__time';
+        var tSpan = document.createElement('span');
+        tSpan.textContent = s._slot.time;
+        tEl.appendChild(tSpan);
+        if (overlapIds.has(s._id)) {
+          var chip = document.createElement('span');
+          chip.className = 'overlap';
+          chip.textContent = 'OVERLAP';
+          tEl.appendChild(chip);
+        }
+        wrap.appendChild(tEl);
+        wrap.appendChild(sessionEl(s));
+        dayWrap.appendChild(wrap);
+      });
+      body.appendChild(dayWrap);
+    });
+  }
+
+  function renderNow() {
+    var now = etNow();
+    var hdrClock = document.getElementById('hdrClock');
+    while (hdrClock.firstChild) hdrClock.removeChild(hdrClock.firstChild);
+    hdrClock.appendChild(document.createTextNode('Eastern Time: '));
+    var strongEl = document.createElement('strong');
+    strongEl.textContent = fmtETClock(now);
+    hdrClock.appendChild(strongEl);
+
+    var firstStart = ALL_SESSIONS
+      .map(function(s) { return s._range && s._range.startDate; })
+      .filter(Boolean)
+      .reduce(function(a, b) { return (a && a < b ? a : b); }, null);
+    var lastEnd = ALL_SESSIONS
+      .map(function(s) { return s._range && s._range.endDate; })
+      .filter(Boolean)
+      .reduce(function(a, b) { return (a && a > b ? a : b); }, null);
+
+    var nowList = document.getElementById('nowList');
+    var upNextList = document.getElementById('upNextList');
+    var endedBlock = document.getElementById('endedBlock');
+    var yourNextBlock = document.getElementById('yourNextBlock');
+    while (nowList.firstChild) nowList.removeChild(nowList.firstChild);
+    while (upNextList.firstChild) upNextList.removeChild(upNextList.firstChild);
+    while (yourNextBlock.firstChild) yourNextBlock.removeChild(yourNextBlock.firstChild);
+
+    if (lastEnd && now > lastEnd) {
+      endedBlock.style.display = 'block';
+      document.getElementById('nowBlock').style.display = 'none';
+      document.getElementById('upNextBlock').style.display = 'none';
+      return;
+    }
+    endedBlock.style.display = 'none';
+    document.getElementById('nowBlock').style.display = 'block';
+    document.getElementById('upNextBlock').style.display = 'block';
+
+    if (firstStart && now < firstStart) {
+      var pre = document.createElement('div');
+      pre.className = 'empty';
+      var diffHrs = Math.round((firstStart - now) / 3600000);
+      pre.textContent = 'LimmudFest starts in about ' + diffHrs + ' hours.';
+      nowList.appendChild(pre);
+    }
+
+    var happeningNow = ALL_SESSIONS.filter(function(s) {
+      return s._range && s._range.startDate <= now && now < s._range.endDate;
+    });
+    if (happeningNow.length === 0 && !(firstStart && now < firstStart)) {
+      var empty2 = document.createElement('div');
+      empty2.className = 'empty';
+      empty2.textContent = 'No scheduled sessions right now. Time for a schmooze on the porch.';
+      nowList.appendChild(empty2);
+    } else {
+      var grouped = {};
+      happeningNow.forEach(function(s) {
+        if (!grouped[s._slot.time]) grouped[s._slot.time] = [];
+        grouped[s._slot.time].push(s);
+      });
+      Object.keys(grouped).forEach(function(time) {
+        var wrap = document.createElement('div');
+        wrap.className = 'slot slot--now';
+        var tEl = document.createElement('div');
+        tEl.className = 'slot__time';
+        var tSpan = document.createElement('span');
+        tSpan.textContent = time;
+        tEl.appendChild(tSpan);
+        wrap.appendChild(tEl);
+        grouped[time].forEach(function(s) { wrap.appendChild(sessionEl(s)); });
+        nowList.appendChild(wrap);
+      });
+    }
+
+    var upcoming = ALL_SESSIONS
+      .filter(function(s) { return s._range && s._range.startDate > now; })
+      .sort(function(a, b) { return a._range.startDate - b._range.startDate; })
+      .slice(0, 6);
+    if (upcoming.length === 0) {
+      document.getElementById('upNextBlock').style.display = 'none';
+    } else {
+      var grouped2 = {};
+      upcoming.forEach(function(s) {
+        var k = s._day.iso + ' ' + s._slot.time;
+        if (!grouped2[k]) grouped2[k] = {time: s._slot.time, day: s._day, sessions: []};
+        grouped2[k].sessions.push(s);
+      });
+      var todayIso = fmtETIso(now);
+      Object.keys(grouped2).forEach(function(k) {
+        var g = grouped2[k];
+        var wrap = document.createElement('div');
+        wrap.className = 'slot';
+        var tEl = document.createElement('div');
+        tEl.className = 'slot__time';
+        var tSpan = document.createElement('span');
+        tSpan.textContent = (g.day.iso === todayIso ? '' : g.day.day + ' ') + g.time;
+        tEl.appendChild(tSpan);
+        wrap.appendChild(tEl);
+        g.sessions.forEach(function(s) { wrap.appendChild(sessionEl(s)); });
+        upNextList.appendChild(wrap);
+      });
+    }
+
+    var myUpcoming = ALL_SESSIONS
+      .filter(function(s) { return mySet.has(s._id) && s._range && s._range.endDate > now; })
+      .sort(function(a, b) { return a._range.startDate - b._range.startDate; });
+    if (myUpcoming.length > 0) {
+      var next = myUpcoming[0];
+      var block = document.createElement('div');
+      block.className = 'you-next';
+      var isLive = next._range.startDate <= now;
+      var starts = isLive ? 'On now' : ('Starts ' + fmtNiceWhen(next._range.startDate, now));
+      var startsDiv = document.createElement('div');
+      startsDiv.className = 'you-next__starts';
+      startsDiv.textContent = 'Your next: ' + starts;
+      block.appendChild(startsDiv);
+      var titleDiv = document.createElement('div');
+      titleDiv.className = 'you-next__title';
+      titleDiv.textContent = next.title;
+      block.appendChild(titleDiv);
+      var metaDiv = document.createElement('div');
+      metaDiv.className = 'you-next__meta';
+      var metaParts = [];
+      if (next.presenter) metaParts.push(next.presenter);
+      if (next.location) metaParts.push(next.location);
+      metaParts.push(next._slot.time);
+      metaDiv.textContent = metaParts.join('  ·  ');
+      block.appendChild(metaDiv);
+      yourNextBlock.appendChild(block);
+    }
+  }
+
+  function fmtNiceWhen(date, ref) {
+    var diffMs = date - ref;
+    var diffMin = Math.round(diffMs / 60000);
+    if (diffMin < 60) return 'in ' + diffMin + ' min';
+    if (fmtETIso(date) === fmtETIso(ref)) {
+      return 'at ' + fmtETHm(date);
+    }
+    return 'on ' + fmtETDayName(date) + ' at ' + fmtETHm(date);
+  }
+
+  function presenterSessionCount() {
+    var counts = {};
+    ALL_SESSIONS.forEach(function(s) {
+      if (!s.presenter) return;
+      parsePresenterNames(s.presenter).forEach(function(n) {
+        counts[n] = (counts[n] || 0) + 1;
+      });
+    });
+    return counts;
+  }
+  var PRESENTER_COUNTS = presenterSessionCount();
+
+  function renderPresenters(filterText) {
+    var list = document.getElementById('presentersList');
+    while (list.firstChild) list.removeChild(list.firstChild);
+    var f = (filterText || '').toLowerCase().trim();
+    var names = Object.keys(DATA.bios)
+      .filter(function(n) { return n.length < 50; })
+      .sort(function(a, b) {
+        var aParts = a.split(' '); var bParts = b.split(' ');
+        return aParts[aParts.length - 1].localeCompare(bParts[bParts.length - 1]);
+      });
+    var filtered = names.filter(function(n) { return !f || n.toLowerCase().indexOf(f) >= 0; });
+    if (filtered.length === 0) {
+      var li0 = document.createElement('li');
+      li0.className = 'empty';
+      li0.textContent = 'No matches.';
+      list.appendChild(li0);
+      return;
+    }
+    filtered.forEach(function(name) {
+      var li = document.createElement('li');
+      li.className = 'presenter-row';
+      var cnt = PRESENTER_COUNTS[name] || 0;
+      var source = DATA.bio_sources && DATA.bio_sources[name];
+      var sessionsList = ALL_SESSIONS
+        .filter(function(s) {
+          return s.presenter && parsePresenterNames(s.presenter).indexOf(name) >= 0;
+        })
+        .sort(function(a, b) { return a._range.startDate - b._range.startDate; });
+
+      var btn = document.createElement('button');
+      btn.className = 'presenter-row__btn';
+      btn.type = 'button';
+      var leftSpan = document.createElement('span');
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'presenter-row__name';
+      nameSpan.textContent = name;
+      leftSpan.appendChild(nameSpan);
+      var cntSpan = document.createElement('span');
+      cntSpan.className = 'presenter-row__count';
+      cntSpan.textContent = cnt + ' session' + (cnt === 1 ? '' : 's');
+      leftSpan.appendChild(cntSpan);
+      btn.appendChild(leftSpan);
+      var chev = document.createElement('span');
+      chev.className = 'presenter-row__chev';
+      chev.textContent = '▼';
+      btn.appendChild(chev);
+      li.appendChild(btn);
+
+      var body = document.createElement('div');
+      body.className = 'presenter-row__body';
+      if (source === 'web') {
+        var src = document.createElement('span');
+        src.className = 'presenter-row__source';
+        src.textContent = 'Bio web-sourced';
+        body.appendChild(src);
+      }
+      var bioDiv = document.createElement('div');
+      bioDiv.className = 'presenter-row__bio';
+      bioDiv.textContent = DATA.bios[name] || '(No bio available.)';
+      body.appendChild(bioDiv);
+
+      if (sessionsList.length > 0) {
+        var sessHolder = document.createElement('div');
+        sessHolder.className = 'presenter-row__sessions';
+        var h4 = document.createElement('h4');
+        h4.textContent = 'Sessions';
+        sessHolder.appendChild(h4);
+        sessionsList.forEach(function(s) {
+          var row = document.createElement('div');
+          row.className = 'presenter-row__session';
+          var t = document.createElement('div');
+          t.textContent = s.title;
+          var m = document.createElement('div');
+          m.className = 'presenter-row__session-meta';
+          m.textContent = s._day.day + '  ·  ' + s._slot.time + (s.location ? '  ·  ' + s.location : '');
+          row.appendChild(t);
+          row.appendChild(m);
+          sessHolder.appendChild(row);
+        });
+        body.appendChild(sessHolder);
+      }
+      li.appendChild(body);
+      btn.addEventListener('click', function() { li.classList.toggle('expanded'); });
+      list.appendChild(li);
+    });
+  }
+
+  function openBio(name) {
+    if (!DATA.bios[name]) {
+      var stripped = name.replace(/\s+for\s+Women.*$/i, '').trim();
+      if (DATA.bios[stripped]) name = stripped;
+    }
+    var modal = document.getElementById('bioModal');
+    document.getElementById('modalName').textContent = name;
+    var existing = document.querySelectorAll('#bioModal .presenter-row__source');
+    existing.forEach(function(n) { n.remove(); });
+    var bioEl = document.getElementById('modalBio');
+    bioEl.textContent = DATA.bios[name] || 'No bio available for this presenter.';
+    var source = DATA.bio_sources && DATA.bio_sources[name];
+    if (source === 'web') {
+      var tag = document.createElement('span');
+      tag.className = 'presenter-row__source';
+      tag.textContent = 'Bio web-sourced';
+      bioEl.parentNode.insertBefore(tag, bioEl);
+    }
+    var sessHolder = document.getElementById('modalSessions');
+    while (sessHolder.firstChild) sessHolder.removeChild(sessHolder.firstChild);
+    var sessions = ALL_SESSIONS
+      .filter(function(s) {
+        return s.presenter && parsePresenterNames(s.presenter).indexOf(name) >= 0;
+      })
+      .sort(function(a, b) { return a._range.startDate - b._range.startDate; });
+    if (sessions.length > 0) {
+      var h = document.createElement('h4');
+      h.style.cssText = 'font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); font-weight: 700; margin: 0.5rem 0 0.4rem;';
+      h.textContent = 'Teaching at LimmudFest';
+      sessHolder.appendChild(h);
+      sessions.forEach(function(s) {
+        var row = document.createElement('div');
+        row.style.cssText = 'padding: 0.5rem 0; border-bottom: 1px solid var(--sand-deep);';
+        var t = document.createElement('div');
+        t.style.fontWeight = '600';
+        t.textContent = s.title;
+        var m = document.createElement('div');
+        m.style.cssText = 'font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.15rem;';
+        m.textContent = s._day.day + '  ·  ' + s._slot.time + (s.location ? '  ·  ' + s.location : '');
+        row.appendChild(t);
+        row.appendChild(m);
+        sessHolder.appendChild(row);
+      });
+    }
+    modal.classList.add('open');
+  }
+  document.getElementById('modalClose').addEventListener('click', function() {
+    document.getElementById('bioModal').classList.remove('open');
+  });
+  document.getElementById('bioModal').addEventListener('click', function(e) {
+    if (e.target.id === 'bioModal') {
+      document.getElementById('bioModal').classList.remove('open');
+    }
+  });
+
+  function activateTab(name) {
+    document.querySelectorAll('.tab').forEach(function(t) {
+      t.setAttribute('aria-selected', t.dataset.tab === name);
+    });
+    document.querySelectorAll('section.panel').forEach(function(p) {
+      p.classList.toggle('active', p.dataset.panel === name);
+    });
+    if (name === 'browse') {
+      var todayIso = fmtETIso(etNow());
+      var idx = DATA.schedule.findIndex(function(d) { return d.iso === todayIso; });
+      if (idx >= 0) currentDayIdx = idx;
+      renderDayPills();
+      renderBrowseDay(currentDayIdx);
+    } else if (name === 'mine') {
+      renderMine();
+    } else if (name === 'presenters') {
+      renderPresenters(document.getElementById('presenterSearch').value);
+    } else if (name === 'now') {
+      renderNow();
+    }
+    window.scrollTo({top: 0, behavior: 'instant'});
+  }
+  document.querySelectorAll('.tab').forEach(function(t) {
+    t.addEventListener('click', function() { activateTab(t.dataset.tab); });
+  });
+  document.getElementById('presenterSearch').addEventListener('input', function(e) {
+    renderPresenters(e.target.value);
+  });
+
+  function tick() {
+    var hdrClock = document.getElementById('hdrClock');
+    while (hdrClock.firstChild) hdrClock.removeChild(hdrClock.firstChild);
+    hdrClock.appendChild(document.createTextNode('Eastern Time: '));
+    var strongEl = document.createElement('strong');
+    strongEl.textContent = fmtETClock(etNow());
+    hdrClock.appendChild(strongEl);
+    var ap = document.querySelector('.panel.active');
+    if (ap && ap.dataset.panel === 'now') {
+      renderNow();
+    }
+  }
+
+  updateMineBadge();
+  renderDayPills();
+  renderBrowseDay(0);
+  renderNow();
+  setInterval(tick, 30000);
+})();
+</script>
+</body>
+</html>
+
