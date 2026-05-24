@@ -1250,6 +1250,9 @@
     catch (e) {}
   }
   var mySet = loadMy();
+  // Tracks which session cards the user has expanded. Persists across renders
+  // so the 30-second clock tick doesn't collapse the user's open cards.
+  var expandedSet = new Set();
 
   function parseTimeRange(timeStr, dayIso) {
     if (!timeStr) return null;
@@ -1363,6 +1366,7 @@
     div.setAttribute('data-session-id', s._id);
     if (mySet.has(s._id)) div.classList.add('session--saved');
     if (s.description) div.classList.add('has-desc');
+    if (expandedSet.has(s._id)) div.classList.add('expanded');
 
     var titleH = document.createElement('div');
     titleH.className = 'session__title';
@@ -1417,11 +1421,17 @@
       var moreBtn = document.createElement('button');
       moreBtn.className = 'session__expand';
       moreBtn.type = 'button';
-      moreBtn.textContent = 'More';
+      moreBtn.textContent = expandedSet.has(s._id) ? 'Less' : 'More';
+      function toggleExpand() {
+        var nowOpen = !div.classList.contains('expanded');
+        div.classList.toggle('expanded', nowOpen);
+        moreBtn.textContent = nowOpen ? 'Less' : 'More';
+        if (nowOpen) expandedSet.add(s._id);
+        else expandedSet.delete(s._id);
+      }
       moreBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        div.classList.toggle('expanded');
-        moreBtn.textContent = div.classList.contains('expanded') ? 'Less' : 'More';
+        toggleExpand();
       });
       div.appendChild(moreBtn);
       // Whole card toggles expanded too. Ignore taps on interactive children.
@@ -1429,8 +1439,7 @@
         if (e.target.closest('.session__add')) return;
         if (e.target.closest('.session__presenter button')) return;
         if (e.target.closest('.session__expand')) return;
-        div.classList.toggle('expanded');
-        moreBtn.textContent = div.classList.contains('expanded') ? 'Less' : 'More';
+        toggleExpand();
       });
     }
 
