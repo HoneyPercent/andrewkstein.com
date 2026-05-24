@@ -8,7 +8,7 @@
   <meta name="description" content="Schedule and presenters for LimmudFest 2026 at Ramah Darom, May 21-25, 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Kaushan+Script&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,6 +39,7 @@
       --font-body: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
       --font-script: 'Kaushan Script', 'Brush Script MT', cursive;
       --tab-h: 66px;
+      --site-nav-h: 40px;
     }
     html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     body {
@@ -55,12 +56,66 @@
     a:hover, a:focus { color: var(--lf-orange); }
     button { font-family: inherit; cursor: pointer; }
 
+    /* ============ SITE NAV (back to andrewkstein.com) ============ */
+    a.site-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      height: var(--site-nav-h);
+      padding: 0 0.9rem;
+      padding-top: env(safe-area-inset-top, 0);
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      border-bottom: 1px solid rgba(213, 207, 196, 0.55);
+      color: var(--lf-text);
+      text-decoration: none;
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      transition: background 0.18s;
+    }
+    a.site-nav:hover {
+      background: rgba(250, 247, 242, 1);
+      color: var(--lf-accent, #1a3a4a);
+    }
+    .site-nav__cat {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+    .site-nav__back {
+      color: var(--lf-stone);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.78rem;
+      margin-right: 0.15rem;
+      letter-spacing: 0;
+    }
+    .site-nav__name {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .site-nav__external {
+      color: var(--lf-stone);
+      font-size: 0.85rem;
+      margin-left: 0.3rem;
+    }
+
     /* ============ HEADER ============ */
     header.hdr {
       background: var(--lf-cream);
       padding: 1.1rem 1.1rem 1rem;
-      padding-top: calc(0.7rem + env(safe-area-inset-top, 0));
-      position: sticky; top: 0;
+      padding-top: 0.7rem;
+      position: sticky;
+      top: var(--site-nav-h);
       z-index: 50;
       border-bottom: 3px solid var(--lf-lime);
       box-shadow: 0 4px 14px rgba(34, 22, 6, 0.08);
@@ -210,7 +265,7 @@
       background: var(--lf-cream-deep);
       border-bottom: 2px solid var(--lf-lime);
       position: sticky;
-      top: 0;
+      top: var(--site-nav-h);
       z-index: 20;
       scrollbar-width: none;
     }
@@ -1131,6 +1186,13 @@
   </style>
 </head>
 <body>
+
+<a class="site-nav" href="https://andrewkstein.com" aria-label="Back to andrewkstein.com">
+  <img class="site-nav__cat" src="data:image/png;base64,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" alt="">
+  <span class="site-nav__back">&larr;</span>
+  <span class="site-nav__name">Andrew K. Stein</span>
+  <span class="site-nav__external" aria-hidden="true">&#x2197;</span>
+</a>
 
 <header class="hdr">
   <div class="hdr__banner">
