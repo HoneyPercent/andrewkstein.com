@@ -53,13 +53,13 @@
     </div>
   </section>
 
-  <!-- NEW: Where are you on the ladder? — UPDATED 2026-05-23 with 5-stage model.
+  <!-- NEW: Where are you on the ladder? — UPDATED 2026-05-27 with 6-stage model (Stage 6 = AI Co-CEO, the new frontier).
        Built as native HTML/CSS (no image), so text is editable + scales crisply + theme-friendly. -->
   <section class="bg-sand">
     <div class="container container--reading">
       <div class="section-header reveal">
         <h2>Maturity Model: Where are you?</h2>
-        <p class="lead">Becoming a super-user of AI is just a few steps away.</p>
+        <p class="lead">Getting the most out of AI is just a few steps away.</p>
       </div>
 
       <style>
@@ -133,9 +133,28 @@
           line-height: 1.4;
         }
         .ladder__step--5 .ladder__desc { color: #8a6608; }
+        .ladder__step--6 {
+          margin-left: 15%;
+          opacity: 0.85;
+          border-color: var(--stone);
+          border-style: dashed;
+          background: var(--white);
+        }
+        .ladder__step--6 .ladder__num { color: var(--text-secondary); }
+        .ladder__frontier {
+          font-family: var(--font-heading);
+          font-style: italic;
+          font-weight: 400;
+          font-size: 0.72rem;
+          color: var(--accent-warm);
+          letter-spacing: 0.05em;
+          margin-left: 0.5rem;
+          opacity: 0.85;
+        }
         @media (max-width: 720px) {
           .ladder__step { margin-left: 0 !important; padding: 0.8rem 1rem; gap: 0.8rem; }
           .ladder__num { min-width: 3.2rem; font-size: 0.68rem; }
+          .ladder__frontier { display: block; margin-left: 0; }
         }
       </style>
 
@@ -150,15 +169,15 @@
         <div class="ladder__step ladder__step--2">
           <span class="ladder__num">Stage 2</span>
           <div class="ladder__body">
-            <span class="ladder__name">Reused Conversation</span>
+            <span class="ladder__name">Chatbot Conversation</span>
             <span class="ladder__desc">Context lives in one chat thread.</span>
           </div>
         </div>
         <div class="ladder__step ladder__step--3">
           <span class="ladder__num">Stage 3</span>
           <div class="ladder__body">
-            <span class="ladder__name">Custom Project</span>
-            <span class="ladder__desc">The AI reads a few files at the start.</span>
+            <span class="ladder__name">Chatbot Project</span>
+            <span class="ladder__desc">The AI reads files at the start.</span>
           </div>
         </div>
         <div class="ladder__step ladder__step--4">
@@ -172,7 +191,14 @@
           <span class="ladder__num">Stage 5</span>
           <div class="ladder__body">
             <span class="ladder__name">AI Chief of Staff</span>
-            <span class="ladder__desc">Stage 4 plus a markdown vault of context &mdash; your <code>CLAUDE.md</code>, your skills, your files.</span>
+            <span class="ladder__desc">Stage 4 plus a markdown vault of context &mdash; your skills, your files.</span>
+          </div>
+        </div>
+        <div class="ladder__step ladder__step--6">
+          <span class="ladder__num">Stage 6</span>
+          <div class="ladder__body">
+            <span class="ladder__name">AI Co-CEO <span class="ladder__frontier">&rarr; Frontier</span></span>
+            <span class="ladder__desc">Stage 5 plus standing rules + a team of specialized agents so AI handles the humdrum stuff autonomously.</span>
           </div>
         </div>
       </div>
