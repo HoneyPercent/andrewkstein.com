@@ -1,7 +1,7 @@
 /* ============================================================
    andrewkstein.com — "Warm Minimal" design system
    Adapted from the Anthropic/Claude warm-minimal aesthetic.
-   Clay + oat + ivory, system serif, monospace labels.
+   Clay + oat + ivory. Serif = titles/headings; sans = body + concept labels; mono = labels.
    Shared stylesheet — homepage first, inner pages to follow.
    ============================================================ */
 
@@ -211,7 +211,7 @@ section{ padding:84px 0; }
 .logos__row .logo-text{ font-family:var(--sans); font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--slate); }
 
 /* ============================================================
-   TESTIMONIALS
+   TESTIMONIALS  (quote text is upright serif, not italic -- 2026-05-29)
    ============================================================ */
 .quote{
   background:var(--paper); border:1.5px solid var(--g300); border-radius:14px; padding:28px 28px 24px;
@@ -221,7 +221,7 @@ section{ padding:84px 0; }
   content:"\201C"; position:absolute; top:8px; right:18px; font-family:var(--serif);
   font-size:60px; line-height:1; color:var(--oat);
 }
-.quote__text{ font-family:var(--serif); font-style:italic; font-weight:400; font-size:18px; line-height:1.5; color:var(--slate); margin-bottom:20px; position:relative; z-index:1; }
+.quote__text{ font-family:var(--serif); font-style:normal; font-weight:400; font-size:18px; line-height:1.5; color:var(--slate); margin-bottom:20px; position:relative; z-index:1; }
 .quote__foot{ display:flex; align-items:center; gap:11px; margin-top:auto; }
 .quote__avatar{ width:38px; height:38px; border-radius:50%; object-fit:cover; border:1.5px solid var(--g200); flex:0 0 auto; }
 .quote__author{ font-family:var(--mono); font-size:11.5px; letter-spacing:.02em; color:var(--g700); line-height:1.4; }
