@@ -2,6 +2,11 @@
    AndrewKStein.com — Design System
    "Literary Warmth" — editorial, personal, crafted.
    Not corporate. Not hustlebro. Not a template.
+
+   SCOPE (May 2026 redesign): the rest of andrewkstein.com now uses
+   anthropic.css (warm-minimal). This "Literary Warmth" stylesheet is
+   retained ONLY for library-viz.html (the Family Library data-viz).
+   Do not add new site-wide styles here -- use anthropic.css.
    ============================================ */
 
 /* --- Reset & Base --- */
