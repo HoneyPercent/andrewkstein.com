@@ -236,6 +236,16 @@
 
     /* Smooth scroll */
     html { scroll-behavior: smooth; }
+
+    /* ===== Back-nav recolored to match the new andrewkstein.com look =====
+       (overrides styles.css via #nav id specificity; markup + 68px height
+       unchanged so the hero's top padding stays valid) */
+    #nav { background: rgba(250, 249, 245, 0.85); border-bottom: 1.5px solid #E6E3DA; }
+    #nav .nav__logo { font-family: ui-serif, Georgia, "Times New Roman", serif; font-weight: 500; color: #141413; }
+    #nav .nav__links a { color: #3D3D3A; font-weight: 500; }
+    #nav .nav__links a::after { background: #D97757; }
+    #nav .nav__links a:hover, #nav .nav__links a.active { color: #141413; }
+    #nav .nav__toggle svg { stroke: #141413; }
   </style>
 </head>
 <body>
