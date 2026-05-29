@@ -10,23 +10,35 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://andrewkstein.com/my-approach.html">
   <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="anthropic.css">
+  <style>
+    /* drop-cap on the first paragraph after the opening h2 */
+    .article__body h2:first-of-type + p::first-letter{
+      font-family:var(--serif); font-weight:500; float:left;
+      font-size:3.4em; line-height:.82; padding:6px 10px 0 0; color:var(--clay);
+    }
+    /* centered variant of the mid-article callout */
+    .callout--center{ text-align:center; border-left:1.5px solid var(--g300); }
+    .callout--center .callout__lead{ font-weight:600; color:var(--slate); margin-bottom:6px; }
+    .callout--center .cta__buttons{ margin-top:18px; }
+    /* closing CTA */
+    .article__close{ text-align:center; }
+    .article__close .lead{ margin:0 auto 0; }
+    .article__close .cta__buttons{ margin-top:22px; }
+  </style>
 </head>
 <body>
 
   <!-- Nav -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="" class="nav__logo-icon">Andrew K. Stein</a>
+      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="">Andrew K. Stein</a>
       <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <ul class="nav__links">
         <li><a href="index.html">Home</a></li>
@@ -38,11 +50,11 @@
   </nav>
 
   <!-- Article -->
-  <article class="article bg-cream">
-    <header class="article__header container--narrow">
-      <p class="hero__tagline">My Approach</p>
-      <h1>You're onboarding a teammate.</h1>
-      <p class="lead mt-md">Most AI advice tells you what buttons to click. I think that misses the point entirely. What I actually believe about using AI well.</p>
+  <article class="article">
+    <header class="article__header">
+      <span class="eyebrow">My Approach</span>
+      <h1>You're onboarding a <em>teammate</em>.</h1>
+      <p class="lead">Most AI advice tells you what buttons to click. I think that misses the point entirely. What I actually believe about using AI well.</p>
     </header>
 
     <div class="article__body">
@@ -76,21 +88,21 @@
       <p>It compounds. Each new file, each new preference captured, each new workflow automated&mdash;they all build on each other. After a few weeks, you have something that feels less like a tool and more like institutional memory.</p>
 
       <!-- Mid-article CTA -->
-      <div class="callout" style="margin: 2.5rem 0; text-align: center;">
-        <p style="font-weight: 600; margin-bottom: 0.75rem;">This is what I build with clients.</p>
-        <p style="margin-bottom: 1rem;">If you want to see what it looks like in practice:</p>
-        <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--primary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Book a free intro call</a>
-          <a href="ai-consulting.html" class="btn btn--outline" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">See how I work</a>
+      <div class="callout callout--center">
+        <p class="callout__lead">This is what I build with clients.</p>
+        <p>If you want to see what it looks like in practice:</p>
+        <div class="cta__buttons">
+          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn">Book a free intro call <span class="btn__arrow">&rarr;</span></a>
+          <a href="ai-consulting.html" class="btn-outline">See how I work <span class="btn__arrow">&rarr;</span></a>
         </div>
       </div>
 
       <!-- Pull-quote testimonial -->
-      <div class="testimonial" style="margin: 2rem 0; padding-left: 2.5rem;">
-        <p class="testimonial__text">Andrew helped me dramatically reshape how I work. A couple hours with him has saved me dozens of hours on big projects, and small ones too.</p>
-        <div class="testimonial__footer">
-          <img src="assets/daniel-stone.jpg" alt="Daniel Stone" class="testimonial__avatar">
-          <p class="testimonial__author">&mdash; Daniel Stone, writer</p>
+      <div class="quote" style="margin:2.4em 0;">
+        <p class="quote__text">Andrew helped me dramatically reshape how I work. A couple hours with him has saved me dozens of hours on big projects, and small ones too.</p>
+        <div class="quote__foot">
+          <img src="assets/daniel-stone.jpg" alt="Daniel Stone" class="quote__avatar">
+          <p class="quote__author">Daniel Stone, writer</p>
         </div>
       </div>
 
@@ -130,12 +142,12 @@
 
       <p>That's what I help clients build: not a perfect system on day one, but a system that gets meaningfully better every week. It builds on itself. A few weeks in, you'll wonder how you worked without it.</p>
 
-      <hr class="divider divider--center" style="margin: 3rem auto;">
+      <hr>
 
-      <div class="text-center">
+      <div class="article__close">
         <p class="lead">Curious what this could look like for your work?</p>
-        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="ai-consulting.html" class="btn btn--primary">See how I work with clients</a>
+        <div class="cta__buttons">
+          <a href="ai-consulting.html" class="btn">See how I work with clients <span class="btn__arrow">&rarr;</span></a>
         </div>
       </div>
 
@@ -145,22 +157,18 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__name">Andrew K. Stein</p>
+      <span class="footer__name">Andrew K. Stein</span>
       <ul class="footer__links">
-        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn &rarr;</a></li>
       </ul>
     </div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.nav__links a').forEach(a =>
+      a.addEventListener('click', () => document.querySelector('.nav__links').classList.remove('open')));
     window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
     });
   </script>
 

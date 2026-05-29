@@ -3,31 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Facilitation &amp; Workshops — Andrew K. Stein</title>
+  <title>Facilitation &amp; Workshops &mdash; Andrew K. Stein</title>
   <meta name="description" content="Atlanta-based facilitator for executive workshops, strategic planning, board retreats, and offsites. 18+ years across private, public, and nonprofit sectors.">
   <meta name="keywords" content="facilitator Atlanta, workshop facilitator Atlanta, strategic planning facilitator, board retreat facilitator, executive workshop facilitator">
-  <meta property="og:title" content="Facilitation & Workshops — Andrew K. Stein">
+  <meta property="og:title" content="Facilitation &amp; Workshops &mdash; Andrew K. Stein">
   <meta property="og:description" content="Atlanta-based facilitator for executive workshops, strategic planning, board retreats, and offsites. 18+ years across private, public, and nonprofit sectors.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://andrewkstein.com/facilitation.html">
   <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="anthropic.css">
+  <style>
+    /* page-scoped: facilitation-only bespoke pieces */
+
+    /* "How I work" -- 4-phase numbered methodology */
+    .phase{ display:flex; gap:20px; padding:24px 0; border-top:1.5px solid var(--g200); }
+    .phase:first-of-type{ border-top:none; padding-top:8px; }
+    .phase__num{ font-family:var(--mono); font-size:13px; font-weight:600; color:var(--clay); width:30px; flex:0 0 auto; padding-top:5px; }
+    .phase__body h3{ font-family:var(--serif); font-weight:500; font-size:21px; letter-spacing:-.008em; color:var(--slate); margin-bottom:7px; }
+    .phase__body p{ font-size:15px; line-height:1.62; color:var(--g700); }
+
+    /* "Things I've learned" -- bold-led points */
+    .lessons{ display:flex; flex-direction:column; gap:20px; margin-top:8px; }
+    .lessons p{ font-size:15px; line-height:1.62; color:var(--g700); }
+    .lessons p strong{ color:var(--slate); font-weight:600; }
+
+    /* prose paragraphs inside narrow reading sections */
+    .prose p{ font-size:15.5px; line-height:1.68; color:var(--g700); }
+    .prose p + p{ margin-top:16px; }
+    .prose p strong{ color:var(--slate); font-weight:600; }
+
+    /* text-initial avatar (no headshot available) */
+    .quote__avatar--initials{
+      display:inline-flex; align-items:center; justify-content:center;
+      background:var(--clay); color:#fff; font-family:var(--mono);
+      font-size:12px; font-weight:600; letter-spacing:.02em;
+    }
+
+    /* small centered note under a grid */
+    .grid-note{ text-align:center; color:var(--g500); font-size:14px; margin-top:28px; }
+  </style>
 </head>
 <body>
 
   <!-- Nav -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="" class="nav__logo-icon">Andrew K. Stein</a>
+      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="">Andrew K. Stein</a>
       <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <ul class="nav__links">
         <li><a href="index.html">Home</a></li>
@@ -38,217 +65,217 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero bg-cream" style="padding-bottom: var(--space-lg);">
-    <div class="container container--reading">
-      <p class="hero__tagline">Facilitation &amp; Workshops</p>
-      <h1>The right facilitator changes what's possible in a room.</h1>
-      <div class="testimonial reveal" style="margin-top: 2rem;">
-        <p class="testimonial__text">Andrew's the best facilitator I've seen.</p>
-        <div class="testimonial__footer">
-          <img src="assets/patty-russart.jpg" alt="Patty Russart" class="testimonial__avatar">
-          <p class="testimonial__author">&mdash; Patty Russart, Executive Director, ToolBank USA</p>
+  <!-- Page hero -->
+  <section class="page-hero bg-ivory">
+    <div class="container">
+      <span class="eyebrow">Facilitation &amp; Workshops</span>
+      <h1>The right facilitator changes what's <em>possible</em> in a room.</h1>
+      <div class="quote" style="max-width:520px; margin-top:30px;">
+        <p class="quote__text">Andrew's the best facilitator I've seen.</p>
+        <div class="quote__foot">
+          <img src="assets/patty-russart.jpg" alt="Patty Russart" class="quote__avatar" loading="lazy">
+          <span class="quote__author">Patty Russart, Executive Director, ToolBank USA</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Positioning -->
-  <section class="bg-sand">
-    <div class="container container--reading">
-      <div class="reveal">
-        <p class="lead">I'm an Atlanta-based strategy consultant who facilitates executive workshops and offsites. 18+ years across private, public, and nonprofit sectors. Hundreds of sessions.</p>
-        <p class="mt-md">At Deloitte, I ran the ThinkTank Center of Excellence, training facilitators and building the playbook for technology-enhanced collaboration. I then became a Lab Manager in the Greenhouse, Deloitte's purpose-built immersive environment where teams tackle their hardest problems through behavioral science, environmental design, and structured creative problem-solving. I've been doing the same work independently since, for organizations of every size, from the U.S. State Department to community nonprofits.</p>
-        <p class="mt-md">Imagine a boring "strategic offsite," and now imagine how great it would be if it had gone as well as possible. That's what I do.</p>
-        <p class="mt-md">My style is warm, structured, and honest. I keep the room moving, and I surface the thing everyone is thinking but nobody wants to say.</p>
-      </div>
+  <section class="bg-warm">
+    <div class="container--narrow prose">
+      <p class="lead">I'm an Atlanta-based strategy consultant who facilitates executive workshops and offsites. 18+ years across private, public, and nonprofit sectors. Hundreds of sessions.</p>
+      <p style="margin-top:18px;">At Deloitte, I ran the ThinkTank Center of Excellence, training facilitators and building the playbook for technology-enhanced collaboration. I then became a Lab Manager in the Greenhouse, Deloitte's purpose-built immersive environment where teams tackle their hardest problems through behavioral science, environmental design, and structured creative problem-solving. I've been doing the same work independently since, for organizations of every size, from the U.S. State Department to community nonprofits.</p>
+      <p>Imagine a boring "strategic offsite," and now imagine how great it would be if it had gone as well as possible. That's what I do.</p>
+      <p>My style is warm, structured, and honest. I keep the room moving, and I surface the thing everyone is thinking but nobody wants to say.</p>
     </div>
   </section>
 
   <!-- Most meetings solve the wrong problem -->
-  <section class="bg-cream">
-    <div class="container container--reading">
-      <h2 class="reveal">Most meetings solve the wrong problem</h2>
-      <div class="reveal">
-        <p class="mt-md">Organizations hire facilitators for what looks like a process problem: "we need a strategic plan" or "we need team alignment." But the real challenge is almost always messier than that. It's open-ended, politically charged, and full of things nobody wants to say out loud.</p>
-        <p class="mt-md">We spend most of our meetings figuring out what everyone thinks, and leave almost no time to figure out what to do about it. A well-designed session flips that ratio. By downloading the brain of the group quickly, you free up the meeting for what matters: implications, choices, and commitments.</p>
-        <p class="mt-md">I design sessions to create the conditions where a group can do the hard thinking together that they can't do on their own.</p>
-      </div>
+  <section class="bg-ivory">
+    <div class="container--narrow prose">
+      <div class="sec-head"><span class="idx" style="visibility:hidden;">&bull;</span><h2>Most meetings solve the wrong problem</h2></div>
+      <p style="margin-top:14px;">Organizations hire facilitators for what looks like a process problem: "we need a strategic plan" or "we need team alignment." But the real challenge is almost always messier than that. It's open-ended, politically charged, and full of things nobody wants to say out loud.</p>
+      <p>We spend most of our meetings figuring out what everyone thinks, and leave almost no time to figure out what to do about it. A well-designed session flips that ratio. By downloading the brain of the group quickly, you free up the meeting for what matters: implications, choices, and commitments.</p>
+      <p>I design sessions to create the conditions where a group can do the hard thinking together that they can't do on their own.</p>
     </div>
   </section>
 
   <!-- What I facilitate -->
-  <section class="bg-sand">
+  <section class="bg-warm">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>What I facilitate</h2>
-        <p class="lead">Sessions range from half-day workshops to multi-day retreats. Here are the most common shapes.</p>
-      </div>
-      <div class="grid-3 reveal-stagger">
-        <div class="card card--service reveal">
+      <div class="sec-head"><span class="idx">01</span><h2>What I facilitate</h2></div>
+      <p class="sec-intro">Sessions range from half-day workshops to multi-day retreats. Here are the most common shapes.</p>
+      <div class="grid-3">
+        <div class="card">
           <svg class="card__icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 28L18 6L32 28H4Z"/><circle cx="18" cy="20" r="3"/></svg>
           <h4>Strategic Planning Sessions</h4>
           <p>Multi-day facilitated processes that produce real strategic plans with priorities, timelines, and accountability. Like the ToolBank engagement that culminated in a 5-year plan presented to the full board.</p>
         </div>
-        <div class="card card--service reveal">
+        <div class="card">
           <svg class="card__icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="28" height="22" rx="3"/><path d="M4 14h28"/><circle cx="10" cy="11" r="1" fill="currentColor"/><circle cx="14" cy="11" r="1" fill="currentColor"/></svg>
           <h4>Board Retreats &amp; Offsites</h4>
           <p>Structured time away from the office that's productive. Board alignment, governance, long-range planning. Sessions designed so the group leaves with clarity, not just good feelings.</p>
         </div>
-        <div class="card card--service reveal">
+        <div class="card">
           <svg class="card__icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18a6 6 0 1 1 12 0"/><path d="M6 18a12 12 0 1 1 24 0"/><line x1="18" y1="18" x2="18" y2="30"/></svg>
           <h4>Team Alignment Sessions</h4>
           <p>"Bridge building" work for teams that need to rebuild trust, align on direction, or resolve tensions that are quietly draining energy.</p>
         </div>
-        <div class="card card--service reveal">
+        <div class="card">
           <svg class="card__icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="12" r="6"/><circle cx="8" cy="24" r="4"/><circle cx="28" cy="24" r="4"/><line x1="14" y1="16" x2="10" y2="21"/><line x1="22" y1="16" x2="26" y2="21"/></svg>
           <h4>Funder &amp; Stakeholder Convenings</h4>
           <p>High-stakes gatherings with diverse interests at the table. I keep the conversation honest and productive when the room has competing agendas.</p>
         </div>
-        <div class="card card--service reveal">
+        <div class="card">
           <svg class="card__icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 26V10a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v16"/><path d="M2 26h32"/><path d="M14 14h8M14 18h5"/></svg>
           <h4>Annual Summits</h4>
           <p>Large-group sessions that need to be energizing. Interactive formats, real outcomes, and exercises that get every voice in the room.</p>
         </div>
-        <div class="card card--service reveal">
+        <div class="card">
           <svg class="card__icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="10" height="10" rx="2"/><rect x="20" y="6" width="10" height="10" rx="2"/><rect x="6" y="20" width="10" height="10" rx="2"/><rect x="20" y="20" width="10" height="10" rx="2"/><line x1="16" y1="11" x2="20" y2="11"/><line x1="11" y1="16" x2="11" y2="20"/></svg>
           <h4>Organizational Design</h4>
           <p>When a growing organization needs to rethink governance, accountability, and role definitions for what comes next.</p>
         </div>
       </div>
-      <p class="mt-lg reveal" style="text-align: center; color: var(--text-secondary); font-size: 0.9375rem;">Most engagements are groups of 8&ndash;60 people, though I've facilitated sessions with 450.</p>
+      <p class="grid-note">Most engagements are groups of 8&ndash;60 people, though I've facilitated sessions with 450.</p>
     </div>
   </section>
 
   <!-- What it's like in the room -->
-  <section class="bg-cream">
-    <div class="container container--reading">
-      <h2 class="reveal">What it's like in the room</h2>
-      <div class="reveal">
-        <p class="mt-md">Sessions alternate between <strong>"heads down"</strong> and <strong>"heads up."</strong> In heads-down mode, everyone contributes simultaneously: typing ideas, voting on priorities, responding to prompts. In heads-up mode, we explore what the group just revealed. This rhythm downloads the group's thinking fast, so we spend time on implications and decisions instead of just figuring out what everyone thinks.</p>
-        <p class="mt-md">I set the scene with intention. Play-Doh on the tables. Music as people walk in. Ground rules the group creates together. The physical environment shapes how people think and interact, and I design for that.</p>
-        <p class="mt-md">And I name the thing. If there's an elephant in the room, a political dynamic everyone is tiptoeing around, or a gap between what the sponsor believes and what the room actually feels, I surface it. That's not a risk to the session. It's the reason for the session.</p>
-      </div>
+  <section class="bg-ivory">
+    <div class="container--narrow prose">
+      <div class="sec-head"><span class="idx" style="visibility:hidden;">&bull;</span><h2>What it's like in the room</h2></div>
+      <p style="margin-top:14px;">Sessions alternate between <strong>"heads down"</strong> and <strong>"heads up."</strong> In heads-down mode, everyone contributes simultaneously: typing ideas, voting on priorities, responding to prompts. In heads-up mode, we explore what the group just revealed. This rhythm downloads the group's thinking fast, so we spend time on implications and decisions instead of just figuring out what everyone thinks.</p>
+      <p>I set the scene with intention. Play-Doh on the tables. Music as people walk in. Ground rules the group creates together. The physical environment shapes how people think and interact, and I design for that.</p>
+      <p>And I name the thing. If there's an elephant in the room, a political dynamic everyone is tiptoeing around, or a gap between what the sponsor believes and what the room actually feels, I surface it. That's not a risk to the session. It's the reason for the session.</p>
     </div>
   </section>
 
-  <!-- Case studies -->
-  <section class="bg-sand">
-    <div class="container container--wide">
-      <div class="section-header reveal">
-        <h2>Selected work</h2>
-        <p class="lead">A few examples of what this looks like in practice.</p>
-      </div>
+  <!-- Selected work -->
+  <section class="bg-warm">
+    <div class="container">
+      <div class="sec-head"><span class="idx">02</span><h2>Selected work</h2></div>
+      <p class="sec-intro">A few examples of what this looks like in practice.</p>
 
-      <div class="case-study reveal">
+      <div class="case-study">
         <p class="case-study__org">U.S. State Department</p>
         <p class="case-study__detail">Organizational redesign &bull; 6-day engagement &bull; 30 senior leaders</p>
         <p>Deloitte leaders were asked to help 30 senior leaders and diplomats redesign their organization. They tapped me to lead, design, and facilitate the entire process. The first two days were rough: limited client access, competing direction from stakeholders, and a room full of people with decades of institutional knowledge and strong opinions. I pivoted the design mid-session, brought energy and creativity into a process that was losing momentum, and helped the group produce a unified organizational design by week's end.</p>
       </div>
 
-      <div class="case-study reveal">
+      <div class="case-study">
         <p class="case-study__org">WellPoint / Anthem</p>
         <p class="case-study__detail">Strategy lab &bull; 3-day engagement &bull; 32 senior executives</p>
         <p>Convened 32 senior healthcare executives to learn about disruptive industry trends and develop strategic choices. The result: WellPoint's leadership bought into the need for a strategy rethink and hired Deloitte to build and run an innovation studio.</p>
       </div>
 
-      <div class="case-study reveal">
+      <div class="case-study">
         <p class="case-study__org">ToolBank USA</p>
         <p class="case-study__detail">Intermittent engagements &bull; 2016&ndash;2024</p>
         <p>Started with a one-day "bridge building" session to rebuild trust between HQ and a national affiliate network. Pre-session interviews revealed deep frustration. The session surfaced those tensions, gave the new CEO honest input, and helped put the organization back on solid footing. Returned in 2024 to lead a multi-month strategic planning effort culminating in a 5-year plan with KPIs, presented to the full board for a vote.</p>
       </div>
 
-      <div class="case-study reveal">
+      <div class="case-study">
         <p class="case-study__org">Ma'alot Atlanta</p>
         <p class="case-study__detail">Organizational design sessions &bull; 2025</p>
         <p>A growing Atlanta Jewish community organization needed to redesign its governance as it scaled. Facilitated a series of organizational design sessions that brought diverse stakeholders into alignment on structure, accountability, and role definitions for the next chapter.</p>
       </div>
 
-      <p class="mt-lg reveal" style="text-align: center; color: var(--text-secondary); font-size: 0.9375rem;">Also: Deloitte Board/ExCo annual strategy retreats (40+ senior partners, including the CEO) &bull; Emory &amp; Brown alumni board sessions &amp; facilitator training workshops</p>
+      <p class="grid-note">Also: Deloitte Board/ExCo annual strategy retreats (40+ senior partners, including the CEO) &bull; Emory &amp; Brown alumni board sessions &amp; facilitator training workshops</p>
     </div>
   </section>
 
-  <!-- Testimonials: clients -->
-  <section class="bg-cream">
+  <!-- What clients say -->
+  <section class="bg-ivory">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>What clients say</h2>
-      </div>
-      <div class="grid-3 reveal-stagger">
-        <div class="testimonial reveal">
-          <p class="testimonial__text">Incredible facilitation job. Everyone enjoyed the two days. Variety of activities. Flexible. Getting everyone's voice heard. And leaving with real consensus-driven next steps.</p>
-          <div class="testimonial__footer">
-            <img src="assets/jordan-messler.jpg" alt="Jordan Messler" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Jordan Messler, CMO, Glytec</p>
+      <div class="sec-head"><span class="idx">03</span><h2>What clients say</h2></div>
+      <div class="grid-3" style="margin-top:26px;">
+        <div class="quote">
+          <p class="quote__text">Incredible facilitation job. Everyone enjoyed the two days. Variety of activities. Flexible. Getting everyone's voice heard. And leaving with real consensus-driven next steps.</p>
+          <div class="quote__foot">
+            <img src="assets/jordan-messler.jpg" alt="Jordan Messler" class="quote__avatar" loading="lazy">
+            <span class="quote__author">Jordan Messler, CMO, Glytec</span>
           </div>
         </div>
-        <div class="testimonial reveal">
-          <p class="testimonial__text">Andrew is insanely good at this. The way he facilitates people is incredible. Superb.</p>
-          <div class="testimonial__footer">
-            <img src="assets/bruce-joy.jpg" alt="Bruce Joy" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Bruce Joy, 1Unit colleague</p>
+        <div class="quote">
+          <p class="quote__text">Andrew is insanely good at this. The way he facilitates people is incredible. Superb.</p>
+          <div class="quote__foot">
+            <img src="assets/bruce-joy.jpg" alt="Bruce Joy" class="quote__avatar" loading="lazy">
+            <span class="quote__author">Bruce Joy, 1Unit colleague</span>
           </div>
         </div>
-        <div class="testimonial reveal">
-          <p class="testimonial__text">Andrew has a natural gift for making people feel welcomed and at ease. I enjoyed working with him.</p>
-          <div class="testimonial__footer">
-            <img src="assets/sam-hanimov.jpg" alt="Sam Hanimov" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Sam Hanimov, Operations Manager, Ma'alot</p>
+        <div class="quote">
+          <p class="quote__text">Andrew has a natural gift for making people feel welcomed and at ease. I enjoyed working with him.</p>
+          <div class="quote__foot">
+            <img src="assets/sam-hanimov.jpg" alt="Sam Hanimov" class="quote__avatar" loading="lazy">
+            <span class="quote__author">Sam Hanimov, Operations Manager, Ma'alot</span>
           </div>
         </div>
       </div>
-      <!-- Additional testimonials from notebooks -->
-      <div class="grid-3 reveal-stagger" style="margin-top: var(--space-md);">
-        <div class="testimonial reveal">
-          <p class="testimonial__text">Thanks again for your moderating brilliance. While the meeting went really differently from how I expected, it got us all thinking about some underlying issues whose resolution will make it much easier to conduct our business.</p>
-          <div class="testimonial__footer">
-            <span class="testimonial__avatar" style="display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;font-size:0.875rem;">MN</span>
-            <p class="testimonial__author">&mdash; Mayda Nathan, Garden City Co-Op</p>
+      <div class="grid-3" style="margin-top:22px;">
+        <div class="quote">
+          <p class="quote__text">Thanks again for your moderating brilliance. While the meeting went really differently from how I expected, it got us all thinking about some underlying issues whose resolution will make it much easier to conduct our business.</p>
+          <div class="quote__foot">
+            <span class="quote__avatar quote__avatar--initials">MN</span>
+            <span class="quote__author">Mayda Nathan, Garden City Co-Op</span>
           </div>
         </div>
-        <div class="testimonial reveal">
-          <p class="testimonial__text">Andrew has mastery of his tools and executive presence facilitating a group of our most senior partners.</p>
-          <div class="testimonial__footer">
-            <span class="testimonial__avatar" style="display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-weight:700;font-size:0.875rem;">CE</span>
-            <p class="testimonial__author">&mdash; Chris Ertel, author of <em>Moments of Impact</em></p>
+        <div class="quote">
+          <p class="quote__text">Andrew has mastery of his tools and executive presence facilitating a group of our most senior partners.</p>
+          <div class="quote__foot">
+            <span class="quote__avatar quote__avatar--initials">CE</span>
+            <span class="quote__author">Chris Ertel, author of <em>Moments of Impact</em></span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Methodology: 4-phase process -->
-  <section class="bg-sand">
-    <div class="container container--reading">
-      <h2 class="reveal">How I work</h2>
-      <div class="reveal">
-        <p class="mt-md">Every session is custom-designed. I learn your organization, talk to the people who matter, and build a session around what will actually change things. What stays constant is the process underneath.</p>
-        <p class="mt-sm" style="font-size: 0.9375rem; color: var(--text-secondary);">Facilitation is a lot like standup comedy: you script everything ahead of time, you expect the laughs, and you care deeply about the groaners.</p>
-      </div>
-      <div class="reveal mt-lg">
-        <h3 style="color: var(--accent);">1. Discovery</h3>
-        <p class="mt-sm">I start with the sponsor and key stakeholders. What's the real challenge? What are the dynamics in the room, the history of past attempts, the things nobody wants to say out loud? I ask the questions most facilitators don't.</p>
-      </div>
-      <div class="reveal mt-lg">
-        <h3 style="color: var(--accent);">2. Design</h3>
-        <p class="mt-sm">80% of a great session happens before anyone walks in the room. I work backwards from the session date, designing a flow that alternates between divergent thinking and convergent decisions. Every activity earns its place on the agenda. I underpack rather than overpack, because no one complains if you end early, and everyone hates it when it's rushed.</p>
-      </div>
-      <div class="reveal mt-lg">
-        <h3 style="color: var(--accent);">3. Delivery</h3>
-        <p class="mt-sm">In the room, I manage energy, not time. I get every voice heard in the first five minutes, keep the conversation honest, and adapt the plan when the room tells me something more important is happening.</p>
-      </div>
-      <div class="reveal mt-lg">
-        <h3 style="color: var(--accent);">4. Follow-through</h3>
-        <p class="mt-sm">You have 100% power to act on session outcomes the day they happen. A day later, 50%. A week later, 5%. Every session ends with named owners and deadlines, not "let's circle back."</p>
+  <!-- How I work -->
+  <section class="bg-warm">
+    <div class="container--narrow prose">
+      <div class="sec-head"><span class="idx" style="visibility:hidden;">&bull;</span><h2>How I work</h2></div>
+      <p style="margin-top:14px;">Every session is custom-designed. I learn your organization, talk to the people who matter, and build a session around what will actually change things. What stays constant is the process underneath.</p>
+      <p style="font-size:14.5px; color:var(--g500);">Facilitation is a lot like standup comedy: you script everything ahead of time, you expect the laughs, and you care deeply about the groaners.</p>
+
+      <div style="margin-top:30px;">
+        <div class="phase">
+          <span class="phase__num">1</span>
+          <div class="phase__body">
+            <h3>Discovery</h3>
+            <p>I start with the sponsor and key stakeholders. What's the real challenge? What are the dynamics in the room, the history of past attempts, the things nobody wants to say out loud? I ask the questions most facilitators don't.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <span class="phase__num">2</span>
+          <div class="phase__body">
+            <h3>Design</h3>
+            <p>80% of a great session happens before anyone walks in the room. I work backwards from the session date, designing a flow that alternates between divergent thinking and convergent decisions. Every activity earns its place on the agenda. I underpack rather than overpack, because no one complains if you end early, and everyone hates it when it's rushed.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <span class="phase__num">3</span>
+          <div class="phase__body">
+            <h3>Delivery</h3>
+            <p>In the room, I manage energy, not time. I get every voice heard in the first five minutes, keep the conversation honest, and adapt the plan when the room tells me something more important is happening.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <span class="phase__num">4</span>
+          <div class="phase__body">
+            <h3>Follow-through</h3>
+            <p>You have 100% power to act on session outcomes the day they happen. A day later, 50%. A week later, 5%. Every session ends with named owners and deadlines, not "let's circle back."</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Things I've learned -->
-  <section class="bg-cream">
-    <div class="container container--reading">
-      <h2 class="reveal">Things I've learned from hundreds of sessions</h2>
-      <div class="reveal mt-md" style="display: flex; flex-direction: column; gap: 1.25rem;">
+  <section class="bg-ivory">
+    <div class="container--narrow prose">
+      <div class="sec-head"><span class="idx" style="visibility:hidden;">&bull;</span><h2>Things I've learned from hundreds of sessions</h2></div>
+      <div class="lessons">
         <p><strong>The group is never as aligned as the sponsor assumes.</strong> "We're mostly on the same page" is almost never right. A good session accounts for that gap instead of being surprised by it.</p>
         <p><strong>Go slow to go fast.</strong> The urge to cram the agenda is the single biggest threat to a useful session. Fewer topics explored deeply always beats a packed schedule where nothing lands.</p>
         <p><strong>The enemy is twofold: politeness and abstraction.</strong> Polite groups avoid the real issue. Abstract groups think they agree when they don't. Good facilitation makes things concrete and honest.</p>
@@ -258,42 +285,36 @@
   </section>
 
   <!-- CTA -->
-  <section class="bg-dark cta-section">
-    <div class="container reveal">
-      <h2>Let's talk about your session</h2>
+  <section class="bg-warm cta">
+    <div class="container">
+      <h2>Let's talk about your <em>session</em>.</h2>
       <p class="lead">Every engagement is custom-designed. Book a 30-minute call and we'll talk through your situation. No pitch, no deck.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--warm">Book a free planning call</a>
-      </div>
+      <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn">Book a free planning call <span class="btn__arrow">&rarr;</span></a>
     </div>
   </section>
 
   <!-- About -->
-  <section class="bg-sand" style="padding: var(--space-lg) 0;">
-    <div class="container container--reading">
-      <p class="reveal" style="font-size: 0.9375rem; color: var(--text-secondary); text-align: center;">MBA from Emory (Woodruff Scholar), mechanical engineering from Brown. Atlanta native. I've taught workshop facilitation to other facilitators and non-dualistic mindfulness to people who need a break from workshops. I enjoy meditation, cocktails, and travel&mdash;sometimes all at once.</p>
+  <section class="bg-ivory">
+    <div class="container--narrow">
+      <p style="font-size:14.5px; line-height:1.62; color:var(--g500); text-align:center;">MBA from Emory (Woodruff Scholar), mechanical engineering from Brown. Atlanta native. I've taught workshop facilitation to other facilitators and non-dualistic mindfulness to people who need a break from workshops. I enjoy meditation, cocktails, and travel&mdash;sometimes all at once.</p>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__name">Andrew K. Stein</p>
+      <span class="footer__name">Andrew K. Stein</span>
       <ul class="footer__links">
-        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn &rarr;</a></li>
       </ul>
     </div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.nav__links a').forEach(a =>
+      a.addEventListener('click', () => document.querySelector('.nav__links').classList.remove('open')));
     window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
     });
   </script>
 

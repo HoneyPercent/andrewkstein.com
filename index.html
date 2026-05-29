@@ -10,23 +10,20 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://andrewkstein.com">
   <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="anthropic.css">
 </head>
 <body>
 
   <!-- Nav -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="" class="nav__logo-icon">Andrew K. Stein</a>
+      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="">Andrew K. Stein</a>
       <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <ul class="nav__links">
         <li><a href="index.html" class="active">Home</a></li>
@@ -38,36 +35,35 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero bg-cream">
-    <div class="container">
-      <div class="hero__grid">
-        <div class="hero__text">
-          <p class="hero__tagline">AI Strategy &amp; Workshop Facilitation</p>
-          <h1>I help people work better&mdash;with AI and with each other.</h1>
-          <p class="lead">2023 was the year of the chatbot, and 2026 is the year of agentic tools like Claude Cowork. But it can feel complex. I sit down with professionals like you, understand your goals, and help you build your ideal assistant &amp; teammate.</p>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">MBA, Emory (Woodruff Scholar). Mechanical engineering, Brown. 6 years at Deloitte. Hundreds of clients across 5 continents.</p>
-          <div class="hero__buttons" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-            <a href="ai-consulting.html" class="btn btn--primary">Work with me</a>
+  <section class="hero">
+    <div class="hero__container">
+      <div class="hero__copy">
+        <span class="eyebrow">AI Strategy &amp; Workshop Facilitation</span>
+        <h1 class="headline">I help people work <em>better</em>&mdash;with AI and with each other.</h1>
+        <p class="lead">2023 was the year of the chatbot, and 2026 is the year of agentic tools like Claude Cowork. But it can feel complex. I sit down with professionals like you, understand your goals, and help you build your ideal assistant &amp; teammate.</p>
+        <div class="hero__actions">
+          <a href="ai-consulting.html" class="btn">Work with me <span class="btn__arrow">&rarr;</span></a>
+        </div>
+        <p class="credentials">MBA, Emory (Woodruff Scholar). Mechanical engineering, Brown. 6 years at Deloitte. Hundreds of clients across 5 continents.</p>
+      </div>
+      <div class="hero__media">
+        <figure class="photo-card">
+          <div class="photo-card__frame">
+            <img src="assets/headshot.jpg" alt="Andrew K. Stein, AI consultant and workshop facilitator">
           </div>
-        </div>
-        <div class="hero__photo-wrap">
-          <img src="assets/headshot.jpg" alt="Andrew K. Stein" class="hero__photo" loading="eager">
-        </div>
+          <figcaption class="photo-caption">Andrew K. Stein</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- Two Pillars -->
-  <section class="bg-sand">
+  <!-- Two things I do -->
+  <section class="bg-warm">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>Two things I do</h2>
-        <p class="lead">Different skills, same instinct: figure out what's actually going on and help you move forward.</p>
-      </div>
-
-      <div class="grid-2 reveal-stagger">
-        <!-- Pillar 1: AI -->
-        <div class="card reveal">
+      <div class="sec-head"><span class="idx">01</span><h2>Two things I do</h2></div>
+      <p class="sec-intro">Different skills, same instinct: figure out what's actually going on and help you move forward.</p>
+      <div class="grid-2">
+        <div class="card">
           <h3>AI Strategy &amp; Consulting</h3>
           <p>I help people move beyond chatbots to their own AI cockpit optimized for how their brain likes to work.</p>
           <hr class="divider">
@@ -78,149 +74,127 @@
             <li>Vibe-coding &amp; building with AI</li>
             <li>"How should I be using this stuff?" guidance</li>
           </ul>
-          <a href="ai-consulting.html" class="btn btn--outline mt-lg" style="display: inline-block;">See how it works &rarr;</a>
+          <a href="ai-consulting.html" class="link-arrow">See how it works <span class="a">&rarr;</span></a>
         </div>
-
-        <!-- Pillar 2: Facilitation -->
-        <div class="card reveal">
+        <div class="card">
           <h3>Facilitation &amp; Workshops</h3>
           <p>Strategic planning sessions, board retreats, team alignment&mdash;the high-stakes conversations where having the right person in the room makes the difference.</p>
           <hr class="divider">
           <p>Facilitating executive sessions across private, public, and nonprofit sectors for nearly two decades.</p>
-          <a href="facilitation.html" class="btn btn--outline mt-lg" style="display: inline-block;">Learn more &rarr;</a>
+          <a href="facilitation.html" class="link-arrow" style="margin-top:18px;">Learn more <span class="a">&rarr;</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Client logo bar -->
-  <section class="bg-cream" style="padding: var(--space-xl) 0 var(--space-lg);">
+  <!-- Client logos -->
+  <section class="bg-ivory logos">
     <div class="container">
-      <p class="reveal" style="text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--stone); margin-bottom: var(--space-lg);">Organizations I've worked with</p>
-      <div class="reveal" style="filter: grayscale(100%); opacity: 0.5;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.25rem 2rem;">
-          <img src="assets/logos/deloitte.png" alt="Deloitte" style="height: 20px; width: auto;" loading="lazy">
-          <img src="assets/logos/ge.png" alt="General Electric" style="height: 14px; width: auto;" loading="lazy">
-          <img src="assets/logos/emory-university.png" alt="Emory University" style="height: 24px; width: auto;" loading="lazy">
-          <img src="assets/logos/caterpillar.png" alt="Caterpillar" style="height: 24px; width: auto;" loading="lazy">
-          <img src="assets/logos/cdc.png" alt="CDC" style="height: 28px; width: auto;" loading="lazy">
-          <img src="assets/logos/brown-university.png" alt="Brown University" style="height: 14px; width: auto;" loading="lazy">
-          <img src="assets/logos/toolbank-usa.png" alt="ToolBank USA" style="height: 16px; width: auto;" loading="lazy">
-          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">State Dept</span>
-          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">Anthem</span>
-          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">USPS</span>
-          <span style="font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;">FDA</span>
-        </div>
+      <p class="logos__label">Organizations I've worked with</p>
+      <div class="logos__row">
+        <img src="assets/logos/deloitte.png" alt="Deloitte" style="height:20px;" loading="lazy">
+        <img src="assets/logos/ge.png" alt="General Electric" style="height:14px;" loading="lazy">
+        <img src="assets/logos/emory-university.png" alt="Emory University" style="height:24px;" loading="lazy">
+        <img src="assets/logos/caterpillar.png" alt="Caterpillar" style="height:24px;" loading="lazy">
+        <img src="assets/logos/cdc.png" alt="CDC" style="height:28px;" loading="lazy">
+        <img src="assets/logos/brown-university.png" alt="Brown University" style="height:14px;" loading="lazy">
+        <img src="assets/logos/toolbank-usa.png" alt="ToolBank USA" style="height:16px;" loading="lazy">
+        <span class="logo-text">State Dept</span>
+        <span class="logo-text">Anthem</span>
+        <span class="logo-text">USPS</span>
+        <span class="logo-text">FDA</span>
       </div>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="bg-sand">
+  <section class="bg-warm">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>What people say</h2>
-      </div>
-      <div class="grid-2 reveal-stagger">
-        <div class="testimonial reveal">
-          <p class="testimonial__text">I'm blown away by Andrew's insights.</p>
-          <div class="testimonial__footer">
-            <img src="assets/mike-moraski.jpg" alt="Mike Moraski" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Mike Moraski, Software Leader, DFRNT</p>
+      <div class="sec-head"><span class="idx">02</span><h2>What people say</h2></div>
+      <div class="grid-2" style="margin-top:26px;">
+        <div class="quote">
+          <p class="quote__text">I'm blown away by Andrew's insights.</p>
+          <div class="quote__foot">
+            <img src="assets/mike-moraski.jpg" alt="Mike Moraski" class="quote__avatar" loading="lazy">
+            <span class="quote__author">Mike Moraski, Software Leader, DFRNT</span>
           </div>
         </div>
-        <div class="testimonial reveal">
-          <p class="testimonial__text">I really like working with Andrew. Easy to talk to, good listener. I always come away energized after talking to him.</p>
-          <div class="testimonial__footer">
-            <img src="assets/terry-anderson.jpg" alt="Terry Anderson" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Terry Anderson, former colleague at 1Unit</p>
+        <div class="quote">
+          <p class="quote__text">I really like working with Andrew. Easy to talk to, good listener. I always come away energized after talking to him.</p>
+          <div class="quote__foot">
+            <img src="assets/terry-anderson.jpg" alt="Terry Anderson" class="quote__avatar" loading="lazy">
+            <span class="quote__author">Terry Anderson, former colleague at 1Unit</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Portfolio teaser -->
-  <section class="bg-sand">
+  <!-- Things I've built -->
+  <section class="bg-ivory">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>Things I've built</h2>
-        <p class="lead">I use AI to build real tools&mdash;not demos. A pollen forecasting model, a family library tracker, and more.</p>
-      </div>
-      <div class="grid-2 reveal-stagger">
-        <a href="/pollen" class="card reveal" style="overflow: hidden; padding: 0; text-decoration: none; color: inherit; display: block;">
-          <img src="assets/pollen-tracker-screenshot.jpg" alt="Atlanta Pollen Tracker" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy">
-          <div style="padding: var(--space-md);">
+      <div class="sec-head"><span class="idx">03</span><h2>Things I've built</h2></div>
+      <p class="sec-intro">I use AI to build real tools&mdash;not demos. A pollen forecasting model, a family library tracker, and more.</p>
+      <div class="grid-2">
+        <a href="/pollen" class="proj">
+          <div class="proj__thumb"><img src="assets/pollen-tracker-screenshot.jpg" alt="Atlanta Pollen Tracker" loading="lazy"></div>
+          <div class="proj__body">
             <h4>Atlanta Pollen Tracker</h4>
-            <p style="font-size: 0.875rem;">Real-time pollen forecasts for Atlanta, built with AI-assisted development.</p>
+            <p>Real-time pollen forecasts for Atlanta, built with AI-assisted development.</p>
+            <div class="proj__foot"><span>pollen forecast model</span><span class="a">&rarr;</span></div>
           </div>
         </a>
-        <a href="library-viz.html" class="card reveal" style="overflow: hidden; padding: 0; text-decoration: none; color: inherit; display: block;">
-          <img src="assets/library-viz-screenshot.jpg" alt="Family Library Tracker" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy">
-          <div style="padding: var(--space-md);">
+        <a href="library-viz.html" class="proj">
+          <div class="proj__thumb"><img src="assets/library-viz-screenshot.jpg" alt="Family Library Tracker" loading="lazy"></div>
+          <div class="proj__body">
             <h4>Family Library Tracker</h4>
-            <p style="font-size: 0.875rem;">2,000+ books visualized. Built in a weekend.</p>
+            <p>2,000+ books visualized. Built in a weekend.</p>
+            <div class="proj__foot"><span>data visualization</span><span class="a">&rarr;</span></div>
           </div>
         </a>
       </div>
-      <div class="text-center mt-lg reveal">
-        <a href="projects.html" class="btn btn--outline">See all projects &rarr;</a>
+      <div class="center-cta">
+        <a href="projects.html" class="btn-outline">See all projects <span class="btn__arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
 
   <!-- Background stats -->
-  <section class="bg-dark">
+  <section class="stats">
     <div class="container">
-      <div class="grid-2 reveal" style="text-align: center;">
-        <div class="stat">
-          <p class="stat__number">18+</p>
-          <p class="stat__label">Years in consulting &amp; facilitation</p>
-        </div>
-        <div class="stat">
-          <p class="stat__number">100s</p>
-          <p class="stat__label">Clients across 5 continents</p>
-        </div>
+      <div class="stats__grid">
+        <div><span class="stat__num">18+</span><p class="stat__label">Years in consulting &amp; facilitation</p></div>
+        <div><span class="stat__num">100s</span><p class="stat__label">Clients across 5 continents</p></div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="bg-cream cta-section">
-    <div class="container reveal">
-      <h2>Curious? Let's talk.</h2>
+  <section class="bg-warm cta">
+    <div class="container">
+      <h2>Curious? Let's <em>talk</em>.</h2>
       <p class="lead">I'd love to hear what you're working on.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--primary">Book a free intro call</a>
-      </div>
+      <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn">Book a free intro call <span class="btn__arrow">&rarr;</span></a>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__name">Andrew K. Stein</p>
+      <span class="footer__name">Andrew K. Stein</span>
       <ul class="footer__links">
-        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn &rarr;</a></li>
       </ul>
     </div>
   </footer>
 
   <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Nav scroll shadow
+    // Mobile nav toggle is wired inline on the button; close it after a link tap
+    document.querySelectorAll('.nav__links a').forEach(a =>
+      a.addEventListener('click', () => document.querySelector('.nav__links').classList.remove('open')));
+    // Nav shadow on scroll
     window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
     });
   </script>
 

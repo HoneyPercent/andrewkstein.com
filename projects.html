@@ -10,23 +10,20 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://andrewkstein.com/projects.html">
   <meta property="og:image" content="https://andrewkstein.com/assets/pollen-tracker-screenshot.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="anthropic.css">
 </head>
 <body>
 
   <!-- Nav -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="" class="nav__logo-icon">Andrew K. Stein</a>
+      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="">Andrew K. Stein</a>
       <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <ul class="nav__links">
         <li><a href="index.html">Home</a></li>
@@ -37,84 +34,84 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero bg-cream" style="padding-bottom: var(--space-xl);">
-    <div class="container container--reading">
-      <p class="hero__tagline">Projects</p>
-      <h1>Vibe-coded Projects</h1>
-      <p class="lead mt-md">It's fun to build.</p>
+  <!-- Page hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Projects</span>
+      <h1>Vibe-coded <em>projects</em>.</h1>
+      <p class="lead">It's fun to build.</p>
     </div>
   </section>
 
   <!-- Pollen Tracker -->
-  <section class="bg-sand">
+  <section class="bg-warm">
     <div class="container">
-      <div class="portfolio-teaser reveal">
-        <div class="portfolio-teaser__img">
-          <img src="assets/pollen-tracker-screenshot.jpg" alt="Atlanta Pollen Tracker — real-time forecast dashboard" style="width: 100%; height: auto; border-radius: var(--radius);" loading="lazy">
+      <div class="feature">
+        <div class="feature__media">
+          <img src="assets/pollen-tracker-screenshot.jpg" alt="Atlanta Pollen Tracker — real-time forecast dashboard" loading="lazy">
         </div>
-        <div>
+        <div class="feature__body">
           <h3>Atlanta Pollen Tracker</h3>
           <p>I was frustrated that there wasn't a good daily pollen forecast for Atlanta, so I built my own forecasting model and site.</p>
-          <p class="mt-sm">Pulls daily data, runs a statistical model, and generates forecasts with causal explanations ("why is tomorrow going to be bad?").</p>
-          <p class="mt-md"><a href="/pollen" style="font-weight: 600;">Try it &rarr;</a></p>
+          <p>Pulls daily data, runs a statistical model, and generates forecasts with causal explanations ("why is tomorrow going to be bad?").</p>
+          <a href="/pollen" class="link-arrow">Try it <span class="a">&rarr;</span></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- LimmudFest Schedule -->
-  <section class="bg-cream">
+  <section class="bg-ivory">
     <div class="container">
-      <div class="portfolio-teaser reveal">
-        <div class="portfolio-teaser__img">
-          <img src="assets/limmud2026-screenshot.jpg" alt="LimmudFest 2026 schedule app, mobile view of the Now & Up Next panel" style="width: 100%; height: auto; border-radius: var(--radius);" loading="lazy">
+      <div class="feature feature--flip">
+        <div class="feature__media">
+          <img src="assets/limmud2026-screenshot.jpg" alt="LimmudFest 2026 schedule app, mobile view of the Now & Up Next panel" loading="lazy">
         </div>
-        <div>
+        <div class="feature__body">
           <h3>LimmudFest 2026 Schedule App</h3>
-          <p>This Jewish learning festival only had a 28-page PDF for its program.<br><br>So I built a mobile-first schedule web-app in about an hour. </p>
-          <p class="mt-sm">Features: 188 sessions and 50 presenter bios linked, a save-for-later list, and a Focus Mode that walks you through one time slot at a time.</p>
-          <p class="mt-md"><a href="/limmud2026" style="font-weight: 600;">Try the demo &rarr;</a></p>
+          <p>This Jewish learning festival only had a 28-page PDF for its program. So I built a mobile-first schedule web-app in about an hour.</p>
+          <p>Features: 188 sessions and 50 presenter bios linked, a save-for-later list, and a Focus Mode that walks you through one time slot at a time.</p>
+          <a href="/limmud2026" class="link-arrow">Try the demo <span class="a">&rarr;</span></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Library Viz -->
-  <section class="bg-sand">
+  <section class="bg-warm">
     <div class="container">
-      <div class="portfolio-teaser reveal">
-        <div class="portfolio-teaser__img">
-          <img src="assets/library-viz-screenshot.jpg" alt="Family library borrowing visualization" style="width: 100%; height: auto; border-radius: var(--radius);" loading="lazy">
+      <div class="feature">
+        <div class="feature__media">
+          <img src="assets/library-viz-screenshot.jpg" alt="Family library borrowing visualization" loading="lazy">
         </div>
-        <div>
+        <div class="feature__body">
           <h3>Family Library Tracker</h3>
           <p>An interactive visualization of our family's public library borrowing history&mdash;over 2,000 books across four library cards. Searchable, filterable, with reading trends and stats per family member.</p>
-          <p class="mt-sm">Built in a weekend because my kids wanted to know how many books they'd read this year. Turned into a surprisingly useful tool for finding books we loved and forgot about.</p>
-          <p class="mt-md"><a href="library-viz.html" style="font-weight: 600;">Explore it &rarr;</a></p>
+          <p>Built in a weekend because my kids wanted to know how many books they'd read this year. Turned into a surprisingly useful tool for finding books we loved and forgot about.</p>
+          <a href="library-viz.html" class="link-arrow">Explore it <span class="a">&rarr;</span></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- What these have in common -->
-  <section class="bg-cream">
-    <div class="container container--reading">
-      <div class="callout reveal">
+  <section class="bg-ivory">
+    <div class="container">
+      <div class="callout">
         <h3>What these have in common</h3>
-        <p class="mt-sm">Neither of these required a developer. I designed them, described what I wanted, and built them using AI-assisted development&mdash;the same approach I teach clients. If you're curious what that looks like, <a href="my-approach.html">read how I think about building with AI</a>.</p>
+        <p>Neither of these required a developer. I designed them, described what I wanted, and built them using AI-assisted development&mdash;the same approach I teach clients. If you're curious what that looks like, <a href="my-approach.html">read how I think about building with AI</a>.</p>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="bg-dark cta-section">
-    <div class="container reveal">
+  <section class="bg-warm cta">
+    <div class="container">
       <h2>Want to build something like this?</h2>
       <p class="lead">I help people build custom tools with AI&mdash;no coding background required.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-        <a href="ai-consulting.html" class="btn btn--warm">Learn about AI consulting</a>
-        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--outline" style="border-color: var(--stone); color: var(--cream);">Book a free intro call</a>
+      <div class="cta__buttons">
+        <a href="ai-consulting.html" class="btn">Learn about AI consulting <span class="btn__arrow">&rarr;</span></a>
+        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn-outline">Book a free intro call</a>
       </div>
     </div>
   </section>
@@ -122,22 +119,18 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__name">Andrew K. Stein</p>
+      <span class="footer__name">Andrew K. Stein</span>
       <ul class="footer__links">
-        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn &rarr;</a></li>
       </ul>
     </div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.nav__links a').forEach(a =>
+      a.addEventListener('click', () => document.querySelector('.nav__links').classList.remove('open')));
     window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
     });
   </script>
 

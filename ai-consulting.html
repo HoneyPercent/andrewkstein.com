@@ -10,23 +10,258 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://andrewkstein.com/ai-consulting.html">
   <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="anthropic.css">
+
+  <style>
+    /* ============================================================
+       PAGE-SCOPED BESPOKE COMPONENTS - ai-consulting.html
+       Restyled from "Literary Warmth" (navy/gold/Playfair) into the
+       warm-minimal language: clay accent, system serif (weight 500),
+       mono labels, 1.5px borders, radius 10-14.
+       ============================================================ */
+
+    /* ---------- MATURITY LADDER ---------- */
+    .ladder{
+      display:flex; flex-direction:column-reverse;
+      max-width:760px; margin:8px auto 4px; gap:.45rem;
+    }
+    .ladder__step{
+      background:var(--paper); border:1.5px solid var(--g300); border-radius:10px;
+      padding:.95rem 1.3rem; display:flex; align-items:baseline; gap:1.1rem;
+      transition:opacity .3s ease, transform 150ms ease, box-shadow 150ms ease;
+    }
+    .ladder__step--1{ margin-left:0;   opacity:.72; }
+    .ladder__step--2{ margin-left:3%;  opacity:.82; }
+    .ladder__step--3{ margin-left:6%;  opacity:.9; }
+    .ladder__step--4{ margin-left:9%;  opacity:1; border-color:var(--g500); }
+    .ladder__step--5{
+      margin-left:12%;
+      background:var(--g100);
+      border:1.5px solid var(--clay);
+      border-left:5px solid var(--clay);
+      box-shadow:0 4px 24px rgba(217,119,87,.16);
+      padding:1.1rem 1.3rem;
+    }
+    .ladder__num{
+      font-family:var(--mono); font-size:.72rem; font-weight:600;
+      letter-spacing:.14em; text-transform:uppercase; color:var(--g500);
+      min-width:3.8rem; flex-shrink:0;
+    }
+    .ladder__step--5 .ladder__num{ color:var(--clay-d); }
+    .ladder__body{ display:flex; flex-direction:column; gap:.15rem; min-width:0; flex:1; }
+    .ladder__name{
+      font-family:var(--serif); font-weight:500; font-size:1.1rem;
+      color:var(--slate); line-height:1.25;
+    }
+    .ladder__step--5 .ladder__name{ font-size:1.2rem; color:var(--clay-d); }
+    .ladder__desc{ font-size:.88rem; color:var(--g700); line-height:1.4; }
+    .ladder__step--5 .ladder__desc{ color:var(--g700); }
+    .ladder__step--6{
+      margin-left:15%; opacity:.85;
+      border:1.5px dashed var(--clay); background:var(--paper);
+    }
+    .ladder__step--6 .ladder__num{ color:var(--clay); }
+    .ladder__frontier{
+      font-family:var(--mono); font-style:normal; font-weight:600;
+      font-size:.68rem; text-transform:uppercase; letter-spacing:.1em;
+      color:var(--clay); margin-left:.5rem;
+    }
+    @media (max-width:720px){
+      .ladder__step{ margin-left:0 !important; padding:.8rem 1rem; gap:.8rem; }
+      .ladder__num{ min-width:3.2rem; font-size:.68rem; }
+      .ladder__frontier{ display:block; margin-left:0; }
+    }
+
+    /* ---------- THE AI CHIEF-OF-STAFF MENU ---------- */
+    .cos-menu{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:8px 0 0; }
+    @media (max-width:900px){ .cos-menu{ grid-template-columns:1fr; } }
+    .cos-panel{ border-radius:12px; padding:1.25rem 1.4rem; border:1.5px solid var(--g300); position:relative; }
+    .cos-panel .cos-roman{
+      font-family:var(--serif); font-weight:500; color:var(--clay); font-size:2.4rem;
+      line-height:1; position:absolute; top:.9rem; right:1.1rem; opacity:.55;
+    }
+    .cos-panel h3{ margin:0 0 .7rem; line-height:1.2; }
+    .cos-panel .cos-course{
+      display:block; font-family:var(--mono); font-style:normal; font-weight:600;
+      font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+      color:var(--g500); margin-bottom:.15rem;
+    }
+    .cos-panel .cos-category{
+      font-family:var(--serif); font-style:normal; font-weight:500;
+      font-size:1.3rem; color:var(--slate); display:block;
+    }
+    .cos-panel ul{ list-style:none; padding:0; margin:0; }
+    .cos-panel ul li{
+      display:grid; grid-template-columns:1.15rem 1fr; column-gap:.6rem;
+      align-items:start; margin:.5rem 0; font-size:.95rem; line-height:1.5; color:var(--g700);
+    }
+    .cos-panel ul li .cos-item-icon{
+      width:1.05rem; height:1.05rem; color:var(--clay); margin-top:.32rem; flex-shrink:0;
+    }
+    .cos-panel ul li strong{
+      color:var(--slate); font-family:var(--serif); font-style:normal;
+      font-weight:500; font-size:1.02rem;
+    }
+    /* On-palette warm tints */
+    .cos-panel.cat-focus  { background:var(--oat); }
+    .cos-panel.cat-daily  { background:#F6E4DC; }   /* soft clay tint */
+    .cos-panel.cat-assets { background:#EAEEE1; }    /* soft olive tint */
+    .cos-panel.cat-memory { background:var(--g100); }/* soft warm-gray */
+    .cos-note{
+      font-family:var(--serif); font-style:italic; color:var(--g700);
+      text-align:center; max-width:680px; margin:1.5rem auto 0; font-size:1rem;
+    }
+
+    /* ---------- PERSONAS ---------- */
+    .personas{
+      display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem;
+      margin:8px auto 0; max-width:880px;
+    }
+    @media (max-width:760px){ .personas{ grid-template-columns:1fr; } }
+    .persona{
+      display:grid; grid-template-columns:110px 1fr; gap:1.1rem; align-items:center;
+      padding:1.1rem 1.3rem; background:var(--paper); border:1.5px solid var(--g300);
+      border-radius:12px; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .persona:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,20,19,.09); border-color:var(--clay); }
+    .persona__sketch{ width:100%; height:auto; display:block; border-radius:8px; }
+    .persona__label{
+      font-family:var(--serif); font-size:1.15rem; font-weight:500; color:var(--slate);
+      margin-bottom:.2rem; line-height:1.2;
+    }
+    .persona__desc{ font-size:.95rem; color:var(--g700); line-height:1.45; margin:0; }
+    /* Subtle magazine stagger */
+    .personas .persona:nth-child(2){ transform:translateY(.9rem); }
+    .personas .persona:nth-child(3){ transform:translateY(-.4rem); }
+    .personas .persona:nth-child(4){ transform:translateY(.6rem); }
+    .personas .persona:hover{ transform:translateY(-3px); }
+    @media (max-width:760px){
+      .personas .persona:nth-child(2),
+      .personas .persona:nth-child(3),
+      .personas .persona:nth-child(4){ transform:none; }
+      .personas .persona:hover{ transform:translateY(-3px); }
+    }
+    .about-me{ max-width:740px; margin:2.5rem auto 0; }
+    .about-me h4{ font-family:var(--serif); font-weight:500; font-size:19px; color:var(--slate); margin-bottom:.4rem; }
+    .about-me p{ font-size:.9375rem; color:var(--g700); line-height:1.6; }
+
+    /* ---------- PROCESS STEPS ---------- */
+    .process-steps{ list-style:none; counter-reset:step; padding:0; margin:8px 0 0; }
+    .process-step{
+      position:relative; padding:0 0 1.5rem 3.4rem; counter-increment:step;
+    }
+    .process-step:last-child{ padding-bottom:0; }
+    .process-step::before{
+      content:counter(step,decimal-leading-zero);
+      position:absolute; left:0; top:.05rem;
+      font-family:var(--mono); font-weight:600; font-size:1.05rem; color:var(--clay);
+      letter-spacing:.02em;
+    }
+    .process-step h4{ font-family:var(--serif); font-weight:500; font-size:1.2rem; color:var(--slate); margin-bottom:.25rem; line-height:1.25; }
+    .process-step h4 .ps-meta{ font-family:var(--sans); font-weight:400; font-size:.92rem; color:var(--g500); }
+    .process-step p{ font-size:.95rem; line-height:1.55; color:var(--g700); margin:0; }
+
+    /* ---------- STRANGER vs. COLLEAGUE TABLE ---------- */
+    .sc-table{
+      width:100%; border-collapse:collapse; font-family:var(--sans);
+      margin:8px 0 0; background:var(--paper); border:1.5px solid var(--g300);
+      border-radius:12px; overflow:hidden;
+    }
+    .sc-table thead th{
+      text-align:left; padding:.85rem 1.1rem;
+      font-family:var(--serif); font-weight:500; font-size:1.15rem;
+      letter-spacing:-.01em; border-bottom:1.5px solid var(--g300);
+    }
+    .sc-table thead th.sc-left { color:var(--g500); }
+    .sc-table thead th.sc-right{ color:var(--slate); }
+    .sc-table thead th .sc-when{
+      display:block; font-family:var(--mono); font-style:normal; font-weight:400;
+      font-size:.8rem; letter-spacing:.02em; color:var(--g500); margin-top:.15rem;
+    }
+    .sc-table tbody td{
+      padding:.6rem 1.1rem; font-size:1rem; line-height:1.5;
+      border-bottom:1.5px solid var(--g200); vertical-align:top;
+    }
+    .sc-table tbody tr:last-child td{ border-bottom:none; }
+    .sc-table tbody td.sc-left { color:var(--g500); }
+    .sc-table tbody td.sc-right{ color:var(--slate); }
+    .sc-table tbody td .sc-mark{ display:inline-block; width:1.4em; font-weight:700; }
+    .sc-table tbody td.sc-left  .sc-mark{ color:var(--g500); }
+    .sc-table tbody td.sc-right .sc-mark{ color:var(--clay); }
+    @media (max-width:640px){
+      .sc-table thead th, .sc-table tbody td{ padding:.55rem .7rem; font-size:.9rem; }
+    }
+
+    /* ---------- PRICING ---------- */
+    .pricing-card{
+      background:var(--paper); border:1.5px solid var(--g300); border-radius:14px;
+      padding:28px 26px; display:flex; flex-direction:column; position:relative;
+      transition:transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+    }
+    .pricing-card:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(20,20,19,.09); border-color:var(--slate); }
+    .pricing-card h3{ font-family:var(--serif); font-weight:500; font-size:1.35rem; color:var(--slate); margin-bottom:.35rem; }
+    .pricing-card__price{ font-family:var(--serif); font-weight:500; font-size:2.2rem; color:var(--slate); line-height:1.05; }
+    .pricing-card__price span{ font-family:var(--sans); font-weight:400; font-size:1rem; color:var(--g500); }
+    .pricing-card ul{ list-style:none; padding:0; margin:1.1rem 0 1.5rem; flex:1; }
+    .pricing-card ul li{
+      position:relative; padding:.4rem 0 .4rem 1.4rem; font-size:.9375rem;
+      line-height:1.5; color:var(--g700); border-bottom:1px solid var(--g100);
+    }
+    .pricing-card ul li:last-child{ border-bottom:none; }
+    .pricing-card ul li::before{
+      content:""; position:absolute; left:0; top:.95rem; width:6px; height:6px;
+      border-radius:50%; border:1.5px solid var(--clay);
+    }
+    .pricing-card code{ font-family:var(--mono); font-size:.85em; background:var(--g100); padding:1px 5px; border-radius:4px; }
+    .pricing-card--featured{ border:1.5px solid var(--clay); box-shadow:0 8px 28px rgba(217,119,87,.14); }
+    .pricing-card--featured:hover{ border-color:var(--clay-d); }
+    .pricing-card__badge{
+      position:absolute; top:-.85rem; left:50%; transform:translateX(-50%);
+      background:var(--clay); color:#fff; font-family:var(--mono); font-size:.68rem;
+      font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+      padding:.35rem .8rem; border-radius:999px; white-space:nowrap;
+    }
+    .pricing-card .btn, .pricing-card .btn-outline{ width:100%; justify-content:center; }
+    .pricing-note{ text-align:center; font-size:.875rem; color:var(--g700); margin-top:2rem; }
+    .pricing-note a{ color:var(--clay); text-decoration:underline; text-decoration-color:var(--oat); text-underline-offset:3px; }
+    .pricing-note a:hover{ text-decoration-color:var(--clay); }
+
+    /* ---------- WHY NOW ---------- */
+    .whynow-prelude{
+      background:var(--g100); border:1.5px solid var(--oat); border-left:4px solid var(--clay);
+      padding:.95rem 1.2rem; margin:8px 0 1.5rem; border-radius:10px;
+    }
+    .whynow-prelude p{ margin:0; font-size:1.08rem; line-height:1.6; color:var(--slate); }
+    .whynow-prelude strong{ color:var(--slate); font-weight:600; }
+    .whynow-list{ font-size:1.05rem; line-height:1.65; padding-left:1.4rem; margin:0; }
+    .whynow-list li{ margin-bottom:1rem; }
+    .whynow-list li:last-child{ margin-bottom:0; }
+    .whynow-list li::marker{ color:var(--clay); font-family:var(--mono); }
+    .whynow-list strong{ color:var(--slate); font-weight:600; }
+    .whynow-list .wn-sub{ color:var(--g700); }
+    .whynow-foot{ font-family:var(--serif); font-style:italic; color:var(--g700); font-size:.9375rem; margin-top:1.5rem; }
+
+    /* ---------- shared: hero quote spacing ---------- */
+    .hero-quote{ margin-top:2rem; max-width:620px; }
+
+    /* Numbers are reserved for the "How a setup engagement works" steps on this
+       page -- so section TITLES carry no number (avoids two clashing systems). */
+    .sec-head .idx{ display:none; }
+    .sec-intro{ margin-left:0; }
+  </style>
 </head>
 <body>
 
   <!-- Nav -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="" class="nav__logo-icon">Andrew K. Stein</a>
+      <a href="index.html" class="nav__logo"><img src="assets/professor-cat-transparent.png" alt="">Andrew K. Stein</a>
       <button class="nav__toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav__links').classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <ul class="nav__links">
         <li><a href="index.html">Home</a></li>
@@ -37,128 +272,29 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero bg-cream" style="padding-bottom: var(--space-xl);">
-    <div class="container container--reading">
-      <p class="hero__tagline">AI Consulting</p>
-      <h1>I help you set up your AI Chief of Staff.</h1>
-      <p class="lead mt-md">Together we'll build your AI-native work system (more than a chatbot) that knows your voice, your priorities, and your projects &mdash; and operates on your inbox, your files, and your browser.</p>
-      <div class="testimonial reveal" style="margin-top: 2rem;">
-        <p class="testimonial__text">I've watched how cleverly Andrew uses AI. He's an architect. His Expert Review system is so helpful, I use it every day.</p>
-        <div class="testimonial__footer">
-          <img src="assets/eva-keiffenheim.jpg" alt="Eva Keiffenheim" class="testimonial__avatar">
-          <p class="testimonial__author">&mdash; Eva Keiffenheim, author of <a href="https://evakeiffenheim.substack.com/p/how-to-stop-leaving-90-of-ais-potential" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Lifelong Learning Club</a></p>
+  <!-- Page hero -->
+  <section class="page-hero bg-ivory">
+    <div class="container">
+      <span class="eyebrow">AI Consulting</span>
+      <h1>I help you set up your AI <em>Chief of Staff</em>.</h1>
+      <p class="lead">Together we'll build your AI-native work system (more than a chatbot) that knows your voice, your priorities, and your projects &mdash; and operates on your inbox, your files, and your browser.</p>
+      <div class="quote hero-quote">
+        <p class="quote__text">I've watched how cleverly Andrew uses AI. He's an architect. His Expert Review system is so helpful, I use it every day.</p>
+        <div class="quote__foot">
+          <img src="assets/eva-keiffenheim.jpg" alt="Eva Keiffenheim" class="quote__avatar">
+          <span class="quote__author">Eva Keiffenheim, author of <a href="https://evakeiffenheim.substack.com/p/how-to-stop-leaving-90-of-ais-potential" target="_blank" rel="noopener" style="color:var(--clay);">Lifelong Learning Club</a></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NEW: Where are you on the ladder? — UPDATED 2026-05-27 with 6-stage model (Stage 6 = AI Co-CEO, the new frontier).
-       Built as native HTML/CSS (no image), so text is editable + scales crisply + theme-friendly. -->
-  <section class="bg-sand">
-    <div class="container container--reading">
-      <div class="section-header reveal">
-        <h2>Maturity Model: Where are you?</h2>
-        <p class="lead">Getting the most out of AI is just a few steps away.</p>
-      </div>
+  <!-- 01 - Maturity Model -->
+  <section class="bg-warm">
+    <div class="container container--narrow">
+      <div class="sec-head"><span class="idx">01</span><h2>Maturity Model: Where are you?</h2></div>
+      <p class="sec-intro">Getting the most out of AI is just a few steps away.</p>
 
-      <style>
-        /* Ladder styling tracks the workshop slide treatment (slides-preview-v2.html slide 3):
-           tight 0/3/6/9/12% stair-step, opacity progression, "Stage N" small-caps label,
-           Stage 5 gold gradient + thick left-border accent + glow. Site fonts retained
-           (Playfair italic for the label so the brand stays consistent). */
-        .ladder {
-          display: flex;
-          flex-direction: column-reverse;
-          max-width: 760px;
-          margin: 2rem auto 1rem;
-          gap: 0.45rem;
-        }
-        .ladder__step {
-          background: var(--white);
-          border: 1px solid var(--warm-gray);
-          border-radius: 6px;
-          padding: 0.95rem 1.3rem;
-          display: flex;
-          align-items: baseline;
-          gap: 1.1rem;
-          box-shadow: 0 1px 0 var(--warm-gray);
-          transition: opacity 0.3s;
-        }
-        .ladder__step--1 { margin-left: 0; opacity: 0.72; }
-        .ladder__step--2 { margin-left: 3%; opacity: 0.82; }
-        .ladder__step--3 { margin-left: 6%; opacity: 0.9; }
-        .ladder__step--4 { margin-left: 9%; opacity: 1; border-color: var(--stone); }
-        .ladder__step--5 {
-          margin-left: 12%;
-          background: linear-gradient(135deg, #faf4e0 0%, #faefcc 100%);
-          border: 1.5px solid var(--accent-warm);
-          border-left: 5px solid #8a6608;
-          box-shadow: 0 4px 24px rgba(196, 144, 10, 0.2), 0 1px 0 var(--accent-warm);
-          padding: 1.1rem 1.3rem;
-        }
-        .ladder__num {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.72rem;
-          font-weight: 600;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--stone);
-          min-width: 3.8rem;
-          flex-shrink: 0;
-        }
-        .ladder__step--5 .ladder__num { color: #8a6608; }
-        .ladder__body {
-          display: flex;
-          flex-direction: column;
-          gap: 0.15rem;
-          min-width: 0;
-          flex: 1;
-        }
-        .ladder__name {
-          font-family: var(--font-heading);
-          font-style: italic;
-          font-weight: 700;
-          font-size: 1.1rem;
-          color: var(--accent);
-          line-height: 1.25;
-        }
-        .ladder__step--5 .ladder__name {
-          font-size: 1.2rem;
-          color: #8a6608;
-        }
-        .ladder__desc {
-          font-size: 0.88rem;
-          color: var(--text-secondary);
-          line-height: 1.4;
-        }
-        .ladder__step--5 .ladder__desc { color: #8a6608; }
-        .ladder__step--6 {
-          margin-left: 15%;
-          opacity: 0.85;
-          border-color: var(--stone);
-          border-style: dashed;
-          background: var(--white);
-        }
-        .ladder__step--6 .ladder__num { color: var(--text-secondary); }
-        .ladder__frontier {
-          font-family: var(--font-heading);
-          font-style: italic;
-          font-weight: 400;
-          font-size: 0.72rem;
-          color: var(--accent-warm);
-          letter-spacing: 0.05em;
-          margin-left: 0.5rem;
-          opacity: 0.85;
-        }
-        @media (max-width: 720px) {
-          .ladder__step { margin-left: 0 !important; padding: 0.8rem 1rem; gap: 0.8rem; }
-          .ladder__num { min-width: 3.2rem; font-size: 0.68rem; }
-          .ladder__frontier { display: block; margin-left: 0; }
-        }
-      </style>
-
-      <div class="ladder reveal">
+      <div class="ladder">
         <div class="ladder__step ladder__step--1">
           <span class="ladder__num">Stage 1</span>
           <div class="ladder__body">
@@ -205,67 +341,14 @@
     </div>
   </section>
 
-  <!-- The AI Chief of Staff Menu -->
-  <section class="bg-cream">
+  <!-- 02 - The AI Chief of Staff Menu -->
+  <section class="bg-ivory">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>The AI Chief of Staff Menu</h2>
-        <p class="lead">Pick 2 or 3 satisfying dishes from the menu that you're most excited about.</p>
-      </div>
+      <div class="sec-head"><span class="idx">02</span><h2>The AI Chief of Staff Menu</h2></div>
+      <p class="sec-intro">Pick 2 or 3 satisfying dishes from the menu that you're most excited about.</p>
 
-      <style>
-        .cos-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-        /* Stack vertically on tablets and below, not just phones — single column reads cleaner on anything <= 900px */
-        @media (max-width: 900px) { .cos-menu { grid-template-columns: 1fr; } }
-        .cos-panel { border-radius: 10px; padding: 1.25rem 1.4rem; border: 1px solid var(--warm-gray); position: relative; }
-        .cos-panel .cos-roman { font-family: 'Playfair Display', serif; font-weight: 700; color: #c4900a; font-size: 2.4rem; line-height: 1; position: absolute; top: 0.9rem; right: 1.1rem; opacity: 0.6; }
-        .cos-panel h3 { font-family: 'Playfair Display', serif; margin: 0 0 0.7rem; line-height: 1.2; }
-        .cos-panel .cos-course {
-          display: block;
-          font-family: 'DM Sans', sans-serif;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 0.72rem;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: var(--text-secondary);
-          margin-bottom: 0.15rem;
-        }
-        .cos-panel .cos-category {
-          font-family: 'Playfair Display', serif;
-          font-style: italic;
-          font-weight: 700;
-          font-size: 1.3rem;
-          color: #722F37;
-          display: block;
-        }
-        .cos-panel ul { list-style: none; padding: 0; margin: 0; }
-        .cos-panel ul li {
-          display: grid;
-          grid-template-columns: 1.15rem 1fr;
-          column-gap: 0.6rem;
-          align-items: start;
-          margin: 0.5rem 0;
-          font-size: 0.95rem;
-          line-height: 1.5;
-          color: var(--text);
-        }
-        .cos-panel ul li .cos-item-icon {
-          width: 1.05rem;
-          height: 1.05rem;
-          color: #722F37;
-          margin-top: 0.32rem;
-          flex-shrink: 0;
-        }
-        .cos-panel ul li strong { color: #722F37; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 1.02rem; }
-        .cos-panel.cat-focus  { background: #F3ECCC; }
-        .cos-panel.cat-daily  { background: #F2D9D4; }
-        .cos-panel.cat-assets { background: #C8D1E8; }
-        .cos-panel.cat-memory { background: #C7E0DA; }
-      </style>
-
-      <div class="cos-menu reveal-stagger">
-        <div class="cos-panel cat-focus reveal">
+      <div class="cos-menu">
+        <div class="cos-panel cat-focus">
           <span class="cos-roman">I</span>
           <h3><span class="cos-course">Appetizers</span><span class="cos-category">Focus</span></h3>
           <ul>
@@ -287,7 +370,7 @@
             </li>
           </ul>
         </div>
-        <div class="cos-panel cat-daily reveal">
+        <div class="cos-panel cat-daily">
           <span class="cos-roman">II</span>
           <h3><span class="cos-course">Entrees</span><span class="cos-category">Daily Work</span></h3>
           <ul>
@@ -313,7 +396,7 @@
             </li>
           </ul>
         </div>
-        <div class="cos-panel cat-assets reveal">
+        <div class="cos-panel cat-assets">
           <span class="cos-roman">III</span>
           <h3><span class="cos-course">Specialties</span><span class="cos-category">Assets</span></h3>
           <ul>
@@ -339,7 +422,7 @@
             </li>
           </ul>
         </div>
-        <div class="cos-panel cat-memory reveal">
+        <div class="cos-panel cat-memory">
           <span class="cos-roman">IV</span>
           <h3><span class="cos-course">Desserts</span><span class="cos-category">Memory</span></h3>
           <ul>
@@ -363,98 +446,38 @@
         </div>
       </div>
 
-      <p class="reveal" style="font-style: italic; color: var(--text-secondary); text-align: center; max-width: var(--max-width-narrow); margin: 1.5rem auto 0; font-size: 1rem;">These items are prepared to order.</p>
-
+      <p class="cos-note">These items are prepared to order.</p>
     </div>
   </section>
 
-  <!-- Who this is for — persona sketches matching the Professor Cat mascot style -->
-  <section class="bg-sand">
+  <!-- 03 - Who this is for -->
+  <section class="bg-warm">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>Who this is for</h2>
-      </div>
+      <div class="sec-head"><span class="idx">03</span><h2>Who this is for</h2></div>
 
-      <style>
-        .personas {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.25rem;
-          margin: 2rem auto 1.5rem;
-          max-width: 880px;
-        }
-        @media (max-width: 760px) { .personas { grid-template-columns: 1fr; } }
-        .persona {
-          display: grid;
-          grid-template-columns: 110px 1fr;
-          gap: 1.1rem;
-          align-items: center;
-          padding: 1.1rem 1.3rem;
-          background: var(--cream);
-          border: 1px solid var(--warm-gray);
-          border-radius: 12px;
-          transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-        }
-        .persona:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px var(--shadow-warm);
-          border-color: var(--accent-warm-light);
-        }
-        .persona__sketch {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-        .persona__label {
-          font-family: var(--font-heading);
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: var(--text);
-          margin-bottom: 0.2rem;
-          line-height: 1.2;
-        }
-        .persona__desc {
-          font-size: 0.95rem;
-          color: var(--text-secondary);
-          line-height: 1.45;
-          margin: 0;
-        }
-        /* Subtle stagger — give the 2-2 grid a magazine offset rather than a flat tile look */
-        .personas .persona:nth-child(2) { transform: translateY(0.9rem); }
-        .personas .persona:nth-child(3) { transform: translateY(-0.4rem); }
-        .personas .persona:nth-child(4) { transform: translateY(0.6rem); }
-        .personas .persona:hover { transform: translateY(-3px); } /* hover wins */
-        @media (max-width: 760px) {
-          .personas .persona:nth-child(2),
-          .personas .persona:nth-child(3),
-          .personas .persona:nth-child(4) { transform: none; }
-          .personas .persona:hover { transform: translateY(-3px); }
-        }
-      </style>
-
-      <div class="personas reveal-stagger">
-        <div class="persona reveal">
+      <div class="personas">
+        <div class="persona">
           <img src="assets/persona-writer.jpeg" alt="A friendly cat with eyeglasses, writing with a quill pen" class="persona__sketch">
           <div>
             <p class="persona__label">Writers &amp; creators</p>
             <p class="persona__desc">who want AI to handle research, drafts, and editing &mdash; without losing their voice.</p>
           </div>
         </div>
-        <div class="persona reveal">
+        <div class="persona">
           <img src="assets/persona-smallbiz.jpeg" alt="A cat with eyeglasses juggling a calendar, a phone, and a book" class="persona__sketch">
           <div>
             <p class="persona__label">Small business owners</p>
             <p class="persona__desc">drowning in admin work that could be systematized.</p>
           </div>
         </div>
-        <div class="persona reveal">
+        <div class="persona">
           <img src="assets/persona-consultant.jpeg" alt="A cat with eyeglasses and a bow tie, holding a briefcase and pocket watch" class="persona__sketch">
           <div>
             <p class="persona__label">Consultants &amp; senior professionals</p>
             <p class="persona__desc">who want to impress while getting more time back.</p>
           </div>
         </div>
-        <div class="persona reveal">
+        <div class="persona">
           <img src="assets/persona-nonprofit.jpeg" alt="A cat with eyeglasses wearing three hats stacked on its head" class="persona__sketch">
           <div>
             <p class="persona__label">Nonprofit leaders</p>
@@ -463,99 +486,48 @@
         </div>
       </div>
 
-      <div class="reveal" style="max-width: var(--max-width-narrow); margin: 2.5rem auto 0;">
-        <h4 style="margin-bottom: 0.4rem;">About me</h4>
-        <p style="font-size: 0.9375rem; color: var(--text-secondary);">Brown ME &middot; Emory MBA (Woodruff Scholar) &middot; 6 yrs Deloitte &middot; 18+ years consulting &middot; hundreds of clients across six continents. A business leader who builds things; I think about your problems the way you do.</p>
+      <div class="about-me">
+        <h4>About me</h4>
+        <p>Brown ME &middot; Emory MBA (Woodruff Scholar) &middot; 6 yrs Deloitte &middot; 18+ years consulting &middot; hundreds of clients across six continents. A business leader who builds things; I think about your problems the way you do.</p>
       </div>
     </div>
   </section>
 
-  <!-- How a setup engagement works -->
-  <section class="bg-cream">
-    <div class="container container--reading">
-      <h2 class="reveal">How a setup engagement works</h2>
-      <ol class="process-steps reveal">
+  <!-- 04 - How a setup engagement works -->
+  <section class="bg-ivory">
+    <div class="container container--narrow">
+      <div class="sec-head"><span class="idx">04</span><h2>How a setup engagement works</h2></div>
+      <ol class="process-steps">
         <li class="process-step">
-          <h4>Discovery call <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 30 min, free</span></h4>
+          <h4>Discovery call <span class="ps-meta">&mdash; 30 min, free</span></h4>
           <p>We talk about what you do and what's frustrating, and see if it's the right fit.</p>
         </li>
         <li class="process-step">
-          <h4>Deep dive <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 2 hours</span></h4>
+          <h4>Deep dive <span class="ps-meta">&mdash; 2 hours</span></h4>
           <p>We map your workflows and develop a clear build plan.</p>
         </li>
         <li class="process-step">
-          <h4>Build sessions <span style="font-weight: 400; color: var(--text-secondary);">&mdash; 3 &times; 90 min</span></h4>
+          <h4>Build sessions <span class="ps-meta">&mdash; 3 &times; 90 min</span></h4>
           <p>We build your system together &mdash; your skills, your context files, your custom workflows.</p>
         </li>
         <li class="process-step">
-          <h4>Ongoing support <span style="font-weight: 400; color: var(--text-secondary);">&mdash; optional</span></h4>
+          <h4>Ongoing support <span class="ps-meta">&mdash; optional</span></h4>
           <p>Monthly retainer to add new workflows, integrate new tools, and get the most out of each model upgrade.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- NEW: Stranger vs. Colleague — UPDATED 2026-05-23 (image dropped per Andrew, HTML table is primary) -->
-  <section class="bg-sand">
-    <div class="container container--reading">
-      <div class="section-header reveal">
-        <h2>Stranger vs. Colleague.</h2>
-        <p class="lead">Chatbot AI is a smart stranger, but Chief of Staff AI is your teammate who knows you.</p>
-      </div>
+  <!-- 05 - Stranger vs. Colleague -->
+  <section class="bg-warm">
+    <div class="container container--narrow">
+      <div class="sec-head"><span class="idx">05</span><h2>Stranger vs. Colleague.</h2></div>
+      <p class="sec-intro">Chatbot AI is a smart stranger, but Chief of Staff AI is your teammate who knows you.</p>
 
-      <style>
-        .sc-table {
-          width: 100%;
-          border-collapse: collapse;
-          font-family: var(--font-body);
-          margin: 1.5rem 0;
-          background: var(--cream);
-          border-radius: 8px;
-          overflow: hidden;
-          box-shadow: 0 2px 12px var(--shadow-warm);
-        }
-        .sc-table thead th {
-          text-align: left;
-          padding: 0.85rem 1.1rem;
-          font-family: var(--font-heading);
-          font-weight: 700;
-          font-size: 1.15rem;
-          letter-spacing: -0.01em;
-          border-bottom: 2px solid var(--warm-gray);
-        }
-        .sc-table thead th.sc-left  { color: var(--stone); }
-        .sc-table thead th.sc-right { color: var(--accent); }
-        .sc-table thead th .sc-when {
-          display: block;
-          font-family: var(--font-body);
-          font-style: italic;
-          font-weight: 400;
-          font-size: 0.85rem;
-          color: var(--text-secondary);
-          margin-top: 0.15rem;
-        }
-        .sc-table tbody td {
-          padding: 0.6rem 1.1rem;
-          font-size: 1rem;
-          line-height: 1.5;
-          border-bottom: 1px solid var(--sand-deep);
-          vertical-align: top;
-        }
-        .sc-table tbody tr:last-child td { border-bottom: none; }
-        .sc-table tbody td.sc-left  { color: var(--text-secondary); }
-        .sc-table tbody td.sc-right { color: var(--text); }
-        .sc-table tbody td .sc-mark { display: inline-block; width: 1.4em; font-weight: 700; }
-        .sc-table tbody td.sc-left  .sc-mark { color: #c53030; }
-        .sc-table tbody td.sc-right .sc-mark { color: var(--accent-warm); }
-        @media (max-width: 640px) {
-          .sc-table thead th, .sc-table tbody td { padding: 0.55rem 0.7rem; font-size: 0.9rem; }
-        }
-      </style>
-
-      <table class="sc-table reveal">
+      <table class="sc-table">
         <thead>
           <tr>
-            <th class="sc-left">Generic &middot; Day 1</th>
+            <th class="sc-left">Generic<span class="sc-when">Day 1</span></th>
             <th class="sc-right">Fully custom</th>
           </tr>
         </thead>
@@ -578,61 +550,55 @@
           </tr>
         </tbody>
       </table>
-
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="bg-cream">
+  <!-- 06 - What people say -->
+  <section class="bg-ivory">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>What people say</h2>
-      </div>
-      <div class="testimonial-orphan reveal">
-        <div class="testimonial" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <p class="testimonial__text">Andrew's really opened my eyes. He helped me create this awesome second brain thing. It's pretty incredible, mind-blowing, exactly what I need. And his consulting approach is very calm and strategic &mdash; he sits, listens, and then points out, &ldquo;OK, here's what you can do.&rdquo; I come in with so many questions and leave with so many answers.</p>
-          <div class="testimonial__footer">
-            <img src="assets/justin-blake.jpg" alt="Justin Blake" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Justin Blake, AI Marketing Automation</p>
+      <div class="sec-head"><span class="idx">06</span><h2>What people say</h2></div>
+      <div style="margin-top:26px;">
+        <div class="quote" style="margin-bottom:22px;">
+          <p class="quote__text">Andrew's really opened my eyes. He helped me create this awesome second brain thing. It's pretty incredible, mind-blowing, exactly what I need. And his consulting approach is very calm and strategic &mdash; he sits, listens, and then points out, &ldquo;OK, here's what you can do.&rdquo; I come in with so many questions and leave with so many answers.</p>
+          <div class="quote__foot">
+            <img src="assets/justin-blake.jpg" alt="Justin Blake" class="quote__avatar">
+            <span class="quote__author">Justin Blake, AI Marketing Automation</span>
           </div>
         </div>
       </div>
-      <div class="grid-2 reveal mt-md">
-        <div class="testimonial" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-          <p class="testimonial__text">I thought I knew AI pretty well, but Andrew set me up with a system that is on a whole new level. We connected AI to my email and produced a writing guide that was spooky accurate. I have so many ideas of what to do with this now.</p>
-          <div class="testimonial__footer">
-            <img src="assets/gretchen-goldman.jpg" alt="Gretchen Goldman" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; G. Goldman, nonprofit leader</p>
+      <div class="grid-2">
+        <div class="quote">
+          <p class="quote__text">I thought I knew AI pretty well, but Andrew set me up with a system that is on a whole new level. We connected AI to my email and produced a writing guide that was spooky accurate. I have so many ideas of what to do with this now.</p>
+          <div class="quote__foot">
+            <img src="assets/gretchen-goldman.jpg" alt="Gretchen Goldman" class="quote__avatar">
+            <span class="quote__author">G. Goldman, nonprofit leader</span>
           </div>
         </div>
-        <div class="testimonial" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-          <p class="testimonial__text">Andrew helped me dramatically reshape how I work. AI tools are easy to use, but getting them aligned and optimized for my exact work and style was a huge upgrade. A couple hours with him has saved me dozens of hours on big projects, and small ones too.</p>
-          <div class="testimonial__footer">
-            <img src="assets/daniel-stone.jpg" alt="Daniel Stone" class="testimonial__avatar">
-            <p class="testimonial__author">&mdash; Daniel Stone, writer</p>
+        <div class="quote">
+          <p class="quote__text">Andrew helped me dramatically reshape how I work. AI tools are easy to use, but getting them aligned and optimized for my exact work and style was a huge upgrade. A couple hours with him has saved me dozens of hours on big projects, and small ones too.</p>
+          <div class="quote__foot">
+            <img src="assets/daniel-stone.jpg" alt="Daniel Stone" class="quote__avatar">
+            <span class="quote__author">Daniel Stone, writer</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Case study -->
-  <section class="bg-sand">
-    <div class="container container--reading">
-      <div class="section-header reveal">
-        <p style="font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-warm); margin: 0 0 0.5rem;">Case study</p>
-        <h2>A real engagement, start to finish</h2>
-        <p class="lead">What a single setup session looks like.</p>
-      </div>
+  <!-- 07 - Case study -->
+  <section class="bg-warm">
+    <div class="container container--narrow">
+      <div class="sec-head"><span class="idx">07</span><h2>A real engagement, start to finish</h2></div>
+      <p class="sec-intro">What a single setup session looks like.</p>
 
-      <div class="case-study reveal">
+      <div class="case-study">
         <p class="case-study__org">From Stage 1 to Stage 5 in two hours</p>
         <p class="case-study__detail">Nonprofit executive &middot; Washington, DC &middot; Single 2-hour session</p>
 
         <p><strong>Before:</strong> Using ChatGPT for about a year. Typed prompts, got answers, moved on. No persistent memory, no integrations, no reusable workflows. Pure Stage 1.</p>
 
         <p><strong>What we built:</strong></p>
-        <ul style="margin: 0.75rem 0 1rem; padding-left: 1.5rem;">
+        <ul>
           <li>A starter <code>CLAUDE.md</code> &mdash; her role, her voice, her clients, her current priorities &mdash; so the AI picks up where she left off each session.</li>
           <li>Connected the AI to her Gmail; it read 500+ sent emails and produced a writing style guide that captured her actual voice.</li>
           <li>Set up safety guardrails so the AI can draft but never send on her behalf.</li>
@@ -641,35 +607,33 @@
         </ul>
 
         <p><strong>After:</strong> A system that knows her voice, connects to her tools, and picks up where she left off. Stage 5. Two hours.</p>
-        <p style="font-size: 0.9375rem; color: var(--text-secondary); font-style: italic; margin-top: 0.5rem;">That was the foundation. The full Starter Package adds the breadth &mdash; more skills, more integrations, a deeper <code>CLAUDE.md</code>, the workflows that fit her actual week.</p>
+        <p style="font-size:.9375rem; color:var(--g500); font-style:italic; margin-top:.5rem;">That was the foundation. The full Starter Package adds the breadth &mdash; more skills, more integrations, a deeper <code>CLAUDE.md</code>, the workflows that fit her actual week.</p>
       </div>
 
-      <p class="reveal mt-md" style="text-align: center; font-size: 0.9375rem; color: var(--text-secondary);">
+      <p style="text-align:center; font-size:.9375rem; color:var(--g700); margin-top:1.5rem;">
         Every engagement starts differently. This one started with email and writing. Yours might start with meeting prep, client intake, or building a custom tool.
       </p>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section class="bg-cream">
+  <!-- 08 - Pricing -->
+  <section class="bg-ivory">
     <div class="container">
-      <div class="section-header reveal">
-        <h2>Straightforward pricing</h2>
-        <p class="lead">No hourly anxiety. You know what you're paying before we start.</p>
-      </div>
+      <div class="sec-head"><span class="idx">08</span><h2>Straightforward pricing</h2></div>
+      <p class="sec-intro">No hourly anxiety. You know what you're paying before we start.</p>
 
-      <div class="grid-3 reveal">
+      <div class="grid-3">
         <!-- Discovery call -->
         <div class="pricing-card">
           <h3>Discovery Call</h3>
           <p class="pricing-card__price">Free</p>
-          <p style="color: var(--text-secondary); font-size: 0.9375rem;">30 minutes</p>
+          <p style="color:var(--g500); font-size:.9375rem;">30 minutes</p>
           <ul>
             <li>Talk through your work</li>
             <li>See if this makes sense</li>
             <li>No commitment, no pitch</li>
           </ul>
-          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--outline" style="width: 100%; text-align: center;">Book a call</a>
+          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn-outline">Book a call</a>
         </div>
 
         <!-- Starter -->
@@ -677,67 +641,66 @@
           <div class="pricing-card__badge">Recommended</div>
           <h3>Starter Package</h3>
           <p class="pricing-card__price">$1,950</p>
-          <p style="color: var(--text-secondary); font-size: 0.9375rem;">4 sessions over 2&ndash;4 weeks</p>
+          <p style="color:var(--g500); font-size:.9375rem;">4 sessions over 2&ndash;4 weeks</p>
           <ul>
             <li>1&times; 2-hour deep dive &mdash; workflows mapped, build plan locked</li>
             <li>3&times; 90-min build sessions &mdash; your <code>CLAUDE.md</code>, your skills, your key workflows</li>
             <li>Email support between sessions</li>
             <li>Stage 5 setup in 2&ndash;4 weeks</li>
           </ul>
-          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--primary" style="width: 100%; text-align: center;">Get started</a>
+          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn">Get started <span class="btn__arrow">&rarr;</span></a>
         </div>
 
         <!-- Retainer -->
         <div class="pricing-card">
           <h3>Monthly Retainer</h3>
           <p class="pricing-card__price">$750<span>/month</span></p>
-          <p style="color: var(--text-secondary); font-size: 0.9375rem;">Ongoing support</p>
+          <p style="color:var(--g500); font-size:.9375rem;">Ongoing support</p>
           <ul>
             <li>3 hours/month &mdash; new workflows, integrations, model upgrades</li>
             <li>Additional time at $250/hr</li>
             <li>Add new workflows as your toolkit grows</li>
           </ul>
-          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--outline" style="width: 100%; text-align: center;">Add to any package</a>
+          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn-outline">Add to any package</a>
         </div>
       </div>
-      <p class="reveal mt-lg" style="text-align: center; font-size: 0.875rem; color: var(--text-secondary);">Reduced rates available for nonprofits, educators, and those for whom cost is a barrier. <a href="mailto:andrew.k.stein@gmail.com" style="color: var(--accent);">Reach out</a> and we'll figure it out.</p>
+      <p class="pricing-note">Reduced rates available for nonprofits, educators, and those for whom cost is a barrier. <a href="mailto:andrew.k.stein@gmail.com">Reach out</a> and we'll figure it out.</p>
     </div>
   </section>
 
-  <!-- Why now — UPDATED 2026-05-23 with workshop's "This moment is different" prelude -->
-  <section class="bg-sand">
-    <div class="container container--reading">
-      <div class="section-header reveal">
-        <h2>Why now</h2>
+  <!-- 09 - Why now -->
+  <section class="bg-warm">
+    <div class="container container--narrow">
+      <div class="sec-head"><span class="idx">09</span><h2>Why now</h2></div>
+
+      <div class="whynow-prelude">
+        <p><strong>This moment is different.</strong> In summer 2025, the best AI model was beating expert humans on professional work about <strong>48%</strong> of the time, blind-judged. By summer 2026, it's <strong>85%</strong>. The capability curve is steep &mdash; and in five years, using a keyboard and mouse for most things is going to look kind of funny.</p>
       </div>
-      <div class="reveal" style="background: #F3ECCC; border-left: 4px solid #c4900a; padding: 0.85rem 1.1rem; margin-bottom: 1.5rem; border-radius: 4px;">
-        <p style="margin: 0; font-size: 1.08rem; line-height: 1.6;"><strong>This moment is different.</strong> In summer 2025, the best AI model was beating expert humans on professional work about <strong>48%</strong> of the time, blind-judged. By summer 2026, it's <strong>85%</strong>. The capability curve is steep &mdash; and in five years, using a keyboard and mouse for most things is going to look kind of funny.</p>
-      </div>
-      <ol class="reveal" style="font-size: 1.05rem; line-height: 1.65; padding-left: 1.4rem;">
-        <li style="margin-bottom: 1rem;">
+      <ol class="whynow-list">
+        <li>
           <strong>The models get smarter every quarter.</strong><br>
-          <span style="color: var(--text-secondary);">They're on track to be 2&times; smarter by 2027. An AI-native setup compounds with each upgrade &mdash; when their capabilities go up, yours do too. Without the setup, the upgrades skip you.</span>
+          <span class="wn-sub">They're on track to be 2&times; smarter by 2027. An AI-native setup compounds with each upgrade &mdash; when their capabilities go up, yours do too. Without the setup, the upgrades skip you.</span>
         </li>
-        <li style="margin-bottom: 1rem;">
+        <li>
           <strong>It gets sharper the more you use it.</strong><br>
-          <span style="color: var(--text-secondary);">Each session, you'll notice an edge to smooth &mdash; a skill to add, a prompt to refine, a recurring chore worth automating. Small improvements stack up. The system you have in a few months is meaningfully more useful than the one we set up &mdash; and you didn't have to plan that.</span>
+          <span class="wn-sub">Each session, you'll notice an edge to smooth &mdash; a skill to add, a prompt to refine, a recurring chore worth automating. Small improvements stack up. The system you have in a few months is meaningfully more useful than the one we set up &mdash; and you didn't have to plan that.</span>
         </li>
         <li>
           <strong>It pays for itself fast.</strong><br>
-          <span style="color: var(--text-secondary);">A few hours back per week pays the Starter Package off in under a month. Most clients find bigger wins.</span>
+          <span class="wn-sub">A few hours back per week pays the Starter Package off in under a month. Most clients find bigger wins.</span>
         </li>
       </ol>
-      <p class="reveal mt-md" style="font-style: italic; color: var(--text-secondary); font-size: 0.9375rem;">&mdash; 18+ years solving business problems. AI is just the newest tool in the kit.</p>
+      <p class="whynow-foot">&mdash; 18+ years solving business problems. AI is just the newest tool in the kit.</p>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-dark cta-section" id="book">
-    <div class="container reveal">
-      <h2>Make AI your Chief of Staff.</h2>
-      <p class="lead">Book a free 30-min discovery call. We'll talk through your work and whether this makes sense. If it does, we'll walk through what your week looks like in 90 days.</p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn btn--warm" style="color: #fff; font-size: 1rem;">Book your discovery call</a>
+  <!-- CTA (the one dark band) -->
+  <section class="stats cta" id="book">
+    <div class="container">
+      <h2 style="font-family:var(--serif); font-weight:500; font-size:clamp(30px,4.4vw,42px); letter-spacing:-.014em; color:var(--ivory); margin-bottom:12px;">Make AI your <em style="font-style:italic; color:var(--clay);">Chief of Staff</em>.</h2>
+      <p class="lead" style="color:var(--g300); margin:0 auto 30px;">Book a free 30-min discovery call. We'll talk through your work and whether this makes sense. If it does, we'll walk through what your week looks like in 90 days.</p>
+      <div class="cta__buttons">
+        <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn">Book your discovery call <span class="btn__arrow">&rarr;</span></a>
       </div>
     </div>
   </section>
@@ -745,22 +708,18 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__name">Andrew K. Stein</p>
+      <span class="footer__name">Andrew K. Stein</span>
       <ul class="footer__links">
-        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/andrewkstein/" target="_blank" rel="noopener">LinkedIn &rarr;</a></li>
       </ul>
     </div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.nav__links a').forEach(a =>
+      a.addEventListener('click', () => document.querySelector('.nav__links').classList.remove('open')));
     window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
     });
   </script>
 
