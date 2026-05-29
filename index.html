@@ -15,6 +15,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="stylesheet" href="anthropic.css">
+  <style>
+    /* 2026-05-29 serif audit (role c3): homepage pillar card titles -> sans.
+       Page-scoped on purpose -- the only .card h3 on this page is the two pillars,
+       so this can't affect .card h3 anywhere else in the repo. */
+    .card h3{ font-family:var(--sans); }
+  </style>
 </head>
 <body>
 
