@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>israeled.org â€” Games placement concept</title>
+<style>
+  :root{
+    --navy:#1c2b5e; --navy-2:#22357a;
+    --green:#2e7a4c; --green-d:#256340;
+    --orange:#e0892b; --ltblue:#9cc1d6; --maroon:#7a1f3d;
+    --sage:#e4ece7; --line:#d8e0da; --ink:#222; --mute:#5d6470;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--serif);color:var(--ink);background:#fff;}
+  a{color:inherit;}
+
+  /* demo ribbon */
+  .demo-ribbon{background:#0a2540;color:#e7d3a0;font-family:var(--sans);font-size:12.5px;text-align:center;padding:8px 16px;letter-spacing:.3px;}
+  .demo-ribbon b{color:#fff;}
+
+  /* utility bar */
+  .util{display:flex;justify-content:flex-end;align-items:stretch;gap:0;font-family:var(--sans);font-size:13px;}
+  .util .signin{display:flex;align-items:center;color:var(--green);font-weight:600;padding:0 18px;}
+  .util a.ub{display:flex;align-items:center;gap:7px;color:#fff;padding:11px 18px;font-weight:600;text-decoration:none;}
+  .util .ub.cie{background:var(--orange);} .util .ub.store{background:var(--ltblue);color:#15384a;} .util .ub.es{background:var(--maroon);} .util .ub.don{background:var(--green);} .util .ub.search{background:var(--navy);}
+
+  /* brand + nav */
+  .topbar{display:flex;align-items:center;gap:30px;padding:14px 34px 6px;flex-wrap:wrap;}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo .mark{width:46px;height:46px;flex:none;}
+  .logo .name{font-family:var(--serif);color:var(--navy);line-height:1.05;}
+  .logo .name .l1{font-size:15px;letter-spacing:.5px;} .logo .name .l1 .f{font-size:11px;font-variant:small-caps;}
+  .logo .name .l2{font-size:20px;font-weight:bold;letter-spacing:.3px;}
+  nav.primary{display:flex;gap:34px;margin-left:18px;flex-wrap:wrap;}
+  nav.primary a{font-family:var(--serif);color:var(--green);font-weight:bold;font-size:17px;letter-spacing:.4px;text-decoration:none;text-transform:uppercase;position:relative;padding-bottom:2px;}
+  nav.primary a:hover{color:var(--green-d);}
+  nav.primary a.games{color:var(--maroon);}
+  nav.primary a.games .new{font-family:var(--sans);font-size:8.5px;font-weight:800;letter-spacing:1px;color:#fff;background:var(--maroon);border-radius:10px;padding:2px 6px;position:absolute;top:-12px;right:-30px;}
+  nav.primary a.games::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--maroon);border-radius:2px;}
+  .tagline{padding:0 34px 0;display:flex;align-items:center;gap:18px;}
+  .tagline span{font-family:var(--serif);color:var(--navy);font-size:16px;white-space:nowrap;}
+  .tagline span i{font-style:italic;}
+  .tagline .rule{height:2px;background:var(--navy);flex:1;}
+
+  /* annotation callout */
+  .callout{margin:18px 34px 0;background:#fff8ec;border:1px solid #ecd9ad;border-left:4px solid var(--orange);border-radius:10px;padding:14px 18px;font-family:var(--sans);font-size:13.5px;color:#5a4a28;line-height:1.5;}
+  .callout b{color:#7a5a16;}
+
+  /* games hero */
+  .ghero{margin:22px 34px 0;border-radius:14px;overflow:hidden;background:linear-gradient(120deg,var(--navy),#16245a 60%,#0e1a45);color:#fff;position:relative;}
+  .ghero .inner{padding:46px 44px;max-width:620px;}
+  .ghero .kic{font-family:var(--sans);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#bcd0a9;}
+  .ghero h1{font-family:var(--serif);font-size:42px;margin:8px 0 12px;font-weight:normal;line-height:1.1;}
+  .ghero h1 i{color:#e7d3a0;}
+  .ghero p{font-size:17px;line-height:1.55;color:#d7e0f0;margin:0 0 6px;max-width:520px;}
+
+  /* games grid */
+  .gwrap{padding:30px 34px 50px;}
+  .sec-rule{display:flex;align-items:center;gap:18px;justify-content:center;margin-bottom:24px;}
+  .sec-rule .r{height:2px;width:90px;background:var(--navy);} .sec-rule h2{font-family:var(--serif);color:var(--navy);font-size:22px;letter-spacing:1px;text-transform:uppercase;margin:0;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .gcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 6px 22px rgba(28,43,94,.07);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;}
+  .gcard.live:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(28,43,94,.16);}
+  .gcard .thumb{height:150px;background:linear-gradient(135deg,#0a2540,#16386a);color:#e7d3a0;display:flex;align-items:center;justify-content:center;position:relative;}
+  .gcard .thumb .slider-demo{width:78%;}
+  .gcard .thumb .yr{font-family:var(--serif);font-size:40px;color:#fff;text-align:center;}
+  .gcard .thumb .tr{height:5px;background:rgba(255,255,255,.25);border-radius:5px;margin-top:14px;position:relative;}
+  .gcard .thumb .tr .kn{position:absolute;left:58%;top:50%;width:20px;height:20px;border-radius:50%;background:#0a2540;border:3px solid var(--green);transform:translate(-50%,-50%);}
+  .gcard .thumb .gty{display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .gcard .thumb .gty-chip{display:inline-flex;align-items:flex-end;gap:3px;background:rgba(201,164,78,.16);border:1.5px solid #c9a44e;border-radius:9px;padding:6px 9px 7px;font-family:var(--serif);font-size:20px;color:#e7d3a0;line-height:1;}
+  .gcard .thumb .gty-chip i{width:8px;height:2px;background:#c9a44e;margin-bottom:3px;}
+  .gcard .thumb .gty-name{font-family:var(--serif);font-size:25px;color:#fff;letter-spacing:.3px;}
+  .gcard .thumb .gty-name span{color:#e7d3a0;font-style:italic;}
+  .gcard .body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column;}
+  .gcard .tag{font-family:var(--sans);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700;}
+  .gcard.live .tag{color:var(--green);} .gcard.soon .tag{color:var(--mute);}
+  .gcard h3{font-family:var(--serif);color:var(--navy);font-size:22px;margin:7px 0 8px;font-weight:normal;}
+  .gcard p{font-size:14.5px;color:var(--mute);line-height:1.5;margin:0 0 16px;flex:1;font-family:var(--sans);}
+  .gcard .cta{display:inline-block;text-align:center;font-family:var(--sans);font-weight:700;font-size:14px;border-radius:9px;padding:13px;text-decoration:none;}
+  .gcard.live .cta{background:var(--green);color:#fff;} .gcard.live .cta:hover{background:var(--green-d);}
+  .gcard.soon .cta{background:#eef1ee;color:var(--mute);cursor:default;}
+  .gcard.soon{opacity:.92;}
+
+  .why{margin:0 34px 46px;background:var(--sage);border-radius:14px;padding:26px 30px;}
+  .why h3{font-family:var(--serif);color:var(--navy);font-size:20px;margin:0 0 12px;font-weight:normal;}
+  .why ul{margin:0;padding-left:20px;font-family:var(--sans);font-size:14px;color:#33404f;line-height:1.7;}
+  .why li b{color:var(--navy);}
+
+  footer{background:var(--navy);color:#c5d0e8;font-family:var(--sans);font-size:12.5px;text-align:center;padding:20px;}
+  @media(max-width:720px){
+    .util{flex-wrap:wrap;font-size:12px;} .util .signin{display:none;}
+    nav.primary{margin-left:0;gap:18px;font-size:14px;} nav.primary a{font-size:14px;}
+    .ghero .inner{padding:34px 26px;} .ghero h1{font-size:32px;}
+    .topbar{padding:14px 18px 6px;} .tagline,.ghero,.callout,.gwrap,.why{margin-left:18px;margin-right:18px;padding-left:0;padding-right:0;}
+    .gwrap{padding:24px 18px 40px;}
+  }
+</style>
+</head>
+<body>
+  <div class="demo-ribbon">âŸ¡ <b>Placement concept</b> â€” a mock of israeled.org showing where a <b>Games</b> section could live. Not the live site.</div>
+
+  <div class="util">
+    <span class="signin">Sign In</span>
+    <a class="ub cie" href="#">â™¥ Join CIE+</a>
+    <a class="ub store" href="#">ðŸ›’ Store</a>
+    <a class="ub es" href="#">ðŸŒ EspaÃ±ol</a>
+    <a class="ub don" href="#">â™¡ Donate</a>
+    <a class="ub search" href="#">ðŸ” Search</a>
+  </div>
+
+  <div class="topbar">
+    <div class="logo">
+      <svg class="mark" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="20" r="9" stroke="#2e7a4c" stroke-width="2"/>
+        <path d="M32 29 V52" stroke="#1c2b5e" stroke-width="2"/>
+        <path d="M32 38 C24 34 18 36 14 40 M32 38 C40 34 46 36 50 40" stroke="#2e7a4c" stroke-width="2"/>
+        <path d="M18 52 H46" stroke="#1c2b5e" stroke-width="2"/>
+        <path d="M27 15 l5 5 l5 -5 M27 25 l5 -5 l5 5" stroke="#2e7a4c" stroke-width="1.6"/>
+      </svg>
+      <div class="name"><div class="l1"><span class="f">Center for</span></div><div class="l2">ISRAEL EDUCATION</div></div>
+    </div>
+    <nav class="primary">
+      <a href="#">Explore &amp; Learn</a>
+      <a href="#">Curriculum &amp; Courses</a>
+      <a href="#">Programs</a>
+      <a class="games" href="guess-the-year.html">Games<span class="new">New</span></a>
+      <a href="#">About</a>
+    </nav>
+  </div>
+  <div class="tagline"><span>Know your past, own your present, <i>assure your future.</i></span><div class="rule"></div></div>
+
+  <div class="callout">
+    <b>The hypothesis:</b> Games sits as a <b>top-level nav item</b> â€” the New York Times model. It's the most-discoverable home for a daily habit, it gives the daily puzzle a permanent front-door URL (<b>play.israeled.org</b> or <b>israeled.org/games</b>), and it doesn't bury the funnel inside â€œExplore &amp; Learn.â€ The daily game is the widest, lowest-friction mouth of the funnel â€” so it earns top-line placement.
+  </div>
+
+  <div class="ghero">
+    <div class="inner">
+      <div class="kic">CIE Games</div>
+      <h1>Israel's story, <i>one day at a time.</i></h1>
+      <p>A two-minute puzzle every day, drawn from the largest collection of modern-Israel sources. Play today's, then read the story behind the answer.</p>
+    </div>
+  </div>
+
+  <div class="gwrap">
+    <div class="sec-rule"><span class="r"></span><h2>Play</h2><span class="r"></span></div>
+    <div class="grid">
+      <a class="gcard live" href="guess-the-year.html">
+        <div class="thumb"><div class="gty"><div class="gty-chip">19<i></i><i></i></div><div class="gty-name">Guess The <span>Year</span></div></div></div>
+        <div class="body">
+          <div class="tag">â— Today's puzzle</div>
+          <h3>Guess The Year</h3>
+          <p>Read a true moment in Israel's history, then guess the year. Scored by how close you get â€” and you learn five real things along the way.</p>
+          <span class="cta">Play today's puzzle â†’</span>
+        </div>
+      </a>
+      <div class="gcard soon">
+        <div class="thumb" style="background:linear-gradient(135deg,#16386a,#2e7a4c)"><div style="font-family:var(--serif);font-size:30px;color:#fff;text-align:center;line-height:1.2;">Israel<br>Connections</div></div>
+        <div class="body">
+          <div class="tag">Coming soon</div>
+          <h3>Connections</h3>
+          <p>Sort sixteen names, places, and terms into four hidden groups. The aha of seeing the thread.</p>
+          <span class="cta">Coming soon</span>
+        </div>
+      </div>
+      <div class="gcard soon">
+        <div class="thumb" style="background:linear-gradient(135deg,#7a1f3d,#0a2540)"><div style="font-family:var(--serif);font-size:30px;color:#fff;text-align:center;">Pinpoint</div></div>
+        <div class="body">
+          <div class="tag">Coming soon</div>
+          <h3>Pinpoint</h3>
+          <p>Five clues, revealed one at a time. Name what connects them in as few as you dare.</p>
+          <span class="cta">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="why">
+    <h3>Why a top-level Games tab</h3>
+    <ul>
+      <li><b>Discoverability.</b> A daily habit only works if people can find it without hunting. Top nav = front door.</li>
+      <li><b>The funnel.</b> Free game â†’ â€œread the story behind the answerâ€ â†’ a real israeled.org article â†’ CIE+. The game is the widest mouth of the funnel; it belongs at the top, not nested.</li>
+      <li><b>Room to grow.</b> One tab holds a whole catalog â€” Guess The Year today, Connections and Pinpoint later â€” the way NYT Games grew from Crossword to a dozen titles.</li>
+      <li><b>Brand fit.</b> â€œKnow your pastâ€ becomes something you <i>do</i> daily, not just read.</li>
+    </ul>
+  </div>
+
+  <footer>Placement concept for the CIE team Â· the â€œGamesâ€ tab and hub are proposed, not yet live Â· the daily game card links to the working prototype.</footer>
+</body>
+</html>
