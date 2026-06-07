@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrew K. Stein — AI Consultant & Workshop Facilitator | Atlanta</title>
-  <meta name="description" content="Atlanta-based AI consultant and executive facilitator. I help professionals build AI workflows that save hours per week — and facilitate the strategic conversations that move organizations forward.">
-  <meta property="og:title" content="Andrew K. Stein — AI Consultant & Workshop Facilitator">
-  <meta property="og:description" content="I help people work better — with AI and with each other. Personal AI consulting and executive workshop facilitation in Atlanta.">
+  <title>Andrew K. Stein — AI, Strategy & Facilitation | Atlanta</title>
+  <meta name="description" content="Atlanta-based consultant: AI workflows that save you hours, business strategy and operations that actually get executed, and facilitation for the conversations that move organizations forward.">
+  <meta property="og:title" content="Andrew K. Stein — AI, Strategy & Facilitation">
+  <meta property="og:description" content="I help people and organizations work better — with AI, with strategy and operations, and with each other. Atlanta-based.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://andrewkstein.com">
   <meta property="og:image" content="https://andrewkstein.com/assets/headshot.jpg">
@@ -20,6 +20,8 @@
        Page-scoped on purpose -- the only .card h3 on this page is the two pillars,
        so this can't affect .card h3 anywhere else in the repo. */
     .card h3{ font-family:var(--sans); }
+    /* Three-pillar grid collapses to one column on mobile (shared .grid-3 doesn't). */
+    @media (max-width:760px){ .grid-3{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -44,13 +46,13 @@
   <section class="hero">
     <div class="hero__container">
       <div class="hero__copy">
-        <span class="eyebrow">AI Strategy &amp; Workshop Facilitation</span>
-        <h1 class="headline">I help people work <em>better</em>&mdash;with AI and with each other.</h1>
-        <p class="lead">2023 was the year of the chatbot, and 2026 is the year of agentic tools like Claude Cowork. But it can feel complex. I sit down with professionals like you, understand your goals, and help you build your ideal assistant &amp; teammate.</p>
+        <span class="eyebrow">AI &middot; Strategy &amp; Operations &middot; Facilitation</span>
+        <h1 class="headline">I help people and organizations work <em>better</em>&mdash;from AI to business strategy &amp; ops.</h1>
+        <p class="lead">The pace of change is crazy fast right now. I sit down with professionals and teams, listen to your goals, and help you redesign what you do and how you do it.</p>
         <div class="hero__actions">
-          <a href="ai-consulting.html" class="btn">Work with me <span class="btn__arrow">&rarr;</span></a>
+          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="btn">Work with me <span class="btn__arrow">&rarr;</span></a>
         </div>
-        <p class="credentials">MBA, Emory (Woodruff Scholar). Mechanical engineering, Brown. 6 years at Deloitte. Hundreds of clients across 5 continents.</p>
+        <p class="credentials">MBA, Emory (Woodruff Scholar). Mechanical engineering, Brown. Ex-Deloitte. Hundreds of clients across 5 continents.</p>
       </div>
       <div class="hero__media">
         <figure class="photo-card">
@@ -63,12 +65,12 @@
     </div>
   </section>
 
-  <!-- Two things I do -->
+  <!-- Three things I do -->
   <section class="bg-warm">
     <div class="container">
-      <div class="sec-head"><span class="idx">01</span><h2>Two things I do</h2></div>
+      <div class="sec-head"><span class="idx">01</span><h2>Three things I do</h2></div>
       <p class="sec-intro">Different skills, same instinct: figure out what's actually going on and help you move forward.</p>
-      <div class="grid-2">
+      <div class="grid-3">
         <div class="card">
           <h3>AI Strategy &amp; Consulting</h3>
           <p>I help people move beyond chatbots to their own AI cockpit optimized for how their brain likes to work.</p>
@@ -88,6 +90,20 @@
           <hr class="divider">
           <p>Facilitating executive sessions across private, public, and nonprofit sectors for nearly two decades.</p>
           <a href="facilitation.html" class="link-arrow" style="margin-top:18px;">Learn more <span class="a">&rarr;</span></a>
+        </div>
+        <div class="card">
+          <h3>Business Strategy &amp; Operations</h3>
+          <p>A strategy is only worth what gets done with it. Together we build the plan <em>and</em> the way to actually run it.</p>
+          <hr class="divider">
+          <ul class="icon-list">
+            <li>Strategy &amp; planning</li>
+            <li>Operations &amp; execution</li>
+            <li>Marketing &amp; go-to-market</li>
+            <li>Org design &amp; change</li>
+            <li>"Can you just help me run this?"&mdash;fractional / operator support</li>
+          </ul>
+          <p>I advise as a fellow operator, not from the sidelines.</p>
+          <a href="https://calendly.com/andrew-stein/30min" target="_blank" rel="noopener" class="link-arrow" style="margin-top:18px;">Let's talk <span class="a">&rarr;</span></a>
         </div>
       </div>
     </div>
