@@ -1,0 +1,7 @@
+# Cloudflare Pages response headers
+# Prevent stale edge cache on the iterative /preview/* review area: re-deploys
+# were serving cf-cache-status: HIT until a manual purge (CIE Games deploy, 2026-06-03).
+# Production pages keep Cloudflare's default caching; only /preview/* opts out so
+# review iterations show immediately.
+/preview/*
+  Cache-Control: no-cache, no-store, must-revalidate
